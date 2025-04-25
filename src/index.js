@@ -8,7 +8,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <App />
-    자동빌드 되는지 테스트 as
+    자동빌드 되는지 테스트 두번째
   </React.StrictMode>
 );
 
