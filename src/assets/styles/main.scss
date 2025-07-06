@@ -1,0 +1,17 @@
+@charset "utf-8";
+
+// @import 'global.scss'; // Old code, not used anymore
+//@use 'base/global' as *; // New code, using the global module
+//@use 'layout/header' as *;
+@import url('https://cdn.jsdelivr.net/gh/leetaewook/gmarket-sans-dynamic-subset/GmarketSans.css');
+
+
+html{
+  ::-webkit-scrollbar{width: 3px; height: 3px; background: #f3f3f3; border-radius: 10px;}
+  ::-webkit-scrollbar-thumb{background: #dcdcdc; border-radius: 10px;}
+  ::-webkit-scrollbar-thumb:hover{background: #bfbfbf;}
+  ::-webkit-scrollbar-track{background: #f3f3f3; border-radius: 10px;}
+}
+//body{display: flex; width: 100%; height: 100vh;background: #ccc; font-size: $base-font-size; background: $base-bg-color;}
+
+
