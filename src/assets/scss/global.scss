@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+// 폰트 설정
+@use 'font.scss' as *;
+
+// 기본 스타일 초기화 설정
+@import url('https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css');
+
+*{font-family: 'Pretendard' !important;}
+
+
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+// 변수 정의 (색상, 폰트 크기 등)
+$primary-color: #007bff;
+$secondary-color: #6c757d;
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
