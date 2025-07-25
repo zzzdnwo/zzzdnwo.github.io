@@ -10,7 +10,6 @@
 
 
 body {
-  font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
   background-color: #f4f4f4;
@@ -20,8 +19,24 @@ body {
 $primary-color: #007bff;
 $secondary-color: #6c757d;
 
+@mixin flex-center() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin text-ellipsis() {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+@mixin fake-border($px, $color) {
+  box-shadow: 0 0 0 $px $color inset;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 20px;  
 }
