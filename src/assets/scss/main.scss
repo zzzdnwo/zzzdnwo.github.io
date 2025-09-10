@@ -4,8 +4,8 @@
 
   button{cursor: pointer; user-select: none; background: transparent;}
 
-  main{ width: 100%; min-width: 1024px; min-height: 100vh; background: #000104 url('../images/main_bg_x4.png') left bottom no-repeat; background-size: cover; position: relative;
-    .myname{font-family: 'Poppins' !important; font-weight: 700; font-size: 180px; letter-spacing: -5.4px; color: #fff; position: absolute; right: 90px; bottom: -72px; line-height: 1.5;}
+  main{ width: 100%; min-width: 1024px; min-height: 100vh; background: #010101 url('../images/main_bg_x4.png') right no-repeat; background-size: cover; position: relative;
+    .myname{font-family: 'Poppins' !important; font-weight: 700; font-size: 180px; letter-spacing: -5.4px; color: #fff; position: absolute; right: 90px; bottom: 0; line-height: 130px; overflow: hidden;}
     
     
   }
