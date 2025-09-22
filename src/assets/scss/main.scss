@@ -9,11 +9,14 @@
     
     
   }
-  .listTest{
-    ul{display: flex; flex-wrap: wrap; gap: 10px;
-      li{width: 25%; height: 100px; background: #fff; cursor: pointer;}
+  section{display: flex; justify-content: center; padding: 0 10rem;
+    &.listTest{ height: 1000px;
+      ul{display: flex; flex-wrap: wrap; gap: 10px;
+        li{width: 25%; height: 100px; background: #fff; cursor: pointer;}
+      }
     }
   }
+  
 
   @media screen and (max-width: 1024px){
     

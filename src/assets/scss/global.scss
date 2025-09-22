@@ -6,7 +6,7 @@
 // 기본 스타일 초기화 설정
 @import url('https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css');
 
-*{font-family: 'Pretendard' !important;}
+*{font-family: 'Pretendard' !important; box-sizing: border-box;}
 
 
 body {
@@ -14,6 +14,8 @@ body {
   padding: 0;
   background-color: #000104;
 }
+
+button{border: none; outline: none; cursor: pointer;}
 
 // 변수 정의 (색상, 폰트 크기 등)
 $primary-color: #007bff;
