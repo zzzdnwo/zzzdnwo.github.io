@@ -9,6 +9,7 @@ const projects = [
 { id: '124', label: '124', title: 'Aproject 2', file: 'Aproject2' },
 { id: '125', label: '125', title: 'Aproject 3', file: 'Aproject3' },
 { id: '126', label: '126', title: 'Aproject 4', file: 'Aproject4' },
+{ id: '126', label: '156', title: 'Aproject 5', file: 'Aproject5' },
 ];
 
 
@@ -32,35 +33,33 @@ function preload(file) { import(`../projects/${file}.jsx`).catch(() => {}); }
 
 
 return (
-<>
-<main>
-<h2 className="myname">SHIN WOO JAE</h2>
-</main>
+<div className='mainCont'>
+  <main>
+  <h2 className="myname">SHIN WOO JAE</h2>
+  </main>
+  <section className='listTest'>
+    <ul>
+    {projects.map((p) => (
+    <li key={p.id} className="project-item">
+    <div className="project-label">{p.label}</div>
+    <div className="project-actions">
+    <button onClick={() => openProject(p.file)} onMouseEnter={() => preload(p.file)}>
+    간략히 보기
+    </button>
+    </div>
+    </li>
+    ))}
+    </ul>
+  </section>
 
 
-<section className='listTest'>
-  <ul>
-  {projects.map((p) => (
-  <li key={p.id} className="project-item">
-  <div className="project-label">{p.label}</div>
-  <div className="project-actions">
-  <button onClick={() => openProject(p.file)} onMouseEnter={() => preload(p.file)}>
-  간략히 보기
-  </button>
-  </div>
-  </li>
-  ))}
-  </ul>
-</section>
-
-
-<Modal isOpen={!!activeFile} onClose={closeProject} title={activeFile ? projects.find(x => x.file === activeFile)?.title : ''}>
-<ErrorBoundary>
-<Suspense fallback={<div className="modal-loading">로딩중...</div>}>
-{ActiveComponent ? <ActiveComponent /> : null}
-</Suspense>
-</ErrorBoundary>
-</Modal>
-</>
+  <Modal isOpen={!!activeFile} onClose={closeProject} title={activeFile ? projects.find(x => x.file === activeFile)?.title : ''}>
+  <ErrorBoundary>
+  <Suspense fallback={<div className="modal-loading">로딩중...</div>}>
+  {ActiveComponent ? <ActiveComponent /> : null}
+  </Suspense>
+  </ErrorBoundary>
+  </Modal>
+</div>
 );
 }
