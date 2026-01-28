@@ -8,6 +8,7 @@
 
 *{font-family: 'Pretendard' !important; box-sizing: border-box;}
 
+html{font-size: 10px; letter-spacing: -1px;}
 
 body {
   margin: 0;
@@ -15,7 +16,7 @@ body {
   background-color: #000104;
 }
 
-button{border: none; outline: none; cursor: pointer;}
+button{border: none; outline: none; cursor: pointer; padding: 0;}
 
 // 변수 정의 (색상, 폰트 크기 등)
 $primary-color: #007bff;

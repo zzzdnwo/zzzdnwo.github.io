@@ -35,22 +35,74 @@ function preload(file) { import(`../projects/${file}.jsx`).catch(() => {}); }
 return (
 <div className='mainCont'>
   <main>
-  <h2 className="myname">SHIN WOO JAE</h2>
-  </main>
-  <section className='listTest'>
-    <ul>
-    {projects.map((p) => (
-    <li key={p.id} className="project-item">
-    <div className="project-label">{p.label}</div>
-    <div className="project-actions">
-    <button onClick={() => openProject(p.file)} onMouseEnter={() => preload(p.file)}>
-    간략히 보기
-    </button>
+    <div className="pos">
+      <div className="main_bg"></div>
+      <h2 className="myname">SHIN WOO JAE</h2>
     </div>
-    </li>
-    ))}
-    </ul>
+  </main>
+  <section className="about">
+    <div className="about_left">
+      <h3>About me</h3>
+    </div>
+    <div className="about_right">
+      <h3>Interview</h3>
+      <div className="qnaList">
+        <div className="qna">
+          <span className="qna_question">
+            Q. 어떤 방식으로 일하는 걸 중요하게 생각하나요?
+          </span>
+          <p className="qna_answer">
+            안녕하세요. <strong>망고의 손톱</strong> 입니다. <br />
+            퉁퉁퉁사후르 퉁퉁퉁
+          </p>
+        </div>
+        <div className="qna">
+          <span className="qna_question">
+            Q. 어떤 방식으로 일하는 걸 중요하게 생각하나요?
+          </span>
+          <p className="qna_answer">
+            안녕하세요. <strong>망고의 손톱</strong> 입니다. <br />
+            퉁퉁퉁사후르 퉁퉁퉁
+          </p>
+        </div>
+        <div className="qna">
+          <span className="qna_question">
+            Q. 어떤 방식으로 일하는 걸 중요하게 생각하나요?
+          </span>
+          <p className="qna_answer">
+            안녕하세요. <strong>망고의 손톱</strong> 입니다. <br />
+            퉁퉁퉁사후르 퉁퉁퉁
+          </p>
+        </div>
+      </div>
+    </div>
   </section>
+  <section className="work">
+    <nav className="work_nav">
+      <button id="project">Project</button>
+      <button id="exp">Experience</button>
+    </nav>
+    <div className='listTest'>
+      <div className="work_category">
+        <button id="all">All</button>
+        <button id="team">Team</button>
+        <button id="single">Single</button>
+      </div>
+      <ul>
+      {projects.map((p) => (
+      <li key={p.id} className="project-item">
+      <div className="project-label">{p.label}</div>
+      <div className="project-actions">
+      <button onClick={() => openProject(p.file)} onMouseEnter={() => preload(p.file)}>
+      간략히 보기
+      </button>
+      </div>
+      </li>
+      ))}
+      </ul>
+    </div>
+  </section>
+  <section className="fff"></section>
 
 
   <Modal isOpen={!!activeFile} onClose={closeProject} title={activeFile ? projects.find(x => x.file === activeFile)?.title : ''}>
