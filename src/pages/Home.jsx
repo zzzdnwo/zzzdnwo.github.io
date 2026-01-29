@@ -5,11 +5,18 @@ import ErrorBoundary from '../components/ErrorBoundary';
 
 
 const projects = [
-{ id: '123', label: '123', title: 'Aproject 1', file: 'Aproject1' },
-{ id: '124', label: '124', title: 'Aproject 2', file: 'Aproject2' },
-{ id: '125', label: '125', title: 'Aproject 3', file: 'Aproject3' },
-{ id: '126', label: '126', title: 'Aproject 4', file: 'Aproject4' },
-{ id: '126', label: '156', title: 'Aproject 5', file: 'Aproject5' },
+{ id: '123', label: '이리저리 요리저리', title: '보드화면 프로토타입', file: 'Aproject1', tag: ['반응형', 'React'] },
+{ id: '124', label: '124', title: 'Aproject 2', file: 'Aproject1', tag: ['반응형', 'React'] },
+{ id: '125', label: '125', title: 'Aproject 3', file: 'Aproject1', tag: ['반응형', 'React'] },
+{ id: '126', label: '126', title: 'Aproject 4', file: 'Aproject1', tag: ['반응형', 'React'] },
+{ id: '127', label: '156', title: 'Aproject 5', file: 'Aproject1', tag: ['반응형', 'React'] },
+{ id: '128', label: '151', title: 'Aproject 5', file: 'Aproject1', tag: ['반응형', 'React'] },
+{ id: '129', label: '152', title: 'Aproject 5', file: 'Aproject1', tag: ['반응형', 'React'] },
+{ id: '130', label: '153', title: 'Aproject 5', file: 'Aproject1', tag: ['반응형', 'React'] },
+{ id: '131', label: '154', title: 'Aproject 5', file: 'Aproject1', tag: ['반응형', 'React'] },
+{ id: '132', label: '155', title: 'Aproject 5', file: 'Aproject1', tag: ['반응형', 'React'] },
+{ id: '133', label: '156', title: 'Aproject 5', file: 'Aproject1', tag: ['반응형', 'React'] },
+{ id: '134', label: '157', title: 'Aproject 5', file: 'Aproject1', tag: ['반응형', 'React'] },
 ];
 
 
@@ -83,20 +90,33 @@ return (
       <button id="exp">Experience</button>
     </nav>
     <div className='listTest'>
-      <div className="work_category">
+      {/* <div className="work_category">
         <button id="all">All</button>
         <button id="team">Team</button>
         <button id="single">Single</button>
-      </div>
+      </div> */}
       <ul>
       {projects.map((p) => (
       <li key={p.id} className="project-item">
-      <div className="project-label">{p.label}</div>
-      <div className="project-actions">
-      <button onClick={() => openProject(p.file)} onMouseEnter={() => preload(p.file)}>
-      간략히 보기
-      </button>
-      </div>
+        <div className="project_thumbnail">
+          <img src={require(`../assets/images/${p.file}_thumb.png`)} alt={p.title} />
+        </div>
+        <div className="project_details">
+          <div className="project_title">{p.title}</div>
+          <div className="project_label">{p.label}</div>
+          <div className="project_tag">
+            {p.tag?.map((tag, idx) => (
+              <span key={idx} className="tag">
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>                     
+        <div className="project_actions">
+        <button onClick={() => openProject(p.file)} onMouseEnter={() => preload(p.file)}>
+        간략히 보기
+        </button>
+        </div>
       </li>
       ))}
       </ul>
