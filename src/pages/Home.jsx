@@ -1,5 +1,6 @@
 import React, { useState, useMemo, Suspense, useRef, useEffect } from 'react';
 import '../assets/scss/main.scss';
+import '../assets/scss/detail.scss';
 import Modal from '../components/Modal';
 import ErrorBoundary from '../components/ErrorBoundary';
 
@@ -386,7 +387,7 @@ export default function Home() {
       <button id="copyMail" onClick={copyMail}><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 538 404" fill="none"><path d="M0.750488 0.613525V67.7139L269.152 201.915L537.553 67.7139V0.613525H0.750488ZM0.750488 134.814V403.216H537.553V134.814L269.152 269.015L0.750488 134.814Z" fill="black"></path></svg></button>
       <button id="goTop" onClick={scrollToTop}><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 28 17" fill="none"><path d="M2 15L14 3L26 15" stroke="black" stroke-width="3" stroke-linecap="round"></path></svg></button>
     </div>
-    <Modal isOpen={!!activeFile} onClose={closeProject} title={activeFile ? projects.find(x => x.file === activeFile)?.title : ''}>
+    <Modal isOpen={!!activeFile} onClose={closeProject} >
     <ErrorBoundary>
     <Suspense fallback={<div className="modal-loading">로딩중...</div>}>
     {ActiveComponent ? <ActiveComponent /> : null}
