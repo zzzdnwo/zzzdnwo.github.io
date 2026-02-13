@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import '../assets/scss/modal.scss';
 
 
-export default function Modal({ isOpen, onClose, title, children }) {
+export default function Modal({ isOpen, onClose, children, project }) {
 const overlayRef = useRef(null);
 const contentRef = useRef(null);
 
@@ -35,13 +35,24 @@ return (
     onMouseDown={(e) => { if (e.target === overlayRef.current) onClose(); }}
     role="dialog"
     aria-modal="true"
-    aria-label={title}
+    aria-label={project?.title}
     >
         <div className="modal_wrapper">
             <div ref={contentRef} tabIndex={-1} className="modal_content">
-                <header className="modal_header">
-                <h2>{title}</h2>                
-                </header>
+                <header className={`detail_header ${project?.prjBgColor || 'default'}`}>
+                    <div className="project_tag">
+                        {project.tag?.map((tag, idx) => (
+                            <span key={idx} className="tag_item">
+                                {tag}
+                            </span>
+                        ))}                    
+                    </div>                    
+                    <h1 className="project_title">{project?.title}</h1>
+                    <div className="project_info">
+                        <p className="info_period">{project?.period}</p>
+                        <p className="info_member">{project?.member}</p>
+                    </div>                
+                </header>                          
                 <div className="modal_body">{children}</div>
             </div>
             <div className="modal_snb">

@@ -3,21 +3,13 @@ import '../assets/scss/main.scss';
 import '../assets/scss/detail.scss';
 import Modal from '../components/Modal';
 import ErrorBoundary from '../components/ErrorBoundary';
+import projects from '../data/projects';
 
 
-const projects = [
-  { id: '123', label: '프로그램 메뉴얼 가이드 사이트 리뉴얼 프로젝트', title: '뉴젠보드', file: 'nzBoard', tag: ['반응형', 'React'], period: '2025.06 - 2025.10' },
-  { id: '124', label: '리포트 툴 웹 페이지 화 프로젝트', title: '제트리포트', file: 'zReport', tag: ['반응형', 'React'], period: '2024.09 - 2025.01' },
-  { id: '125', label: '업체 재무 데이터 대시보드 프로젝트', title: '비욘드 재무보고서', file: 'beyond', tag: ['반응형', 'React'], period: '2024.06 - 2024.09' },
-  { id: '126', label: '세무 비즈니스 플랫폼 프로젝트', title: '비즈북스', file: 'bizbooks', tag: ['반응형', 'React'], period: '2021.06 - 2025.10' },
-  { id: '127', label: '대표 홈페이지 및 마이크로사이트 운영·리뉴얼', title: '홈페이지 유지보수', file: 'nzBoard', tag: ['반응형', 'React'], period: '재직 기간 전반 (상시 신규 제작 및 유지보수)' }
-  // { id: '128', label: '151', title: 'Aproject 5', file: 'nzBoard', tag: ['반응형', 'React'], period: '2025.05 - 2025.07' },
-  // { id: '129', label: '152', title: 'Aproject 5', file: 'nzBoard', tag: ['반응형', 'React'], period: '2025.05 - 2025.07' },
-];
 
 
 export default function Home() {
-  const [activeFile, setActiveFile] = useState(null);
+  const [activeProject, setActiveProject] = useState(null);
   const [activeNav, setActiveNav] = useState(null);
 
   const workRef = useRef(null);
@@ -31,9 +23,9 @@ export default function Home() {
 
   // activeFile이 바뀔 때마다 lazy 컴포넌트를 만들어 반환
   const ActiveComponent = useMemo(() => {
-    if (!activeFile) return null;
-    return React.lazy(() => import(`../projects/${activeFile}.jsx`));
-  }, [activeFile]);
+    if (!activeProject) return null;
+    return React.lazy(() => import(`../projects/${activeProject.file}.jsx`));
+  }, [activeProject]);
 
 
 
@@ -181,12 +173,9 @@ export default function Home() {
     });
   }
 
-  function openProject(file) {
-    setActiveFile(file); 
-  };
-  function closeProject() {
-    setActiveFile(null); 
-  };
+  function openProject(project) {
+    setActiveProject(project);
+  }
 
   // 마우스 엔터 시 사전 로드(preload) — 모달 첫 열림 지연 완화
   function preload(file) {
@@ -299,7 +288,7 @@ export default function Home() {
                 <div className="project_actions">
                   <div className="por">
                       <h5>{p.title}</h5>
-                      <button onClick={() => openProject(p.file)} onMouseEnter={() => preload(p.file)}>자세히보기</button>
+                      <button onClick={() => openProject(p)} onMouseEnter={() => preload(p.file)}>자세히보기</button>
                   </div>                
                 </div>
               </li>
@@ -387,11 +376,15 @@ export default function Home() {
       <button id="copyMail" onClick={copyMail}><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 538 404" fill="none"><path d="M0.750488 0.613525V67.7139L269.152 201.915L537.553 67.7139V0.613525H0.750488ZM0.750488 134.814V403.216H537.553V134.814L269.152 269.015L0.750488 134.814Z" fill="black"></path></svg></button>
       <button id="goTop" onClick={scrollToTop}><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 28 17" fill="none"><path d="M2 15L14 3L26 15" stroke="black" stroke-width="3" stroke-linecap="round"></path></svg></button>
     </div>
-    <Modal isOpen={!!activeFile} onClose={closeProject} >
+    <Modal 
+      isOpen={!!activeProject} 
+      onClose={() => setActiveProject(null)} 
+      project={activeProject}
+    >
     <ErrorBoundary>
-    <Suspense fallback={<div className="modal-loading">로딩중...</div>}>
-    {ActiveComponent ? <ActiveComponent /> : null}
-    </Suspense>
+      <Suspense fallback={<div className="modal-loading">로딩중...</div>}>
+        {ActiveComponent ? <ActiveComponent /> : null}
+      </Suspense>
     </ErrorBoundary>
     </Modal>
   </div>
