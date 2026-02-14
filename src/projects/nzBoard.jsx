@@ -1,38 +1,195 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 
-export default function nzBoard() {
+export default function NzBoard() {
+    const [openIndex, setOpenIndex] = useState({});
+
+    const toggleItem = (index) => {
+        setOpenIndex((prev) => ({
+            ...prev,
+            [index]: !prev[index],
+        }));
+    };
     return (
-    <div className="project_detail">
-        {/* <header className="detail_header yellow">
-            <h1 className="project_title">뉴젠보드</h1>
-            <div className="project_info">
-                <p className="info_period">2025.06 - 2025.10</p>
-                <p className="info_member">4인(프론트 1명, 백엔드 1명, 디자이너 1명, DBA 1명)</p>
-            </div>
-        </header>
-        <section className="detail_contents">
-
-        </section> */}
+    <article className="project_detail">
         <h2>
             뉴젠보드(프로그램 메뉴얼 가이드 사이트) 리뉴얼 프로젝트<br />
             프로젝트 전반 React + TypeScript 구조로 리뉴얼 안정성과 유지보수성을 향상시킴.
         </h2>
         <hr />
-        1.  기존 프로젝트 전반을 React + TypeScript 기반 프론트엔드 설계
-        - 컴포넌트 단위 구조 설계 및 타입 정의를 통해 안정적인 UI 개발
-        2. SCSS 기반 스타일 아키텍처
-        - 컴포넌트 단위 SCSS 설계 및 유지보수 중심의 스타일 구조 구성
-        3. 공통 컴포넌트 및 UI 시스템 구축
-        - 재사용 가능한 UI 컴포넌트 설계로 개발 생산성 및 품질 향상
-        4. 협업 및 프로젝트 운영 역량
-        - 디자이너·백엔드 개발자와의 협업을 통한 프로젝트 일정 관리, 요구사항 조율 등 개발 스코프 관리 경험
-        - React + TypeScript 기반 SPA 아키텍처 설계 및 컴포넌트 중심 개발 경험
-        - Zustand를 확용한 전역 상태관리 및 복잡한 UI 상태 흐름 제어
-        - SCSS 기반 컴포넌트 단위 스타일링 및 유지보수 친화적 스타일 구조 설계
-        - CKEditor 5 커스터마이징 (툴바 구성, 한글 UI, 이미지 업로드, 글쓰기 환경 개선)
-        - Zeplin 시안을 기준으로 한 UI 구현 및 디자이너 협업 경험
-        - GIt 기반 버전 관리 및 협업 환경에서의 코드 통합 경험
-    </div>
+        <section>
+           <h3>📍 주요 기능 및 특징</h3> 
+           <ul>
+                <li>기존 프로젝트 전반을 React + TypeScript 기반 프론트엔드 설계</li>
+                <li>SCSS 기반 스타일 아키텍처</li>
+                <li>공통 컴포넌트 및 UI 시스템 구축하며 <br />두 줄을 테스트해보다.</li>
+           </ul>
+        </section>
+        <section>
+           <h3>
+            🛠️ 사용 기술 및 언어
+            <p>클릭 시 세부 내용을 확인 할 수 있습니다.</p>
+            </h3>
+            <div className="flexBox">
+                <div className={`itemBox ${openIndex[0] ? '' : 'open'}`} >
+                    <div className="item_title" onClick={() => toggleItem(0)}>그레이 제목</div>
+                    <div className="item_text">
+                        <ul>
+                            <li>기존 프로젝트 전반을 React + TypeScript 기반 프론트엔드 설계</li>
+                            <li>SCSS 기반 스타일 아키텍처</li>
+                            <li>공통 컴포넌트 및 UI 시스템 구축하며 <br />두 줄을 테스트해보다.</li>    
+                        </ul> 
+                    </div>                    
+                </div>
+                <div className={`itemBox ${openIndex[1] ? '' : 'open'}`} >
+                    <div className="item_title" onClick={() => toggleItem(1)}>그레이 제목</div>
+                    <div className="item_text">
+                        TypeScript는 정적 타입을 지원하는 JavaScript 슈퍼셋 언어로, 코드를 실행하기 전 오류를 잡아 줄 수 있습니다.
+                    </div>                    
+                </div>   
+                <div className={`itemBox ${openIndex[2] ? '' : 'open'}`} >
+                    <div className="item_title" onClick={() => toggleItem(2)}>그레이 제목</div>
+                    <div className="item_text">
+                        TypeScript는 정적 타입을 지원하는 JavaScript 슈퍼셋 언어로, 코드를 실행하기 전 오류를 잡아 줄 수 있습니다.
+                    </div>                    
+                </div> 
+            </div> 
+        </section>
+        <section>
+           <h3>✨ 작업 기여도</h3>
+            <div className="flexBox">
+                <div className={`itemBox ${openIndex[3] ? '' : 'open'}`} >
+                    <div className="item_title" onClick={() => toggleItem(3)}>그레이 제목</div>
+                    <div className="item_text">
+                        <ul>
+                            <li>기존 프로젝트 전반을 React + TypeScript 기반 프론트엔드 설계</li>
+                            <li><code>SCSS</code> 기반 스타일 아키텍처</li>
+                            <li>공통 컴포넌트 및 UI 시스템 구축하며 <br />두 줄을 테스트해보다.</li>    
+                        </ul> 
+                    </div>                    
+                </div>
+                <div className={`itemBox ${openIndex[4] ? '' : 'open'}`} >
+                    <div className="item_title" onClick={() => toggleItem(4)}>그레이 제목</div>
+                    <div className="item_text">
+                        <ul>
+                            <li>기존 프로젝트 전반을 React + TypeScript 기반 프론트엔드 설계</li>
+                            <li>SCSS 기반 스타일 아키텍처</li>
+                            <li>공통 컴포넌트 및 UI 시스템 구축하며 <br />두 줄을 테스트해보다.</li>    
+                        </ul> 
+                    </div>                    
+                </div>   
+                <div className={`itemBox ${openIndex[5] ? '' : 'open'}`} >
+                    <div className="item_title" onClick={() => toggleItem(5)}>그레이 제목</div>
+                    <div className="item_text">
+                        <ul>
+                            <li>기존 프로젝트 전반을 React + TypeScript 기반 프론트엔드 설계</li>
+                            <li>SCSS 기반 스타일 아키텍처</li>
+                            <li>공통 컴포넌트 및 UI 시스템 구축하며 <br />두 줄을 테스트해보다.</li>    
+                        </ul> 
+                    </div>                    
+                </div> 
+            </div> 
+        </section>
+        <section>
+           <h3>💫 Trouble Shooting</h3>
+            <div className="flexBox">
+                <div className={`itemBox ${openIndex[6] ? '' : 'open'}`} >
+                    <div className="item_title" onClick={() => toggleItem(6)}>그레이 제목</div>
+                    <div className="item_text">
+                        <ul>
+                            <li><strong>[문제점]</strong> 기존 프로젝트 전반을 React + TypeScript 기반 프론트엔드 설계</li>
+                            <li><strong>[해결]</strong> <code>SCSS</code> 기반 스타일 아키텍처</li>
+                            <li><strong>[회고]</strong> 공통 컴포넌트 및 UI 시스템 구축하며 <br />두 줄을 테스트해보다.</li>    
+                        </ul> 
+                    </div>                    
+                </div>
+                <div className={`itemBox ${openIndex[7] ? '' : 'open'}`} >
+                    <div className="item_title" onClick={() => toggleItem(7)}>그레이 제목</div>
+                    <div className="item_text">
+                        <ul>
+                            <li>기존 프로젝트 전반을 React + TypeScript 기반 프론트엔드 설계</li>
+                            <li>SCSS 기반 스타일 아키텍처</li>
+                            <li>공통 컴포넌트 및 UI 시스템 구축하며 <br />두 줄을 테스트해보다.</li>
+                        </ul> 
+                    </div>                    
+                </div>   
+                <div className={`itemBox ${openIndex[8] ? '' : 'open'}`} >
+                    <div className="item_title" onClick={() => toggleItem(8)}>그레이 제목</div>
+                    <div className="item_text">
+                        <ul>
+                            <li>기존 프로젝트 전반을 React + TypeScript 기반 프론트엔드 설계</li>
+                            <li>SCSS 기반 스타일 아키텍처</li>
+                            <li>공통 컴포넌트 및 UI 시스템 구축하며 <br />두 줄을 테스트해보다.</li>    
+                        </ul> 
+                    </div>                    
+                </div> 
+            </div> 
+        </section>
+        <section>
+           <h3>☕️ 회고</h3>
+            <div className="flexBox">
+                <div className={`itemBox ${openIndex[9] ? '' : 'open'}`} >
+                    <div className="item_title" onClick={() => toggleItem(9)}>그레이 제목</div>
+                    <div className="item_text">
+                        <ul>
+                            <li>기존 프로젝트 전반을 React + TypeScript 기반 프론트엔드 설계</li>
+                            <li>SCSS 기반 스타일 아키텍처</li>
+                            <li>공통 컴포넌트 및 UI 시스템 구축하며 <br />두 줄을 테스트해보다.</li>    
+                        </ul> 
+                    </div>                    
+                </div>
+                <div className={`itemBox ${openIndex[10] ? '' : 'open'}`} >
+                    <div className="item_title" onClick={() => toggleItem(10)}>그레이 제목</div>
+                    <div className="item_text">
+                        <ul>
+                            <li>기존 프로젝트 전반을 React + TypeScript 기반 프론트엔드 설계</li>
+                            <li>SCSS 기반 스타일 아키텍처</li>
+                            <li>공통 컴포넌트 및 UI 시스템 구축하며 <br />두 줄을 테스트해보다.</li>    
+                        </ul> 
+                    </div>                    
+                </div>   
+                <div className={`itemBox ${openIndex[11] ? '' : 'open'}`} >
+                    <div className="item_title" onClick={() => toggleItem(11)}>그레이 제목</div>
+                    <div className="item_text">
+                        <ul>
+                            <li>기존 프로젝트 전반을 React + TypeScript 기반 프론트엔드 설계</li>
+                            <li>SCSS 기반 스타일 아키텍처</li>
+                            <li>공통 컴포넌트 및 UI 시스템 구축하며 <br />두 줄을 테스트해보다.</li>    
+                        </ul> 
+                    </div>                    
+                </div> 
+            </div> 
+        </section>
+        <section>
+           <h3>
+            💻 작업 화면
+            <p>이미지 클릭 시 크게 볼 수 있습니다. (작업화면이 현재와 다를 수 있습니다.)<br />* 저작권 이슈가 있는 경우 첨부하지 않았습니다.</p>
+            </h3>
+            <div className="flexBox">
+                <div className={`itemBox ${openIndex[0] ? '' : 'open'}`} >
+                    <div className="item_title" onClick={() => toggleItem(0)}>그레이 제목</div>
+                    <div className="item_text">
+                        <ul>
+                            <li>기존 프로젝트 전반을 React + TypeScript 기반 프론트엔드 설계</li>
+                            <li>SCSS 기반 스타일 아키텍처</li>
+                            <li>공통 컴포넌트 및 UI 시스템 구축하며 <br />두 줄을 테스트해보다.</li>    
+                        </ul> 
+                    </div>                    
+                </div>
+                <div className={`itemBox ${openIndex[1] ? '' : 'open'}`} >
+                    <div className="item_title" onClick={() => toggleItem(1)}>그레이 제목</div>
+                    <div className="item_text">
+                        TypeScript는 정적 타입을 지원하는 JavaScript 슈퍼셋 언어로, 코드를 실행하기 전 오류를 잡아 줄 수 있습니다.
+                    </div>                    
+                </div>   
+                <div className={`itemBox ${openIndex[2] ? '' : 'open'}`} >
+                    <div className="item_title" onClick={() => toggleItem(2)}>그레이 제목</div>
+                    <div className="item_text">
+                        TypeScript는 정적 타입을 지원하는 JavaScript 슈퍼셋 언어로, 코드를 실행하기 전 오류를 잡아 줄 수 있습니다.
+                    </div>                    
+                </div> 
+            </div> 
+        </section>
+    </article>
     );
 }

@@ -6,7 +6,7 @@
 // 기본 스타일 초기화 설정
 @import url('https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css');
 
-*{font-family: 'Pretendard' !important; box-sizing: border-box;}
+*{font-family: 'Pretendard' !important; box-sizing: border-box; user-select: none;}
 
 html{font-size: 10px; letter-spacing: -1px;}
 
@@ -47,3 +47,7 @@ $secondary-color: #6c757d;
 }
 
 .por{position: relative;}
+.flex{display: flex;}
+.flex-col{flex-flow: column;}
+.gap-04{gap: 0.4rem;}
+
