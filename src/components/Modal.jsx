@@ -39,7 +39,7 @@ return (
     >
         <div className="modal_wrapper">
             <div ref={contentRef} tabIndex={-1} className="modal_content">
-                <header className={`detail_header ${project?.prjBgColor || 'default'}`}>
+                <header className={`detail_header ${project?.file || 'default'}`}>
                     <div className="project_tag">
                         {project.tag?.map((tag, idx) => (
                             <span key={idx} className="tag_item">

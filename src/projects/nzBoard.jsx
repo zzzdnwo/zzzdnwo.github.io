@@ -1,8 +1,16 @@
 import React, { useState } from 'react';
-
+import screenShot1 from '../assets/images/nzBoard_screen1.png';
 
 export default function NzBoard() {
-    const [openIndex, setOpenIndex] = useState({});
+    const [openIndex, setOpenIndex] = useState(() => {
+        const initialState = {};
+        for (let i = 0; i <= 11; i++) {
+            initialState[i] = true;
+        }
+        return initialState;
+    });
+    const [selectedImage, setSelectedImage] = useState(null);
+
 
     const toggleItem = (index) => {
         setOpenIndex((prev) => ({
@@ -10,6 +18,8 @@ export default function NzBoard() {
             [index]: !prev[index],
         }));
     };
+
+    
     return (
     <article className="project_detail">
         <h2>
@@ -31,7 +41,7 @@ export default function NzBoard() {
             <p>클릭 시 세부 내용을 확인 할 수 있습니다.</p>
             </h3>
             <div className="flexBox">
-                <div className={`itemBox ${openIndex[0] ? '' : 'open'}`} >
+                <div className={`itemBox ${openIndex[0] ? 'open' : ''}`} >
                     <div className="item_title" onClick={() => toggleItem(0)}>그레이 제목</div>
                     <div className="item_text">
                         <ul>
@@ -41,13 +51,13 @@ export default function NzBoard() {
                         </ul> 
                     </div>                    
                 </div>
-                <div className={`itemBox ${openIndex[1] ? '' : 'open'}`} >
+                <div className={`itemBox ${openIndex[1] ? 'open' : ''}`} >
                     <div className="item_title" onClick={() => toggleItem(1)}>그레이 제목</div>
                     <div className="item_text">
                         TypeScript는 정적 타입을 지원하는 JavaScript 슈퍼셋 언어로, 코드를 실행하기 전 오류를 잡아 줄 수 있습니다.
                     </div>                    
                 </div>   
-                <div className={`itemBox ${openIndex[2] ? '' : 'open'}`} >
+                <div className={`itemBox ${openIndex[2] ? 'open' : ''}`} >
                     <div className="item_title" onClick={() => toggleItem(2)}>그레이 제목</div>
                     <div className="item_text">
                         TypeScript는 정적 타입을 지원하는 JavaScript 슈퍼셋 언어로, 코드를 실행하기 전 오류를 잡아 줄 수 있습니다.
@@ -58,7 +68,7 @@ export default function NzBoard() {
         <section>
            <h3>✨ 작업 기여도</h3>
             <div className="flexBox">
-                <div className={`itemBox ${openIndex[3] ? '' : 'open'}`} >
+                <div className={`itemBox ${openIndex[3] ? 'open' : ''}`} >
                     <div className="item_title" onClick={() => toggleItem(3)}>그레이 제목</div>
                     <div className="item_text">
                         <ul>
@@ -68,7 +78,7 @@ export default function NzBoard() {
                         </ul> 
                     </div>                    
                 </div>
-                <div className={`itemBox ${openIndex[4] ? '' : 'open'}`} >
+                <div className={`itemBox ${openIndex[4] ? 'open' : ''}`} >
                     <div className="item_title" onClick={() => toggleItem(4)}>그레이 제목</div>
                     <div className="item_text">
                         <ul>
@@ -78,7 +88,7 @@ export default function NzBoard() {
                         </ul> 
                     </div>                    
                 </div>   
-                <div className={`itemBox ${openIndex[5] ? '' : 'open'}`} >
+                <div className={`itemBox ${openIndex[5] ? 'open' : ''}`} >
                     <div className="item_title" onClick={() => toggleItem(5)}>그레이 제목</div>
                     <div className="item_text">
                         <ul>
@@ -93,7 +103,7 @@ export default function NzBoard() {
         <section>
            <h3>💫 Trouble Shooting</h3>
             <div className="flexBox">
-                <div className={`itemBox ${openIndex[6] ? '' : 'open'}`} >
+                <div className={`itemBox ${openIndex[6] ? 'open' : ''}`} >
                     <div className="item_title" onClick={() => toggleItem(6)}>그레이 제목</div>
                     <div className="item_text">
                         <ul>
@@ -103,7 +113,7 @@ export default function NzBoard() {
                         </ul> 
                     </div>                    
                 </div>
-                <div className={`itemBox ${openIndex[7] ? '' : 'open'}`} >
+                <div className={`itemBox ${openIndex[7] ? 'open' : ''}`} >
                     <div className="item_title" onClick={() => toggleItem(7)}>그레이 제목</div>
                     <div className="item_text">
                         <ul>
@@ -113,7 +123,7 @@ export default function NzBoard() {
                         </ul> 
                     </div>                    
                 </div>   
-                <div className={`itemBox ${openIndex[8] ? '' : 'open'}`} >
+                <div className={`itemBox ${openIndex[8] ? 'open' : ''}`} >
                     <div className="item_title" onClick={() => toggleItem(8)}>그레이 제목</div>
                     <div className="item_text">
                         <ul>
@@ -128,7 +138,7 @@ export default function NzBoard() {
         <section>
            <h3>☕️ 회고</h3>
             <div className="flexBox">
-                <div className={`itemBox ${openIndex[9] ? '' : 'open'}`} >
+                <div className={`itemBox ${openIndex[9] ? 'open' : ''}`} >
                     <div className="item_title" onClick={() => toggleItem(9)}>그레이 제목</div>
                     <div className="item_text">
                         <ul>
@@ -138,7 +148,7 @@ export default function NzBoard() {
                         </ul> 
                     </div>                    
                 </div>
-                <div className={`itemBox ${openIndex[10] ? '' : 'open'}`} >
+                <div className={`itemBox ${openIndex[10] ? 'open' : ''}`} >
                     <div className="item_title" onClick={() => toggleItem(10)}>그레이 제목</div>
                     <div className="item_text">
                         <ul>
@@ -148,7 +158,7 @@ export default function NzBoard() {
                         </ul> 
                     </div>                    
                 </div>   
-                <div className={`itemBox ${openIndex[11] ? '' : 'open'}`} >
+                <div className={`itemBox ${openIndex[11] ? 'open' : ''}`} >
                     <div className="item_title" onClick={() => toggleItem(11)}>그레이 제목</div>
                     <div className="item_text">
                         <ul>
@@ -160,36 +170,38 @@ export default function NzBoard() {
                 </div> 
             </div> 
         </section>
-        <section>
+        <section className='project_screen'>
            <h3>
             💻 작업 화면
             <p>이미지 클릭 시 크게 볼 수 있습니다. (작업화면이 현재와 다를 수 있습니다.)<br />* 저작권 이슈가 있는 경우 첨부하지 않았습니다.</p>
             </h3>
-            <div className="flexBox">
-                <div className={`itemBox ${openIndex[0] ? '' : 'open'}`} >
-                    <div className="item_title" onClick={() => toggleItem(0)}>그레이 제목</div>
-                    <div className="item_text">
-                        <ul>
-                            <li>기존 프로젝트 전반을 React + TypeScript 기반 프론트엔드 설계</li>
-                            <li>SCSS 기반 스타일 아키텍처</li>
-                            <li>공통 컴포넌트 및 UI 시스템 구축하며 <br />두 줄을 테스트해보다.</li>    
-                        </ul> 
-                    </div>                    
-                </div>
-                <div className={`itemBox ${openIndex[1] ? '' : 'open'}`} >
-                    <div className="item_title" onClick={() => toggleItem(1)}>그레이 제목</div>
-                    <div className="item_text">
-                        TypeScript는 정적 타입을 지원하는 JavaScript 슈퍼셋 언어로, 코드를 실행하기 전 오류를 잡아 줄 수 있습니다.
-                    </div>                    
-                </div>   
-                <div className={`itemBox ${openIndex[2] ? '' : 'open'}`} >
-                    <div className="item_title" onClick={() => toggleItem(2)}>그레이 제목</div>
-                    <div className="item_text">
-                        TypeScript는 정적 타입을 지원하는 JavaScript 슈퍼셋 언어로, 코드를 실행하기 전 오류를 잡아 줄 수 있습니다.
-                    </div>                    
-                </div> 
+            <div className="gridBox">
+                 <div className="screen_item" onClick={() => setSelectedImage(screenShot1)}>
+                    <img src={screenShot1} alt="프로젝트 작업 화면 1" />
+                    <p className="item_title">설명 텍스트</p>
+                 </div>
+                 <div className="screen_item">
+                    <img src={screenShot1} alt="프로젝트 작업 화면 1" />
+                    <p className="item_title">설명 텍스트</p>
+                 </div>
+                 <div className="screen_item">
+                    <img src={screenShot1} alt="프로젝트 작업 화면 1" />
+                    <p className="item_title">설명 텍스트</p>
+                 </div>
+                 <div className="screen_item">
+                    <img src={screenShot1} alt="프로젝트 작업 화면 1" />
+                    <p className="item_title">설명 텍스트</p>
+                 </div>
             </div> 
         </section>
+        {selectedImage && (
+            <div className="image_modal">
+                <div className="image_modal_content" onClick={(e) => e.stopPropagation()}>
+                    <img src={selectedImage} alt="확대 이미지" />
+                    <button className='btn_modalClose' onClick={() => setSelectedImage(null)}>✕</button>
+                </div>
+            </div>
+        )}
     </article>
     );
 }
