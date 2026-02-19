@@ -1,23 +1,24 @@
 {
   "files": {
-    "main.css": "/static/css/main.71e51180.css",
-    "main.js": "/static/js/main.09d8aa02.js",
-    "static/js/529.7b0961c3.chunk.js": "/static/js/529.7b0961c3.chunk.js",
+    "main.css": "/static/css/main.b87ecc5c.css",
+    "main.js": "/static/js/main.07ac2c7b.js",
+    "static/js/815.6466f711.chunk.js": "/static/js/815.6466f711.chunk.js",
     "static/media/main_bg_x4.png": "/static/media/main_bg_x4.f1c7dcf765ae7eaecd8a.png",
     "static/media/about_bg_noise.jpg": "/static/media/about_bg_noise.c141d8e07654c490ace7.jpg",
     "static/media/main_bg_pattern.jpg": "/static/media/main_bg_pattern.3222074ae6260d7574c7.jpg",
     "static/media/zReport_thumb.png": "/static/media/zReport_thumb.c6070eb5b7f0f6dfd793.png",
     "static/media/bizbooks_thumb.png": "/static/media/bizbooks_thumb.8bb79f9b7e3e03451910.png",
+    "static/media/nzBoard_screen1.png": "/static/media/nzBoard_screen1.839a686d9be1176be2c4.png",
     "static/media/beyond_thumb.png": "/static/media/beyond_thumb.6d27ba2965e24270da41.png",
     "static/media/nzBoard_thumb.png": "/static/media/nzBoard_thumb.2b36fc960989dd80efd2.png",
     "static/media/main_bg_light.png": "/static/media/main_bg_light.1a9a53753dc449dbb491.png",
     "index.html": "/index.html",
-    "main.71e51180.css.map": "/static/css/main.71e51180.css.map",
-    "main.09d8aa02.js.map": "/static/js/main.09d8aa02.js.map",
-    "529.7b0961c3.chunk.js.map": "/static/js/529.7b0961c3.chunk.js.map"
+    "main.b87ecc5c.css.map": "/static/css/main.b87ecc5c.css.map",
+    "main.07ac2c7b.js.map": "/static/js/main.07ac2c7b.js.map",
+    "815.6466f711.chunk.js.map": "/static/js/815.6466f711.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.71e51180.css",
-    "static/js/main.09d8aa02.js"
+    "static/css/main.b87ecc5c.css",
+    "static/js/main.07ac2c7b.js"
   ]
 }
