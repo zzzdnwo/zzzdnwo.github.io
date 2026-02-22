@@ -51,7 +51,15 @@ return (
                     <div className="project_info">
                         <p className="info_period">{project?.period}</p>
                         <p className="info_member">{project?.member}</p>
-                    </div>                
+                    </div>
+                    {project?.thumbnail && (
+                        <div className="project_thumbnail">
+                            <img 
+                                src={require(`../assets/images/${project.thumbnail}`)} 
+                                alt={`${project.title} 썸네일`} 
+                            />
+                        </div>
+                    )}                
                 </header>                          
                 <div className="modal_body">{children}</div>
             </div>

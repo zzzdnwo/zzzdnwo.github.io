@@ -9,7 +9,7 @@ import screenShot7 from '../assets/images/nzBoard_screen7.png';
 import screenShot8 from '../assets/images/nzBoard_screen8.png';
 import screenShot9 from '../assets/images/nzBoard_screen9.png';
 
-export default function NzBoard() {
+export default function ZReport() {
     const [openIndex, setOpenIndex] = useState(() => {
         const initialState = {};
         for (let i = 0; i <= 11; i++) {
@@ -50,13 +50,17 @@ export default function NzBoard() {
             </h3>
             <div className="flexBox">
                 <div className={`itemBox ${openIndex[0] ? 'open' : ''}`} >
-                    <div className="item_title" onClick={() => toggleItem(0)}>React</div>
+                    <div className="item_title" onClick={() => toggleItem(0)}>그레이 제목</div>
                     <div className="item_text">
-                        React는 컴포넌트 기반으로 하며, 가상 DOM을 활용해 웹 애플리케이션의 성능을 최적화 합니다. 컴포넌트 재사용성을 높이고, 상태 관리를 용이하게 할 수 있습니다.
+                        <ul>
+                            <li>기존 프로젝트 전반을 React + TypeScript 기반 프론트엔드 설계</li>
+                            <li>SCSS 기반 스타일 아키텍처</li>
+                            <li>공통 컴포넌트 및 UI 시스템 구축하며 <br />두 줄을 테스트해보다.</li>    
+                        </ul> 
                     </div>                    
                 </div>
                 <div className={`itemBox ${openIndex[1] ? 'open' : ''}`} >
-                    <div className="item_title" onClick={() => toggleItem(1)}>Typescript</div>
+                    <div className="item_title" onClick={() => toggleItem(1)}>그레이 제목</div>
                     <div className="item_text">
                         TypeScript는 정적 타입을 지원하는 JavaScript 슈퍼셋 언어로, 코드를 실행하기 전 오류를 잡아 줄 수 있습니다.
                     </div>                    
