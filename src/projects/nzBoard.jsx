@@ -73,42 +73,44 @@ export default function NzBoard() {
            <h3>✨ 작업 기여도</h3>
             <div className="flexBox">
                 <div className={`itemBox ${openIndex[3] ? 'open' : ''}`} >
-                    <div className="item_title" onClick={() => toggleItem(3)}>그레이 제목</div>
+                    <div className="item_title" onClick={() => toggleItem(3)}>기존 프로젝트 전반을 React + TypeScript 기반 프론트엔드 설계</div>
                     <div className="item_text">
                         <ul>
-                            <li>기존 프로젝트 전반을 React + TypeScript 기반 프론트엔드 설계</li>
-                            <li><code>SCSS</code> 기반 스타일 아키텍처</li>
-                            <li>공통 컴포넌트 및 UI 시스템 구축하며 <br />두 줄을 테스트해보다.</li>    
+                            <li>컴포넌트 단위 구조 설계 및 타입 정의를 통해 안정적인 UI 개발</li>                               
                         </ul> 
                     </div>                    
                 </div>
                 <div className={`itemBox ${openIndex[4] ? 'open' : ''}`} >
-                    <div className="item_title" onClick={() => toggleItem(4)}>그레이 제목</div>
+                    <div className="item_title" onClick={() => toggleItem(4)}>SCSS 기반 스타일 아키텍처</div>
                     <div className="item_text">
                         <ul>
-                            <li>기존 프로젝트 전반을 React + TypeScript 기반 프론트엔드 설계</li>
-                            <li>SCSS 기반 스타일 아키텍처</li>
-                            <li>공통 컴포넌트 및 UI 시스템 구축하며 <br />두 줄을 테스트해보다.</li>    
+                            <li>컴포넌트 단위 SCSS 설계 및 유지보수 중심의 스타일 구조 구성</li>  
                         </ul> 
                     </div>                    
                 </div>   
                 <div className={`itemBox ${openIndex[5] ? 'open' : ''}`} >
-                    <div className="item_title" onClick={() => toggleItem(5)}>그레이 제목</div>
+                    <div className="item_title" onClick={() => toggleItem(5)}>공통 컴포넌트 및 UI 시스템 구축</div>
                     <div className="item_text">
                         <ul>
-                            <li>기존 프로젝트 전반을 React + TypeScript 기반 프론트엔드 설계</li>
-                            <li>SCSS 기반 스타일 아키텍처</li>
-                            <li>공통 컴포넌트 및 UI 시스템 구축하며 <br />두 줄을 테스트해보다.</li>    
+                            <li>재사용 가능한 UI 컴포넌트 설계로 개발 생산성 및 품질 향상</li>   
                         </ul> 
                     </div>                    
                 </div> 
+                <div className={`itemBox ${openIndex[6] ? 'open' : ''}`} >
+                    <div className="item_title" onClick={() => toggleItem(6)}>협업 및 프로젝트 운영 역량</div>
+                    <div className="item_text">
+                        <ul>
+                            <li>디자이너·백엔드 개발자와의 협업을 통한 프로젝트 일정 관리, 요구사항 조율 등 개발 스코프 관리 경험</li>
+                        </ul> 
+                    </div>                    
+                </div>
             </div> 
         </section>
         <section>
            <h3>💫 Trouble Shooting</h3>
             <div className="flexBox">
-                <div className={`itemBox ${openIndex[6] ? 'open' : ''}`} >
-                    <div className="item_title" onClick={() => toggleItem(6)}>그레이 제목</div>
+                <div className={`itemBox ${openIndex[7] ? 'open' : ''}`} >
+                    <div className="item_title" onClick={() => toggleItem(7)}>그레이 제목</div>
                     <div className="item_text">
                         <ul>
                             <li><strong>[문제점]</strong> 기존 프로젝트 전반을 React + TypeScript 기반 프론트엔드 설계</li>
@@ -116,54 +118,9 @@ export default function NzBoard() {
                             <li><strong>[회고]</strong> 공통 컴포넌트 및 UI 시스템 구축하며 <br />두 줄을 테스트해보다.</li>    
                         </ul> 
                     </div>                    
-                </div>
-                <div className={`itemBox ${openIndex[7] ? 'open' : ''}`} >
-                    <div className="item_title" onClick={() => toggleItem(7)}>그레이 제목</div>
-                    <div className="item_text">
-                        <ul>
-                            <li>기존 프로젝트 전반을 React + TypeScript 기반 프론트엔드 설계</li>
-                            <li>SCSS 기반 스타일 아키텍처</li>
-                            <li>공통 컴포넌트 및 UI 시스템 구축하며 <br />두 줄을 테스트해보다.</li>
-                        </ul> 
-                    </div>                    
                 </div>   
                 <div className={`itemBox ${openIndex[8] ? 'open' : ''}`} >
                     <div className="item_title" onClick={() => toggleItem(8)}>그레이 제목</div>
-                    <div className="item_text">
-                        <ul>
-                            <li>기존 프로젝트 전반을 React + TypeScript 기반 프론트엔드 설계</li>
-                            <li>SCSS 기반 스타일 아키텍처</li>
-                            <li>공통 컴포넌트 및 UI 시스템 구축하며 <br />두 줄을 테스트해보다.</li>    
-                        </ul> 
-                    </div>                    
-                </div> 
-            </div> 
-        </section>
-        <section>
-           <h3>☕️ 회고</h3>
-            <div className="flexBox">
-                <div className={`itemBox ${openIndex[9] ? 'open' : ''}`} >
-                    <div className="item_title" onClick={() => toggleItem(9)}>그레이 제목</div>
-                    <div className="item_text">
-                        <ul>
-                            <li>기존 프로젝트 전반을 React + TypeScript 기반 프론트엔드 설계</li>
-                            <li>SCSS 기반 스타일 아키텍처</li>
-                            <li>공통 컴포넌트 및 UI 시스템 구축하며 <br />두 줄을 테스트해보다.</li>    
-                        </ul> 
-                    </div>                    
-                </div>
-                <div className={`itemBox ${openIndex[10] ? 'open' : ''}`} >
-                    <div className="item_title" onClick={() => toggleItem(10)}>그레이 제목</div>
-                    <div className="item_text">
-                        <ul>
-                            <li>기존 프로젝트 전반을 React + TypeScript 기반 프론트엔드 설계</li>
-                            <li>SCSS 기반 스타일 아키텍처</li>
-                            <li>공통 컴포넌트 및 UI 시스템 구축하며 <br />두 줄을 테스트해보다.</li>    
-                        </ul> 
-                    </div>                    
-                </div>   
-                <div className={`itemBox ${openIndex[11] ? 'open' : ''}`} >
-                    <div className="item_title" onClick={() => toggleItem(11)}>그레이 제목</div>
                     <div className="item_text">
                         <ul>
                             <li>기존 프로젝트 전반을 React + TypeScript 기반 프론트엔드 설계</li>
