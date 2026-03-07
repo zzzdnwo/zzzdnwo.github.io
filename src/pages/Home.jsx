@@ -206,7 +206,7 @@ export default function Home() {
         <div className="about_profile">
 
         </div>
-        <p className="about_period">2021.09 - 2025.10 <span></span> 4년 10개월</p>
+        <p className="about_period">2021.09 - 2025.10 <span></span> 4년 11개월</p>
         <span className="about_companyNm">뉴젠솔루션</span>
         <ul className="about_workList">
           <li>뉴젠보드</li>
@@ -222,29 +222,42 @@ export default function Home() {
           <div className="qnaList">
             <div className="qna">
               <span className="qna_question">
-                Q. 어떤 방식으로 일하는 걸 중요하게 생각하나요?
+                Q. 웹퍼블리셔를 선택한 이유는 무엇인가요?
               </span>
               <p className="qna_answer">
-                안녕하세요. <strong>망고의 손톱</strong> 입니다. <br />
-                퉁퉁퉁사후르 퉁퉁퉁
+                디자인을 코드로 구현해 <strong>실제 서비스 환경에서 작동하는 웹을 만드는 과정</strong>에 매력을 느꼈습니다.<br />
+                초기에는 마크업 중심의 작업이었지만, 프로젝트를 진행하며 웹 접근성과 크로스브라우징 이슈를 직접 대응하고<br />
+                SPA 구조 전환 작업을 경험하면서 단순 구현을 넘어 구조와 흐름을 이해하는 일에 흥미를 갖게 되었습니다.<br />
+                <br />
+                또한 API 연동을 통해 서버 데이터를 화면에 반영하는 작업을 수행하며, 웹은 ‘보여지는 결과물’이 아니라<br />
+                사용자와 끊임없이 상호작용하는 환경이라는 것을 체감했습니다.<br />
+                이러한 경험을 통해 이 직무의 확장성과 깊이에 매력을 느끼게 되었고, 자연스럽게 이 길을 선택하게 되었습니다.
               </p>
             </div>
             <div className="qna">
               <span className="qna_question">
                 Q. 어떤 방식으로 일하는 걸 중요하게 생각하나요?
               </span>
-              <p className="qna_answer">
-                안녕하세요. <strong>망고의 손톱</strong> 입니다. <br />
-                퉁퉁퉁사후르 퉁퉁퉁
+              <p className="qna_answer">                                
+                협업 과정에서의 명확한 커뮤니케이션을 가장 중요하게 생각합니다.<br />
+                 실제 프로젝트에서 기획 의도와 디자인 해석의 차이로 수정이 반복된 경험이 있었고,<br />
+                 이후에는 초기 단계에서부터 <strong>기술적 제약과 구현 방식을 함께 논의</strong>하는 습관을 갖게 되었습니다.<br />
+                 <br />
+                 또한 화면을 구현할 때는 단순히 디자인을 재현하는 데 그치지 않고, 이후 <strong>기능 확장이나 유지보수를 고려해 구조화</strong>하려고 합니다.<br />
+                 운영 단계에서 작은 구조 차이가 유지보수 난이도를 크게 좌우한다는 것을 경험했기 때문에,<br />
+                 안정적으로 운영될 수 있는 결과물을 만드는 것을 중요하게 생각합니다.
               </p>
             </div>
             <div className="qna">
               <span className="qna_question">
-                Q. 개발자로서 성장하기 위해 어떤 노력을 해왔나요?
+                Q. 앞으로 어떤 개발자로 성장하고 싶나요?
               </span>
               <p className="qna_answer">
-                안녕하세요. <strong>망고의 손톱</strong> 입니다. <br />
-                퉁퉁퉁사후르 퉁퉁퉁
+                단순 구현을 넘어, <strong>구조와 데이터 흐름을 이해하고 안정적으로 확장할 수 있는 개발자</strong>로 나아가고자 합니다.<br />
+                React 기반 리뉴얼 프로젝트를 진행하며 컴포넌트 단위로 역할을 분리하고 재사용성을 고려한 구조를 고민해왔으며,<br />
+                API 통신과 상태 관리를 직접 구현하며 프론트엔드 영역을 확장해왔습니다.<br />
+                <br />
+                앞으로는 화면의 완성도뿐 아니라 성능, 유지보수성, 데이터 흐름까지 균형 있게 고려할 수 있는 개발자로 자리 잡는 것이 목표입니다.
               </p>
             </div>
           </div>
