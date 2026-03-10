@@ -22,7 +22,7 @@ const projects = [
     file: 'beyond', 
     tag: ['반응형', 'React'], 
     period: '2024.06 - 2024.09', 
-    member: '4인(프론트 1명, 백엔드 1명, 디자이너 1명, DBA 1명)' ,
+    member: '6인(프론트 1명, 백엔드 2명, 시스템 설계자 2명, 디자이너 1명)' ,
 },
   { id: 'bizbooks', 
     label: '세무 비즈니스 플랫폼 프로젝트', 

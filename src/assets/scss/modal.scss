@@ -6,6 +6,7 @@
             .detail_header{ width: 100%; height: 17rem; padding: 4rem; position: relative; display: flex; align-items: center; flex-flow: column; z-index: 1;
                 &.nzBoard{background: #2634a5;}
                 &.zReport{background: #373737;}
+                &.beyond{background: #baa671;}
                 &::after{content: ''; display: block; position: absolute; left: 0; top: 0; width: 100%; height: 100%; background-image: linear-gradient( to top, rgba(0, 0, 0, 0.27), rgba(0, 0, 0, 0) ); z-index: 0;}
                 .project_tag{display: flex; gap: 0 0.5rem; z-index: 1;
                     .tag_item{font-size: 1.2rem; color: #fff; letter-spacing: 0; background: rgba(255,255,255,0.2); padding: 0.4rem 0.8rem; border-radius: 0.5rem;}
