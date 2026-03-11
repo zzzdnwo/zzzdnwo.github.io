@@ -1,10 +1,11 @@
 {
   "files": {
     "main.css": "/static/css/main.e1e1d730.css",
-    "main.js": "/static/js/main.13bfc117.js",
-    "static/js/56.9cb7e2a5.chunk.js": "/static/js/56.9cb7e2a5.chunk.js",
-    "static/js/529.2a695610.chunk.js": "/static/js/529.2a695610.chunk.js",
+    "main.js": "/static/js/main.a1107579.js",
+    "static/js/56.34233cf4.chunk.js": "/static/js/56.34233cf4.chunk.js",
+    "static/js/153.3d733c04.chunk.js": "/static/js/153.3d733c04.chunk.js",
     "static/js/737.6ca810e7.chunk.js": "/static/js/737.6ca810e7.chunk.js",
+    "static/media/nzBoard_screenGif1.gif": "/static/media/nzBoard_screenGif1.832f940be001451e41a2.gif",
     "static/media/zReport_screenGif.gif": "/static/media/zReport_screenGif.f8375d23c521c8a85c82.gif",
     "static/media/zReport_screen1.png": "/static/media/zReport_screen1.9e4e963825a80eba120b.png",
     "static/media/main_bg_x4.png": "/static/media/main_bg_x4.f1c7dcf765ae7eaecd8a.png",
@@ -28,13 +29,13 @@
     "static/media/nzBoard_screen6.png": "/static/media/nzBoard_screen6.bbdc15405a4a37c1ecf6.png",
     "index.html": "/index.html",
     "main.e1e1d730.css.map": "/static/css/main.e1e1d730.css.map",
-    "main.13bfc117.js.map": "/static/js/main.13bfc117.js.map",
-    "56.9cb7e2a5.chunk.js.map": "/static/js/56.9cb7e2a5.chunk.js.map",
-    "529.2a695610.chunk.js.map": "/static/js/529.2a695610.chunk.js.map",
+    "main.a1107579.js.map": "/static/js/main.a1107579.js.map",
+    "56.34233cf4.chunk.js.map": "/static/js/56.34233cf4.chunk.js.map",
+    "153.3d733c04.chunk.js.map": "/static/js/153.3d733c04.chunk.js.map",
     "737.6ca810e7.chunk.js.map": "/static/js/737.6ca810e7.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e1e1d730.css",
-    "static/js/main.13bfc117.js"
+    "static/js/main.a1107579.js"
   ]
 }
