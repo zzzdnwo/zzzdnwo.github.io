@@ -52,7 +52,7 @@ export default function NzBoard() {
            <h3>🛠️ 기술 스택</h3>
             <div className="flexBox">
                 <div className="item">HTML5</div>
-                <div className="item">SCSS</div>
+                <div className="item">CSS3</div>
                 <div className="item">JavaScript</div> 
                 <div className="item">REST API</div>
                 <div className="item">Chart.js</div>                
@@ -122,51 +122,44 @@ export default function NzBoard() {
             </div>
         </section>
         <section>
-           <h3>💫 Trouble Shooting</h3>
+            <h3>💫 Trouble Shooting</h3>
             <div className="flexBox">
-                <div className={`itemBox ${openIndex[6] ? 'open' : ''}`} >
-                    <div className="item_title" onClick={() => toggleItem(6)}>검색 → 메뉴 이동 시 자동 메뉴 선택 충돌 문제</div>
-                    <div className="item_text">
-                        <ul>
-                            <li><strong>[문제점]</strong> 검색 결과에서 게시글 이동 시 메뉴 자동 선택 로직과 기존 메뉴 로딩 로직이 충돌하여 의도하지 않은 메뉴가 선택되는 문제가 발생</li>
-                            <li><strong>[해결]</strong> 메뉴 상태를 <code>Zustand</code> 전역 상태로 관리하고 검색 이동 시 카테고리 정보를 기준으로 단계적으로 메뉴 상태를 설정하도록 로직을 분리</li>
-                            <li><strong>[회고]</strong> 여러 로직이 동시에 상태를 변경할 경우 UI 상태 충돌이 발생할 수 있음을 경험했습니다.</li>    
-                        </ul> 
-                    </div>                    
-                </div>
-
                 <div className={`itemBox ${openIndex[7] ? 'open' : ''}`} >
-                    <div className="item_title" onClick={() => toggleItem(7)}>CKEditor 커스텀 빌드 TypeScript 인식 문제</div>
+                    <div className="item_title" onClick={() => toggleItem(7)}>
+                        Chart.js 플러그인을 활용한 재무 데이터 차트 커스터마이징
+                    </div>
                     <div className="item_text">
                         <ul>
-                            <li><strong>[문제점]</strong> 커스텀 CKEditor 빌드를 사용할 때 <code>TypeScript</code>가 모듈 타입을 인식하지 못해 컴파일 오류가 발생</li>
-                            <li><strong>[해결]</strong> 커스텀 빌드 경로에 <code>.d.ts</code> 모듈 선언 파일을 추가하여 <code>TypeScript</code>가 모듈을 인식하도록 처리</li>
-                            <li><strong>[회고]</strong> 외부 라이브러리 커스터마이징 시 타입 선언 관리의 중요성을 경험했습니다.</li>    
+                            <li><strong>[문제점]</strong> Chart.js가 Canvas 기반으로 렌더링되어 CSS 스타일링이 적용되지 않아 요구된 차트 디자인 구현에 제약 발생</li>
+                            <li><strong>[해결]</strong> <code>chartjs-datalabels</code>와 <code>chartjs-annotation</code>등을 활용해 데이터 라벨과 기준선 등을 구현하고 차트 옵션을 커스터마이징하여 재무 데이터 차트 구성</li>
+                            <li><strong>[회고]</strong> 차트 렌더링 방식 이해하고 플러그인을 이용해 라이브러리 기본 기능의 한계를 보완하는 방법을 경험했습니다.</li>    
                         </ul> 
                     </div>                    
-                </div>
-
+                </div> 
                 <div className={`itemBox ${openIndex[8] ? 'open' : ''}`} >
-                    <div className="item_title" onClick={() => toggleItem(8)}>CKEditor 콘텐츠 렌더링 오류 처리</div>
+                    <div className="item_title" onClick={() => toggleItem(8)}>
+                        프로젝트 진행 중 고객사 요청 데이터 항목 추가 대응
+                    </div>
                     <div className="item_text">
                         <ul>
-                            <li><strong>[문제점]</strong> 글 수정 페이지에서 게시글 콘텐츠를 CKEditor에 그대로 렌더링할 때 특정 문자열이 태그로 인식되어 에디터 로딩 오류가 발생</li>
-                            <li><strong>[해결]</strong> <code>DOMParser</code>와 <code>DOMPurify</code>로 HTML을 파싱·정제한 후 CKEditor에 전달하도록 처리</li>
-                            <li><strong>[회고]</strong> 사용자 입력 기반 HTML 콘텐츠는 렌더링 전 정제 과정이 필요함을 경험했습니다.</li>    
+                            <li><strong>[문제점]</strong> 프로젝트 진행 중 고객사에서 신규 재무 데이터 항목 추가 요청이 발생하여 기존 대시보드 차트 구조 수정이 필요</li>
+                            <li><strong>[해결]</strong> 설계자 및 백엔드와 협의하여 확장된 API 데이터를 전달받고 Chart.js 기반 차트를 수정·추가하여 신규 재무 데이터를 시각화</li>
+                            <li><strong>[회고]</strong> 프로젝트 진행 과정에서 발생하는 요구사항 변경에 대응하며 데이터 구조 변화에 맞춰 UI를 유연하게 확장하는 경험을 했습니다.</li>    
                         </ul> 
                     </div>                    
                 </div>
-
                 <div className={`itemBox ${openIndex[9] ? 'open' : ''}`} >
-                    <div className="item_title" onClick={() => toggleItem(9)}>PDF 다운로드 검색 상태 URL 동기화 문제</div>
+                    <div className="item_title" onClick={() => toggleItem(9)}>
+                        재무보고서 웹 페이지 반응형 UI 개선
+                    </div>
                     <div className="item_text">
                         <ul>
-                            <li><strong>[문제점]</strong> 검색어와 필터 상태가 URL과 동기화되지 않아 새로고침이나 브라우저 이동 시 검색 상태가 유지되지 않는 문제가 발생</li>
-                            <li><strong>[해결]</strong> <code>Zustand</code> 상태와 <code>URLSearchParams</code>, <code>history.pushState</code>를 활용해 URL과 검색 상태를 동기화</li>
-                            <li><strong>[회고]</strong> 검색 기능에서는 URL과 UI 상태를 함께 관리하는 방식의 중요성을 경험했습니다.</li>    
+                            <li><strong>[문제점]</strong> 재무보고서 페이지가 PC 화면 중심으로 구성되어 있어 모바일 환경에서는 차트와 데이터 테이블의 가독성이 떨어지는 문제가 발생</li>
+                            <li><strong>[해결]</strong> SCSS 기반 반응형 레이아웃을 적용하고 화면 크기에 따라 차트와 테이블 구조를 재구성하여 PC와 모바일 환경 모두에서 재무 데이터를 확인할 수 있도록 UI를 개선</li>
+                            <li><strong>[회고]</strong> 데이터 중심 화면에서는 단순 레이아웃 축소가 아닌 정보 구조와 가독성을 함께 고려한 반응형 설계가 중요하다는 것을 경험했습니다.</li>    
                         </ul> 
                     </div>                    
-                </div>                
+                </div>               
             </div> 
         </section>
         <section className='project_screen'>

@@ -8,6 +8,7 @@ import screenShot6 from '../assets/images/nzBoard_screen6.png';
 import screenShot7 from '../assets/images/nzBoard_screen7.png';
 import screenShot8 from '../assets/images/nzBoard_screen8.png';
 import screenShot9 from '../assets/images/nzBoard_screen9.png';
+import screenShot10 from '../assets/images/nzBoard_screenGif1.gif';
 
 export default function NzBoard() {
     const [openIndex, setOpenIndex] = useState(() => {
@@ -212,6 +213,10 @@ export default function NzBoard() {
                  <div className="screen_item" onClick={() => setSelectedImage(screenShot9)}>
                     <img src={screenShot9} alt="프로젝트 작업 화면 9" />
                     <p className="item_title">PDF 다운로드</p>
+                 </div>
+                 <div className="screen_item" onClick={() => setSelectedImage(screenShot10)}>
+                    <img src={screenShot10} alt="프로젝트 작업 화면 10" />
+                    <p className="item_title">PDF 다운로드 시연</p>
                  </div>
             </div> 
         </section>
