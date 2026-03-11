@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import screenShot1 from '../assets/images/nzBoard_screen1.png';
-import screenShot2 from '../assets/images/nzBoard_screen2.png';
+import screenShot1 from '../assets/images/beyond_screen1.jpg';
+import screenShot2 from '../assets/images/beyond_screen2.jpg';
 import screenShot3 from '../assets/images/nzBoard_screen3.png';
 import screenShot4 from '../assets/images/nzBoard_screen4.png';
 import screenShot5 from '../assets/images/nzBoard_screen5.png';
