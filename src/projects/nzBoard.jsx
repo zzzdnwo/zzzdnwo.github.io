@@ -33,7 +33,7 @@ export default function NzBoard() {
     <article className="project_detail">
         <h2>
             뉴젠보드(프로그램 메뉴얼 가이드 사이트) 리뉴얼 프로젝트<br />
-            기존 레거시 Vanilla JS 기반 구조를 React + TypeScript 구조로 리뉴얼 안정성과 유지보수성을 향상시킴.
+            기존 레거시 Vanilla JS 기반 구조를 React + TypeScript 구조로 리뉴얼 안정성과 유지보수성을 향상.
             <hr />
         </h2>        
         <section>

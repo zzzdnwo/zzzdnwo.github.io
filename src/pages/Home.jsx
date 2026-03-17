@@ -11,6 +11,7 @@ import projects from '../data/projects';
 export default function Home() {
   const [activeProject, setActiveProject] = useState(null);
   const [activeNav, setActiveNav] = useState(null);
+  const [heroStart, setHeroStart] = useState(false);
 
   const workRef = useRef(null);
   const projectRef = useRef(null);
@@ -31,6 +32,33 @@ export default function Home() {
 
 
   //useEffect 영역
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setHeroStart(true);
+    }, 400);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+
+  const moveLight = (e) => {
+
+    const x = e.clientX + "px";
+    const y = e.clientY + "px";
+
+    document.documentElement.style.setProperty('--mouse-x', x);
+    document.documentElement.style.setProperty('--mouse-y', y);
+  };
+
+  window.addEventListener('mousemove', moveLight);
+
+  return () => {
+    window.removeEventListener('mousemove', moveLight);
+  };
+
+}, []);
 
   useEffect(() => {
     const workEl = workRef.current;
@@ -194,10 +222,13 @@ export default function Home() {
 
   return (
   <div className='mainCont'>
-    <main>
+    <main className={heroStart ? "hero_start" : ""}>
       <div className="pos">
         <div className="main_bg"></div>
-        <h2 className="myname">SHIN WOO JAE</h2>
+        <div className="intro_mask"></div>
+        <div className="myname_wrap">
+          <h2 className="myname">SHIN WOO JAE</h2>
+        </div>
       </div>
     </main>
     <section className="about">
@@ -317,7 +348,7 @@ export default function Home() {
         <div className="exp_cont" ref={expRef}>
           <div className="exp_ani" ref={expAniRef}>
             <ul className="exp_list">
-              <li>
+              {/* <li>
                 <p className="period">2025.06 - 2025.10</p>
                 <div className="titleCont">
                   <h4 className="title">뉴젠보드(프로그램 메뉴얼 가이드 사이트)<br />리뉴얼 프로젝트</h4>
@@ -328,54 +359,317 @@ export default function Home() {
                   <li>JavaScript, React 등 핵심 기술 학습</li>
                   <li>JavaScript, React 등 핵심 기술 학습</li>
                 </ul>
+              </li> */}
+              <li>
+                <table>
+                  <tbody>
+                    <tr>
+                      <th>업무명</th>
+                      <td>뉴젠보드(프로그램 메뉴얼 가이드 사이트) 리뉴얼 프로젝트</td>
+                    </tr>
+                    <tr>
+                      <th>기간</th>
+                      <td>2025.06 ~ 2025.10 (5개월)</td>
+                    </tr>
+                    <tr>
+                      <th>성과</th>
+                      <td>프로젝트 전반 React + TypeScript 구조로 리뉴얼 안정성과 유지보수성을 향상시킴.</td>
+                    </tr>
+                    <tr>
+                      <th>역할</th>
+                      <td>
+                        <ul className="role">
+                          <li>
+                            1.  기존 프로젝트 전반을 React + TypeScript 기반 프론트엔드 설계
+                            <div>
+                              컴포넌트 단위 구조 설계 및 타입 정의를 통해 안정적인 UI 개발
+                            </div>
+                          </li>
+                          <li>
+                            2. SCSS 기반 스타일 아키텍처
+                            <div>
+                              컴포넌트 단위 SCSS 설계 및 유지보수 중심의 스타일 구조 구성
+                            </div>
+                          </li>
+                          <li>
+                            3. 공통 컴포넌트 및 UI 시스템 구축
+                            <div>
+                              재사용 가능한 UI 컴포넌트 설계로 개발 생산성 및 품질 향상
+                            </div>
+                          </li>
+                          <li>
+                            4. 협업 및 프로젝트 운영 역량
+                            <div>
+                              디자이너·백엔드 개발자와의 협업을 통한 프로젝트 일정 관리, 요구사항 조율 등 개발 스코프 관리 경험
+                            </div>
+                          </li>
+                        </ul>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>기술</th>
+                      <td>
+                        <ul className="skills">
+                          <li>React + TypeScript 기반 SPA 아키텍처 설계 및 컴포넌트 중심 개발 경험</li>
+                          <li>Zustand를 확용한 전역 상태관리 및 복잡한 UI 상태 흐름 제어</li>
+                          <li>SCSS 기반 컴포넌트 단위 스타일링 및 유지보수 친화적 스타일 구조 설계</li>
+                          <li>CKEditor 5 커스터마이징 (툴바 구성, 한글 UI, 이미지 업로드, 글쓰기 환경 개선)</li>
+                          <li>Zeplin 시안을 기준으로 한 UI 구현 및 디자이너 협업 경험</li>
+                          <li>Git 기반 버전 관리 및 협업 환경에서의 코드 통합 경험</li>
+                        </ul>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </li>
               <li>
-                <p className="period">2023.02 - 2023.08</p>
-                <div className="titleCont">
-                  <h4 className="title">타이틀</h4>
-                  <h5 className="subTitle">@ 서브타이틀</h5>
-                </div>
-                <ul className="details">
-                  <li>JavaScript, React 등 핵심 기술 학습 <br /> JavaScript, React 등 핵심 기술 학습</li>
-                  <li>JavaScript, React 등 핵심 기술 학습</li>
-                  <li>JavaScript, React 등 핵심 기술 학습</li>
-                </ul>
+                <table>
+                  <tbody>
+                    <tr>
+                      <th>업무명</th>
+                      <td>제트리포트 (리포트 툴) 웹 페이지 화 프로젝트</td>
+                    </tr>
+                    <tr>
+                      <th>기간</th>
+                      <td>2024.09-2025.01 (5개월)</td>
+                    </tr>
+                    <tr>
+                      <th>성과</th>
+                      <td>리포트 에디터  웹 페이지화 퍼블리싱 하여, 편집 기능 접근성 및 UI 일관성을 개선시킴.</td>
+                    </tr>
+                    <tr>
+                      <th>역할</th>
+                      <td>
+                        <ul className="role">
+                          <li>
+                            1. 에디터 전반 UI 퍼블리싱 및 구조 정비
+                            <div>
+                              컴포넌트 단위 구조 설계 및 프로젝트 전반 화면 퍼블리싱 담당
+                            </div>
+                          </li>
+                          <li>
+                            2. 공통 컴포넌트 및 UI 시스템 구축
+                            <div>
+                              재사용 가능한 UI 컴포넌트 설계로 개발 생산성 및 품질 향상
+                            </div>
+                          </li>                          
+                        </ul>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>기술</th>
+                      <td>
+                        <ul className="skills">
+                          <li>GIt 기반 버전 관리 및 협업 환경에서의 코드 통합 경험</li>
+                          <li>Jira를 통한 이슈 관리로 작업 단위 관리, 수정 요청 반영, 진행 상황 공유 등 프로젝트 운영 프로세스 경험</li>
+                          <li>Zeplin 시안을 기준으로 한 UI 구현 및 디자이너 협업 경험</li>                          
+                        </ul>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </li>
               <li>
-                <p className="period">2023.02 - 2023.08</p>
-                <div className="titleCont">
-                  <h4 className="title">타이틀</h4>
-                  <h5 className="subTitle">@ 서브타이틀</h5>
-                </div>
-                <ul className="details">
-                  <li>JavaScript, React 등 핵심 기술 학습 <br /> JavaScript, React 등 핵심 기술 학습</li>
-                  <li>JavaScript, React 등 핵심 기술 학습</li>
-                  <li>JavaScript, React 등 핵심 기술 학습</li>
-                </ul>
+                <table>
+                  <tbody>
+                    <tr>
+                      <th>업무명</th>
+                      <td>비욘드 재무보고서 (업체 재무 데이터 대시보드) 프로젝트</td>
+                    </tr>
+                    <tr>
+                      <th>기간</th>
+                      <td>2024.06-2024.09 (4개월)</td>
+                    </tr>
+                    <tr>
+                      <th>성과</th>
+                      <td>파라미터 기반 재무 데이터를 시각화한 대시보드 구축하여, 정보 조회 효율과 의사결정 가시성을 향상시킴.</td>
+                    </tr>
+                    <tr>
+                      <th>역할</th>
+                      <td>
+                        <ul className="role">
+                          <li>
+                            1. 재무보고서 대시보드 화면 구현
+                            <div>
+                               업체 코드 및 기준년월 파라미터를 기준으로 재무 데이터를 조회하는 화면 구조 구현
+                            </div>
+                            <div>
+                              Chart.js를 활용해 재무 데이터를 그래프·차트등 다양한 형태로 시각화해 보고서 재무 정보 이해도를 향상 시킴
+                            </div>
+                            <div>
+                              재무 대시보드 화면을 다양한 해상도에서 안정적으로 확인할 수 있도록 반응형 레이아웃 구현해, 보고서 활용성과 접근성을 향상 시킴
+                            </div>
+                          </li>
+                          <li>
+                            2. 백엔드 API 연동 및 데이터 바인딩
+                            <div>
+                              백엔드에서 제공한 API를 통해 JSON 형태의 재무 데이터를 수신
+                            </div>
+                            <div>
+                              항목별 데이터 구조를 분석해 대시보드 UI에 정확히 매핑
+                            </div>
+                          </li>
+                          <li>
+                            3. 파라미터 기반 동적 대시보드 구현
+                            <div>
+                              동일 화면에서 업체·기간에 따라 데이터가 동적으로 변경되는 구조 구현
+                            </div>
+                          </li>
+                          <li>
+                            4. 재무보고서 인쇄 기능 구현
+                            <div>
+                              고객 요청에 따라 대시보드 화면을 인쇄 가능한 형태로 제공
+                            </div>
+                            <div>
+                              OZReport를 활용해 재무 데이터 기반 출력 리포트 연동
+                            </div>
+                          </li>
+                        </ul>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>기술</th>
+                      <td>
+                        <ul className="skills">
+                          <li>Git 기반 버전 관리 및 협업 환경에서의 코드 통합 경험</li>
+                          <li>백엔드 API 연동 및 JSON 데이터 바인딩</li>
+                          <li>Chart.js (시각화 라이브러리)를 활용한 데이터 대시보드 구현</li>
+                          <li>OZReport 연동을 통한 인쇄용 리포트 구현</li>
+                          <li>Zeplin 시안을 기준으로 한 UI 구현 및 디자이너 협업 경험</li>
+                        </ul>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </li>
               <li>
-                <p className="period">2023.02 - 2023.08</p>
-                <div className="titleCont">
-                  <h4 className="title">타이틀</h4>
-                  <h5 className="subTitle">@ 서브타이틀</h5>
-                </div>
-                <ul className="details">
-                  <li>JavaScript, React 등 핵심 기술 학습 <br /> JavaScript, React 등 핵심 기술 학습</li>
-                  <li>JavaScript, React 등 핵심 기술 학습</li>
-                  <li>JavaScript, React 등 핵심 기술 학습</li>
-                </ul>
+                <table>
+                  <tbody>
+                    <tr>
+                      <th>업무명</th>
+                      <td>비즈북스 (세무 비즈니스 플랫폼) 프로젝트</td>
+                    </tr>
+                    <tr>
+                      <th>기간</th>
+                      <td>2021.06-2025.10 (플랫폼 상시 운영 및 고도화)</td>
+                    </tr>
+                    <tr>
+                      <th>성과</th>
+                      <td>플랫폼 신규기능·메뉴 추가 및 리뉴얼 작업을 지속 수행하며, 컴포넌트 단위 구조화를 통해 유지보수 효율과 화면 일관성을 안정적으로 유지</td>
+                    </tr>
+                    <tr>
+                      <th>역할</th>
+                      <td className="role">
+                        <ul>
+                          <li>
+                            1. 플랫폼 신규 메뉴 및 화면 퍼블리싱 담당
+                            <div>
+                              신규 기능 기획에 맞춰 화면 구조 구현 및 UI 적용
+                            </div>
+                            <div>
+                              메뉴 추가 시 기존 구조를 고려한 확장형 화면 구성
+                            </div>
+                          </li>
+                          <li>
+                            2. 운영중인 서비스 유지보수 전담
+                            <div>
+                              화면 오류, 레이아웃 깨짐, 기능 수정 요청 대응
+                            </div>
+                            <div>
+                              운영 환경에서 발생하는 이슈를 빠르게 반영
+                            </div>
+                          </li>
+                          <li>
+                            3. 리뉴얼 프로젝트 UI 반영
+                            <div>
+                              변경된 디자인 시안에 맞춰 기존 화면 재구성
+                            </div>
+                            <div>
+                              공통 컴포넌트 구조를 유지하며 디자인 일괄 적용
+                            </div>
+                          </li>
+                          <li>
+                            4. 컴포넌트 단위 퍼블리싱 구조 설계 및 관리
+                            <div>
+                              버튼, 테이블, 모달 등 공통 요소 분리 및 개별 스타일시트 작업
+                            </div>
+                            <div>
+                              반복 작업 최소화 및 유지보수 효율 극대화
+                            </div>
+                          </li>
+                        </ul>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>기술</th>
+                      <td>
+                        <ul className="skills">
+                          <li>Toast Grid 기반 데이터 테이블 구현</li>
+                          <li>Chart.js를 활용한 재무 데이터 차트 구성</li>
+                        </ul>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </li>
               <li>
-                <p className="period">2023.02 - 2023.08</p>
-                <div className="titleCont">
-                  <h4 className="title">타이틀</h4>
-                  <h5 className="subTitle">@ 서브타이틀</h5>
-                </div>
-                <ul className="details">
-                  <li>JavaScript, React 등 핵심 기술 학습 <br /> JavaScript, React 등 핵심 기술 학습</li>
-                  <li>JavaScript, React 등 핵심 기술 학습</li>
-                  <li>JavaScript, React 등 핵심 기술 학습</li>
-                </ul>
+                <table>
+                  <tbody>
+                    <tr>
+                      <th>업무명</th>
+                      <td>대표 홈페이지 및 마이크로사이트 운영·리뉴얼</td>
+                    </tr>
+                    <tr>
+                      <th>기간</th>
+                      <td>재직 기간 전반 (상시 신규 제작 및 유지보수)</td>
+                    </tr>
+                    <tr>
+                      <th>성과</th>
+                      <td>대표 홈페이지 및 다수의 마이크로사이트를 신규 제작·운영하며,
+                      UI 구현과 SEO 개선을 통해 사용자 경험과 사이트 완성도를 지속적으로 향상</td>
+                    </tr>
+                    <tr>
+                      <th>역할</th>
+                      <td className="role">
+                        <ul>
+                          <li>
+                            1. 대표 홈페이지 리뉴얼 작업
+                            <div>
+                              메인 동적 UI 구성하며 AOS, Waypoints, CountUp.js 등 플러그인을 이용해 스크롤 이벤트 화면 구현
+                            </div>
+                          </li>
+                          <li>
+                            2. 홈페이지 내 이미지 자료실 신규 메뉴 작업
+                            <div>
+                              디자인 이미지 자료를 magnify 플러그인을 커스텀해서 미리보기 화면 구현
+                            </div>
+                            <div>
+                              Ajax로 이미지 파일 다운로드 기능 구현
+                            </div>
+                          </li>
+                          <li>
+                            3. SEO 및 웹 품질 개선 작업
+                            <div>
+                              Google Lighthouse를 활용한 성능 접근성 SEO 점수 개선
+                            </div>
+                          </li>
+                          <li>
+                            4. 프로그램 마이크로사이트 신규 제작 및 유지보수
+                          </li>
+                        </ul>
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>기술</th>
+                      <td>
+                        <ul className="skills">
+                          <li>AOS, Waypoints를 활용한 대표 홈페이지 메인 스크롤 인터랙션 구현</li>
+                          <li>magnify 플러그인을 활용하여 이미지 자료실의 갤러리 기능을 구현</li>
+                        </ul>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </li>
             </ul>
           </div>
@@ -383,7 +677,19 @@ export default function Home() {
       </div>
     </section>
     <section className="contact">
-
+      <div className="contact_contents">
+          <h3>Contact</h3>
+          <div className="contact_info">
+            <p>+82 10-4027-1487</p>
+            <p className="mail" onClick={copyMail}>
+              seosson@naver.com
+              <div className="copyBtn">메일 복사버튼</div>
+            </p>            
+          </div>
+          <h5 className="copyright">@Copyright 2026. shinwoojae All rights reserved.</h5>
+          <span className="thanksTxt">Thank you</span>
+      </div>        
+        
     </section>
     <div className="floating">
       <button id="copyMail" onClick={copyMail}><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 538 404" fill="none"><path d="M0.750488 0.613525V67.7139L269.152 201.915L537.553 67.7139V0.613525H0.750488ZM0.750488 134.814V403.216H537.553V134.814L269.152 269.015L0.750488 134.814Z" fill="black"></path></svg></button>
@@ -395,7 +701,7 @@ export default function Home() {
       project={activeProject}
     >
     <ErrorBoundary>
-      <Suspense fallback={<div className="modal-loading">로딩중...</div>}>
+      <Suspense fallback={<div className="modal-loading"></div>}>
         {ActiveComponent ? <ActiveComponent /> : null}
       </Suspense>
     </ErrorBoundary>

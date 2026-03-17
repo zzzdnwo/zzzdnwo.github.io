@@ -27,7 +27,7 @@ export default function ZReport() {
     return (
     <article className="project_detail">
         <h2>
-            기존 사내 리포트 툴을 웹 기반 서비스로 전환하는 프로젝트로,<br />
+            기존 사내 리포트 툴을 웹 기반 서비스로 전환하는 프로젝트<br />
             리포트 조회 및 관리 기능을 웹 페이지 형태로 구현하여 사용자의 접근성과 활용성을 개선.
             <hr />
         </h2>        
@@ -47,9 +47,7 @@ export default function ZReport() {
         <section className="skillCont">
            <h3>🛠️ 기술 스택</h3>
             <div className="flexBox">                
-                <div className="item">HTML5</div>
-                <div className="item">SCSS</div>
-                <div className="item">JavaScript</div>                                
+                <div className="item">SCSS</div>                                
                 <div className="item">Git</div>
                 <div className="item">GitHub</div>
                 <div className="item">Jira</div>

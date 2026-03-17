@@ -50,6 +50,7 @@ return (
                     <h1 className="project_title">{project?.title}</h1>
                     <div className="project_info">
                         <p className="info_period">{project?.period}</p>
+                        <p className="info_divide">|</p>
                         <p className="info_member">{project?.member}</p>
                     </div>               
                 </header>                          

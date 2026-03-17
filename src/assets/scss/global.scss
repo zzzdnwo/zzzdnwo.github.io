@@ -19,7 +19,7 @@ body {
 button{border: none; outline: none; cursor: pointer; padding: 0;}
 
 hr{border: none; margin: 0; padding: 0;}
-
+a{color: inherit; text-decoration: none;}
 // 변수 정의 (색상, 폰트 크기 등)
 $primary-color: #007bff;
 $secondary-color: #6c757d;
