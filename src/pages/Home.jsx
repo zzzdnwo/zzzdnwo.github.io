@@ -311,7 +311,7 @@ export default function Home() {
           <div className="project_ani" ref={projectAniRef}>
             <ul>
               {projects.map((p) => (
-              <li key={p.id} className="project-item">
+              <li key={p.id} className="project-item" onClick={() => openProject(p)} onMouseEnter={() => preload(p.file)}>
                 <div className="project_wrap">
                   <div className="project_thumbnail">
                     <img src={require(`../assets/images/${p.file}_thumb.png`)} alt={p.title} />
@@ -373,34 +373,40 @@ export default function Home() {
                     </tr>
                     <tr>
                       <th>성과</th>
-                      <td>프로젝트 전반 React + TypeScript 구조로 리뉴얼 안정성과 유지보수성을 향상시킴.</td>
+                      <td>프로젝트 전반 React + TypeScript 구조로 리뉴얼 안정성과 유지보수성을 향상</td>
                     </tr>
                     <tr>
                       <th>역할</th>
                       <td>
                         <ul className="role">
                           <li>
-                            1.  기존 프로젝트 전반을 React + TypeScript 기반 프론트엔드 설계
+                            1.  React + TypeScript 기반 프로젝트 구조 개선 및 UI 구현
                             <div>
-                              컴포넌트 단위 구조 설계 및 타입 정의를 통해 안정적인 UI 개발
+                              기존 구조를 컴포넌트 단위로 분리하고 타입을 정의하여 안정적인 UI 개발 환경 구성
                             </div>
                           </li>
                           <li>
-                            2. SCSS 기반 스타일 아키텍처
+                            2. Zustand 기반 전역 상태관리 및 UI 상태 흐름 제어
                             <div>
-                              컴포넌트 단위 SCSS 설계 및 유지보수 중심의 스타일 구조 구성
+                              depth 구조와 선택 상태를 관리하며 트리 구조 UI의 상태 흐름을 안정적으로 구현
                             </div>
                           </li>
                           <li>
-                            3. 공통 컴포넌트 및 UI 시스템 구축
+                            3. 공통 컴포넌트 및 재사용 UI 개발
                             <div>
-                              재사용 가능한 UI 컴포넌트 설계로 개발 생산성 및 품질 향상
+                              Dropdown, Dialog, Tab 등 공통 UI 컴포넌트를 구현하여 화면 간 일관성과 재사용성 확보
                             </div>
                           </li>
                           <li>
-                            4. 협업 및 프로젝트 운영 역량
+                            4. SCSS 기반 스타일 구조 개선
                             <div>
-                              디자이너·백엔드 개발자와의 협업을 통한 프로젝트 일정 관리, 요구사항 조율 등 개발 스코프 관리 경험
+                              컴포넌트 단위 스타일링을 적용하여 유지보수와 확장성을 고려한 스타일 구조 구성
+                            </div>
+                          </li>
+                          <li>
+                            5. 협업 및 요구사항 조율
+                            <div>
+                              디자이너 및 백엔드와 협업하며 UI 구현, 기능 요구사항 반영 및 일정 조율 경험
                             </div>
                           </li>
                         </ul>
@@ -410,11 +416,11 @@ export default function Home() {
                       <th>기술</th>
                       <td>
                         <ul className="skills">
-                          <li>React + TypeScript 기반 SPA 아키텍처 설계 및 컴포넌트 중심 개발 경험</li>
-                          <li>Zustand를 확용한 전역 상태관리 및 복잡한 UI 상태 흐름 제어</li>
-                          <li>SCSS 기반 컴포넌트 단위 스타일링 및 유지보수 친화적 스타일 구조 설계</li>
-                          <li>CKEditor 5 커스터마이징 (툴바 구성, 한글 UI, 이미지 업로드, 글쓰기 환경 개선)</li>
-                          <li>Zeplin 시안을 기준으로 한 UI 구현 및 디자이너 협업 경험</li>
+                          <li>React + TypeScript 기반 SPA 구조에서 컴포넌트 중심 UI 개발 경험</li>
+                          <li>Zustand를 활용한 전역 상태관리 및 depth 기반 메뉴 구조의 UI 상태 흐름 제어</li>
+                          <li>SCSS 기반 컴포넌트 단위 스타일링 및 유지보수 친화적 스타일 구조 구성</li>
+                          <li>CKEditor 5 커스터마이징 (툴바 구성, 한글 UI, 이미지 업로드 등 에디터 환경 개선)</li>
+                          <li>Zeplin 시안을 기반으로 UI 구현 및 디자이너 협업 경험</li>
                           <li>Git 기반 버전 관리 및 협업 환경에서의 코드 통합 경험</li>
                         </ul>
                       </td>
@@ -435,22 +441,28 @@ export default function Home() {
                     </tr>
                     <tr>
                       <th>성과</th>
-                      <td>리포트 에디터  웹 페이지화 퍼블리싱 하여, 편집 기능 접근성 및 UI 일관성을 개선시킴.</td>
+                      <td>기존 리포트 에디터를 웹 환경으로 구현하여 사용자 접근성과 UI 일관성을 개선</td>
                     </tr>
                     <tr>
                       <th>역할</th>
                       <td>
                         <ul className="role">
                           <li>
-                            1. 에디터 전반 UI 퍼블리싱 및 구조 정비
+                            1. 리포트 에디터 UI 퍼블리싱 및 구조 정리
                             <div>
-                              컴포넌트 단위 구조 설계 및 프로젝트 전반 화면 퍼블리싱 담당
+                              복잡한 편집 화면을 웹 환경에 맞게 재구성하고, 화면 단위로 UI를 나누어 퍼블리싱 진행
                             </div>
                           </li>
                           <li>
-                            2. 공통 컴포넌트 및 UI 시스템 구축
+                            2. 공통 UI 컴포넌트 정리 및 재사용 구조 적용
                             <div>
-                              재사용 가능한 UI 컴포넌트 설계로 개발 생산성 및 품질 향상
+                              버튼, 패널, 입력 요소 등을 공통화하여 화면 간 UI 일관성과 작업 효율 개선
+                            </div>
+                          </li>
+                          <li>
+                            3. 협업 기반 UI 구현 및 요구사항 반영
+                            <div>
+                              Zeplin 시안을 기반으로 UI를 구현하고, Jira를 통해 이슈 관리 및 수정사항 반영
                             </div>
                           </li>                          
                         </ul>
@@ -460,9 +472,9 @@ export default function Home() {
                       <th>기술</th>
                       <td>
                         <ul className="skills">
-                          <li>GIt 기반 버전 관리 및 협업 환경에서의 코드 통합 경험</li>
-                          <li>Jira를 통한 이슈 관리로 작업 단위 관리, 수정 요청 반영, 진행 상황 공유 등 프로젝트 운영 프로세스 경험</li>
-                          <li>Zeplin 시안을 기준으로 한 UI 구현 및 디자이너 협업 경험</li>                          
+                          <li>Git 기반 버전 관리 및 협업 환경에서의 코드 통합 경험</li>
+                          <li>Jira를 활용한 이슈 관리 및 협업 프로세스 경험</li>
+                          <li>Zeplin 기반 디자인 구현 및 디자이너 협업 경험</li>                          
                         </ul>
                       </td>
                     </tr>
@@ -474,7 +486,7 @@ export default function Home() {
                   <tbody>
                     <tr>
                       <th>업무명</th>
-                      <td>비욘드 재무보고서 (업체 재무 데이터 대시보드) 프로젝트</td>
+                      <td>비욘드 재무보고서 (재무 데이터 대시보드) 프로젝트</td>
                     </tr>
                     <tr>
                       <th>기간</th>
@@ -482,37 +494,31 @@ export default function Home() {
                     </tr>
                     <tr>
                       <th>성과</th>
-                      <td>파라미터 기반 재무 데이터를 시각화한 대시보드 구축하여, 정보 조회 효율과 의사결정 가시성을 향상시킴.</td>
+                      <td>파라미터 기반 재무 데이터를 시각화한 대시보드 구축하여, 정보 조회 효율을 향상</td>
                     </tr>
                     <tr>
                       <th>역할</th>
                       <td>
                         <ul className="role">
                           <li>
-                            1. 재무보고서 대시보드 화면 구현
+                            1. 재무 데이터 대시보드 화면 구현
                             <div>
-                               업체 코드 및 기준년월 파라미터를 기준으로 재무 데이터를 조회하는 화면 구조 구현
+                               업체 코드 및 기준년월 파라미터에 따라 데이터를 조회하고, Chart.js를 활용해 그래프 및 차트 형태로 시각화
                             </div>
                             <div>
-                              Chart.js를 활용해 재무 데이터를 그래프·차트등 다양한 형태로 시각화해 보고서 재무 정보 이해도를 향상 시킴
-                            </div>
-                            <div>
-                              재무 대시보드 화면을 다양한 해상도에서 안정적으로 확인할 수 있도록 반응형 레이아웃 구현해, 보고서 활용성과 접근성을 향상 시킴
+                              다양한 해상도에서도 안정적으로 확인할 수 있도록 반응형 레이아웃 적용
                             </div>
                           </li>
                           <li>
-                            2. 백엔드 API 연동 및 데이터 바인딩
+                            2. 백엔드 API 연동 및 데이터 처리
                             <div>
-                              백엔드에서 제공한 API를 통해 JSON 형태의 재무 데이터를 수신
-                            </div>
-                            <div>
-                              항목별 데이터 구조를 분석해 대시보드 UI에 정확히 매핑
-                            </div>
+                              API를 통해 수신한 JSON 데이터를 항목별로 가공하여 대시보드 UI에 맞게 바인딩
+                            </div>                            
                           </li>
                           <li>
-                            3. 파라미터 기반 동적 대시보드 구현
+                            3. 파라미터 기반 동적 화면 구성
                             <div>
-                              동일 화면에서 업체·기간에 따라 데이터가 동적으로 변경되는 구조 구현
+                              동일 화면에서 업체 및 기간 변경에 따라 데이터가 실시간으로 갱신되는 구조 구현
                             </div>
                           </li>
                           <li>
@@ -532,10 +538,10 @@ export default function Home() {
                       <td>
                         <ul className="skills">
                           <li>Git 기반 버전 관리 및 협업 환경에서의 코드 통합 경험</li>
-                          <li>백엔드 API 연동 및 JSON 데이터 바인딩</li>
-                          <li>Chart.js (시각화 라이브러리)를 활용한 데이터 대시보드 구현</li>
+                          <li>백엔드 API 연동 및 JSON 데이터 가공·바인딩 경험</li>
+                          <li>파라미터 기반 동적 화면 처리 및 상태 흐름 제어</li>
+                          <li>Chart.js를 활용한 데이터 시각화 및 대시보드 UI 구현</li>
                           <li>OZReport 연동을 통한 인쇄용 리포트 구현</li>
-                          <li>Zeplin 시안을 기준으로 한 UI 구현 및 디자이너 협업 경험</li>
                         </ul>
                       </td>
                     </tr>
@@ -547,54 +553,45 @@ export default function Home() {
                   <tbody>
                     <tr>
                       <th>업무명</th>
-                      <td>비즈북스 (세무 비즈니스 플랫폼) 프로젝트</td>
+                      <td>비즈북스 (세무 비즈니스 플랫폼) 운영 및 고도화 프로젝트</td>
                     </tr>
                     <tr>
                       <th>기간</th>
-                      <td>2021.06-2025.10 (플랫폼 상시 운영 및 고도화)</td>
+                      <td>2021.06-2025.10 (상시 운영 및 기능 고도화)</td>
                     </tr>
                     <tr>
                       <th>성과</th>
-                      <td>플랫폼 신규기능·메뉴 추가 및 리뉴얼 작업을 지속 수행하며, 컴포넌트 단위 구조화를 통해 유지보수 효율과 화면 일관성을 안정적으로 유지</td>
+                      <td>장기 운영 서비스의 신규기능·메뉴 추가 및 화면 리뉴얼 작업을 지속 수행하며, 컴포넌트 단위 구조화를 통해 유지보수 효율과 화면 일관성을 안정적으로 유지</td>
                     </tr>
                     <tr>
                       <th>역할</th>
                       <td className="role">
                         <ul>
                           <li>
-                            1. 플랫폼 신규 메뉴 및 화면 퍼블리싱 담당
+                            1. 플랫폼 신규 기능 및 화면 구현
                             <div>
-                              신규 기능 기획에 맞춰 화면 구조 구현 및 UI 적용
-                            </div>
-                            <div>
-                              메뉴 추가 시 기존 구조를 고려한 확장형 화면 구성
+                              기능 요구사항에 맞춰 신규 메뉴 및 화면을 구현하고, 기존 구조를 고려하여 확장 가능한 형태로 구성
                             </div>
                           </li>
                           <li>
-                            2. 운영중인 서비스 유지보수 전담
+                            2. 운영 서비스 유지보수 및 이슈 대응
                             <div>
-                              화면 오류, 레이아웃 깨짐, 기능 수정 요청 대응
+                              운영 중 발생하는 UI 오류 및 기능 이슈를 분석하고 수정하여 서비스 안정성 유지
                             </div>
                             <div>
-                              운영 환경에서 발생하는 이슈를 빠르게 반영
-                            </div>
-                          </li>
-                          <li>
-                            3. 리뉴얼 프로젝트 UI 반영
-                            <div>
-                              변경된 디자인 시안에 맞춰 기존 화면 재구성
-                            </div>
-                            <div>
-                              공통 컴포넌트 구조를 유지하며 디자인 일괄 적용
+                              다양한 수정 요청을 반영하며 화면 품질과 일관성 지속 관리
                             </div>
                           </li>
                           <li>
-                            4. 컴포넌트 단위 퍼블리싱 구조 설계 및 관리
+                            3. 리뉴얼 UI 반영 및 기존 화면 개선
                             <div>
-                              버튼, 테이블, 모달 등 공통 요소 분리 및 개별 스타일시트 작업
+                              디자인 변경에 맞춰 기존 화면을 재구성하고, 공통 UI를 기준으로 일관된 스타일 적용
                             </div>
+                          </li>
+                          <li>
+                            4. 공통 UI 구조 관리 및 반복 작업 개선
                             <div>
-                              반복 작업 최소화 및 유지보수 효율 극대화
+                              버튼, 테이블, 모달 등 공통 요소를 분리하여 재사용성을 높이고, 반복 작업을 최소화
                             </div>
                           </li>
                         </ul>
@@ -604,8 +601,9 @@ export default function Home() {
                       <th>기술</th>
                       <td>
                         <ul className="skills">
-                          <li>Toast Grid 기반 데이터 테이블 구현</li>
-                          <li>Chart.js를 활용한 재무 데이터 차트 구성</li>
+                          <li>Toast Grid 기반 데이터 그리드 UI 구현</li>
+                          <li>Chart.js 기반 데이터 시각화 구현</li>
+                          <li>Git 기반 버전 관리 및 협업 경험</li>
                         </ul>
                       </td>
                     </tr>
@@ -633,28 +631,40 @@ export default function Home() {
                       <td className="role">
                         <ul>
                           <li>
-                            1. 대표 홈페이지 리뉴얼 작업
+                            1. 대표 홈페이지 메인 인터랙션 구현
                             <div>
-                              메인 동적 UI 구성하며 AOS, Waypoints, CountUp.js 등 플러그인을 이용해 스크롤 이벤트 화면 구현
+                              AOS, Waypoints, CountUp.js를 활용하여 스크롤 위치에 따라 애니메이션이 동작하는 인터랙션 UI 구현
+                            </div>
+                            <div>
+                              요소의 화면 진입 시점을 기준으로 이벤트 조건을 조정하여 자연스러운 사용자 흐름 구성
                             </div>
                           </li>
                           <li>
-                            2. 홈페이지 내 이미지 자료실 신규 메뉴 작업
+                            2. 이미지 자료실 갤러리 기능 구현 및 커스터마이징
                             <div>
-                              디자인 이미지 자료를 magnify 플러그인을 커스텀해서 미리보기 화면 구현
+                              Magnify.js 플러그인을 기반으로 이미지 미리보기 및 확대 기능 구현
                             </div>
                             <div>
-                              Ajax로 이미지 파일 다운로드 기능 구현
-                            </div>
-                          </li>
-                          <li>
-                            3. SEO 및 웹 품질 개선 작업
-                            <div>
-                              Google Lighthouse를 활용한 성능 접근성 SEO 점수 개선
+                              기본 기능의 한계를 보완하기 위해 이미지 비율 유지, 마우스 휠 확대, 태그 기능 등을 추가 구현
                             </div>
                           </li>
                           <li>
-                            4. 프로그램 마이크로사이트 신규 제작 및 유지보수
+                            3. 파일 다운로드 기능 및 이슈 해결
+                            <div>
+                              Ajax를 활용한 이미지 다운로드 기능 구현
+                            </div>
+                            <div>
+                              한글 파일명 인코딩 문제를 해결하여 정상적인 파일 다운로드 환경 구축
+                            </div>
+                          </li>
+                          <li>
+                            4. SEO 및 웹 품질 개선
+                            <div>
+                              Google Lighthouse를 활용하여 성능, 접근성, SEO 항목을 점검하고 이미지 최적화 및 마크업 개선 적용
+                            </div>
+                          </li>
+                          <li>
+                            5. 프로그램 마이크로사이트 신규 제작 및 유지보수
                           </li>
                         </ul>
                       </td>
@@ -663,8 +673,10 @@ export default function Home() {
                       <th>기술</th>
                       <td>
                         <ul className="skills">
-                          <li>AOS, Waypoints를 활용한 대표 홈페이지 메인 스크롤 인터랙션 구현</li>
-                          <li>magnify 플러그인을 활용하여 이미지 자료실의 갤러리 기능을 구현</li>
+                          <li>AOS, Waypoints, CountUp.js를 활용한 스크롤 기반 인터랙션 구현 및 이벤트 제어</li>
+                          <li>Magnify.js를 활용한 갤러리 구현 및 커스터마이징을 통한 기능 확장 경험</li>
+                          <li>Ajax 기반 파일 다운로드 구현 및 인코딩 이슈 처리 경험</li>
+                          <li>Google Lighthouse 기반 성능·접근성·SEO 개선 경험</li>
                         </ul>
                       </td>
                     </tr>
