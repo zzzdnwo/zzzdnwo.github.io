@@ -195,9 +195,9 @@
           .contact_info{display: flex; flex-flow: column; gap: 0 2rem; margin-top: 0.24rem;
             p{font-family: 'Poppins' !important; font-size: 4rem; color: #fff; line-height: 5rem; font-weight: 400; position: relative;              
               &.mail{display: flex; gap: 0 1rem; align-items: center; cursor: pointer;
-                .copyBtn{opacity: 0; width: 2.4rem; height: 2.4rem; background: url('../images/icon_copy.png') center no-repeat; background-size: cover; text-indent: -9999px;}
+                .copyBtn{opacity: 1; width: 2.4rem; height: 2.4rem; background: url('../images/icon_copy.png') center no-repeat; background-size: cover; text-indent: -9999px;}
                 &:hover{ color: #ddfffc;
-                  .copyBtn{opacity: 1;}
+                  .copyBtn{background: transparent url('../images/icon_copy_on.png') center no-repeat; background-size: cover;}
                 }
               }
             }
