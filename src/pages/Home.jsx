@@ -145,7 +145,7 @@ export default function Home() {
         }
       },
       {
-        threshold: 0.3,
+        threshold: 0.12,
         rootMargin: '25% 0px 0px 0px',
       }
     );
@@ -448,7 +448,7 @@ export default function Home() {
         <div className='project_cont' ref={projectRef}>
           <div className="project_ani" ref={projectAniRef}>
             <div className="project_slider_wrap">
-              {isMobile && (
+              {isMobile && projectIndex > 0 && (
                 <button className="arrow prev" onClick={() => handlePrev('project')} />
               )}
               <ul ref={projectSliderRef} className="slider">
@@ -480,7 +480,7 @@ export default function Home() {
                 </li>
                 ))}
               </ul>
-              {isMobile && (
+              {isMobile && projectIndex < projects.length - 1 && (
                 <button className="arrow next" onClick={() => handleNext('project', projects.length)} />
               )}
               {isMobile && (
@@ -503,7 +503,7 @@ export default function Home() {
         <div className="exp_cont" ref={expRef}>
           <div className="exp_ani" ref={expAniRef}>
             <div className="exp_slider_wrap">
-              {isMobile && (
+              {isMobile && expIndex > 0 && (
                 <button className="arrow prev" onClick={() => handlePrev('exp')} />
               )}
               <ul className="exp_list slider" ref={expSliderRef}>
@@ -831,7 +831,7 @@ export default function Home() {
                   </table>
                 </li>
               </ul>
-              {isMobile && (
+              {isMobile && expIndex < expLength - 1 && (
                 <button className="arrow next" onClick={() => handleNext('exp', expLength)} />
               )}
               {isMobile && (

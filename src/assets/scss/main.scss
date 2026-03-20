@@ -84,7 +84,7 @@
             }
             .about_companyNm{display: block; font-weight: bold; font-size: 2.4rem; color: #fff; margin: 1.6rem 0 3.2rem;}
             .about_workList{display: flex; flex-flow: column; gap: 0.6rem 0;
-              li{font-size: 14px; font-weight: bold; color: #a7a7a7;}
+              li{font-size: 14px; font-weight: 400; color: #a7a7a7;}
             }
           }
           &.about_right{ padding-bottom: 8rem;
@@ -205,7 +205,9 @@
           .copyright{font-size: 1.8rem; color: #9b9b9b; line-height: 3.5rem; font-weight: 300; margin-top: 2.6rem;}
           .thanksTxt{font-family: 'Racing Sans One' !important; font-size: 25rem; font-weight: 400; color: #fff; line-height: 14.4rem; margin-top: 2rem; white-space: nowrap;}
         }
-        &::after{content: ''; position: absolute; left: 50%; top: -1.05rem; transform: translateX(-50%); display: inline-block; width: 2.1rem; height: 2.1rem; background: #fff; border-radius: 50%; }
+        &::after{content: ''; position: absolute; left: 50%; top: 0; transform: translateX(-50%); display: inline-block; width: 3.2rem; height: 1.8rem;
+          border-top: 1.8rem solid #fff; border-left: 1.6rem solid transparent; border-right: 1.6rem solid transparent; box-sizing: border-box;
+        }
       }
     }
   }
