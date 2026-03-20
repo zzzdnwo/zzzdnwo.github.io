@@ -4,11 +4,6 @@ import screenShot2 from '../assets/images/bizbooks_screenGif1.gif';
 import screenShot3 from '../assets/images/bizbooks_screen2.png';
 import screenShot4 from '../assets/images/bizbooks_screenGif2.gif';
 import screenShot5 from '../assets/images/bizbooks_screen3.png';
-import screenShot6 from '../assets/images/nzBoard_screen6.png';
-import screenShot7 from '../assets/images/nzBoard_screen7.png';
-import screenShot8 from '../assets/images/nzBoard_screen8.png';
-import screenShot9 from '../assets/images/nzBoard_screen9.png';
-import screenShot10 from '../assets/images/nzBoard_screenGif1.gif';
 
 export default function NzBoard() {
     const [openIndex, setOpenIndex] = useState(() => {
