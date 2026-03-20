@@ -13,10 +13,19 @@ export default function Home() {
   const [activeNav, setActiveNav] = useState(null);
   const [heroStart, setHeroStart] = useState(false);
 
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [projectIndex, setProjectIndex] = useState(0);
+  const [expIndex, setExpIndex] = useState(0);
+
   const workRef = useRef(null);
   const projectRef = useRef(null);
   const expRef = useRef(null);
   
+  const isScrollingRef = useRef(false);
+  const projectSliderRef = useRef(null);
+  const expSliderRef = useRef(null);
+  
+
   //애니메이션용
   const qnaAniRef = useRef(null);
   const projectAniRef = useRef(null);
@@ -33,6 +42,18 @@ export default function Home() {
 
   //useEffect 영역
 
+  //모바일 체크용
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // 홈 화면 인터랙션 타이머
   useEffect(() => {
     const timer = setTimeout(() => {
       setHeroStart(true);
@@ -41,25 +62,27 @@ export default function Home() {
     return () => clearTimeout(timer);
   }, []);
 
+  // 홈 화면 마우스 라이트 효과
   useEffect(() => {
 
-  const moveLight = (e) => {
+    const moveLight = (e) => {
 
-    const x = e.clientX + "px";
-    const y = e.clientY + "px";
+      const x = e.clientX + "px";
+      const y = e.clientY + "px";
 
-    document.documentElement.style.setProperty('--mouse-x', x);
-    document.documentElement.style.setProperty('--mouse-y', y);
-  };
+      document.documentElement.style.setProperty('--mouse-x', x);
+      document.documentElement.style.setProperty('--mouse-y', y);
+    };
 
-  window.addEventListener('mousemove', moveLight);
+    window.addEventListener('mousemove', moveLight);
 
-  return () => {
-    window.removeEventListener('mousemove', moveLight);
-  };
+    return () => {
+      window.removeEventListener('mousemove', moveLight);
+    };
 
-}, []);
+  }, []);
 
+  // work 섹션 네비게이션 인터랙션
   useEffect(() => {
     const workEl = workRef.current;
     const projectEl = projectRef.current;
@@ -108,7 +131,7 @@ export default function Home() {
     return () => observer.disconnect();
   }, []);
 
-  /* QNA 스크롤 이벤트 */
+  // Qna 스크롤 이벤트 
   useEffect(() => {
     const el = qnaAniRef.current;
     if (!el) return;
@@ -132,6 +155,7 @@ export default function Home() {
     return () => observer.disconnect();
   }, []);
 
+  // project 스크롤 이벤트
   useEffect(() => {
     const el = projectAniRef.current;
     if (!el) return;
@@ -155,6 +179,7 @@ export default function Home() {
     return () => observer.disconnect();
   }, []);
 
+  // exp 스크롤 이벤트
   useEffect(() => {
     const el = expAniRef.current;
     if (!el) return;
@@ -193,6 +218,61 @@ export default function Home() {
     }
   };
 
+  useEffect(() => {
+    const el = projectSliderRef.current;
+    if (!el) return;
+
+    const handleScroll = () => {
+      if (isScrollingRef.current) return;
+
+      const children = Array.from(el.children);
+
+      let closestIndex = 0;
+      let minDiff = Infinity;
+
+      children.forEach((child, i) => {
+        const diff = Math.abs(el.scrollLeft - child.offsetLeft);
+        if (diff < minDiff) {
+          minDiff = diff;
+          closestIndex = i;
+        }
+      });
+
+      setProjectIndex(closestIndex);
+    };
+
+    el.addEventListener('scroll', handleScroll);
+    return () => el.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const el = expSliderRef.current;
+    if (!el) return;
+
+    const handleScroll = () => {
+      if (isScrollingRef.current) return;
+
+      const children = Array.from(el.children);
+
+      let closestIndex = 0;
+      let minDiff = Infinity;
+
+      children.forEach((child, i) => {
+        const diff = Math.abs(el.scrollLeft - child.offsetLeft);
+        if (diff < minDiff) {
+          minDiff = diff;
+          closestIndex = i;
+        }
+      });
+
+      setExpIndex(closestIndex);
+    };
+
+    el.addEventListener('scroll', handleScroll);
+    return () => el.removeEventListener('scroll', handleScroll);
+  }, []);
+  
+
   //맨 위로 스크롤
   function scrollToTop() {
     window.scrollTo({
@@ -219,6 +299,64 @@ export default function Home() {
         alert('메일 주소가 복사되었습니다!');
       });
   }
+
+  // 모바일 슬라이드 관련
+  const expLength = 5;
+
+  function scrollToIndex(ref, index) {
+    if (!isMobile) return;
+
+    const el = ref.current;
+    if (!el) return;
+
+    const child = el.children[index];
+    if (!child) return;
+
+    isScrollingRef.current = true;
+
+    el.scrollTo({
+      left: child.offsetLeft,
+      behavior: 'smooth',
+    });
+
+    // 스크롤 버벅임 방지
+    setTimeout(() => {
+      isScrollingRef.current = false;
+    }, 400);
+  }
+
+  function handlePrev(type) {
+    if (type === 'project') {
+      const next = Math.max(projectIndex - 1, 0);
+      setProjectIndex(next);
+      scrollToIndex(projectSliderRef, next);
+    }
+
+    if (type === 'exp') {
+      const next = Math.max(expIndex - 1, 0);
+      setExpIndex(next);
+      scrollToIndex(expSliderRef, next);
+    }
+  }
+
+  function handleNext(type, length) {
+    if (!isMobile) return;
+
+    if (type === 'project') {
+      const next = Math.min(projectIndex + 1, length - 1);
+      setProjectIndex(next);
+      scrollToIndex(projectSliderRef, next);
+    }
+
+    if (type === 'exp') {
+      const next = Math.min(expIndex + 1, length - 1);
+      setExpIndex(next);
+      scrollToIndex(expSliderRef, next);
+    }
+  }
+
+  
+
 
   return (
   <div className='mainCont'>
@@ -309,381 +447,408 @@ export default function Home() {
       <div className="work_right">
         <div className='project_cont' ref={projectRef}>
           <div className="project_ani" ref={projectAniRef}>
-            <ul>
-              {projects.map((p) => (
-              <li key={p.id} className="project-item" onClick={() => openProject(p)} onMouseEnter={() => preload(p.file)}>
-                <div className="project_wrap">
-                  <div className="project_thumbnail">
-                    <img src={require(`../assets/images/${p.file}_thumb.png`)} alt={p.title} />
-                  </div>
-                  <div className="project_details">
-                    <div className="project_title">{p.title}</div>
-                    <div className="project_label">{p.label}</div>
-                    <div className="project_tag">
-                      {p.tag?.map((tag, idx) => (
-                        <span key={idx} className="tag">
-                          {tag}
-                        </span>
-                      ))}
+            <div className="project_slider_wrap">
+              {isMobile && (
+                <button className="arrow prev" onClick={() => handlePrev('project')} />
+              )}
+              <ul ref={projectSliderRef} className="slider">
+                {projects.map((p) => (
+                <li key={p.id} className="project-item" onClick={() => openProject(p)} onMouseEnter={() => preload(p.file)}>
+                  <div className="project_wrap">
+                    <div className="project_thumbnail">
+                      <img src={require(`../assets/images/${p.file}_thumb.png`)} alt={p.title} />
                     </div>
-                    <p className="project_period">{p.period}</p>
+                    <div className="project_details">
+                      <div className="project_title">{p.title}</div>
+                      <div className="project_label">{p.label}</div>
+                      <div className="project_tag">
+                        {p.tag?.map((tag, idx) => (
+                          <span key={idx} className="tag">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                      <p className="project_period">{p.period}</p>
+                    </div>
+                  </div>                     
+                  <div className="project_actions">
+                    <div className="por">
+                        <h5>{p.title}</h5>
+                        <button onClick={() => openProject(p)} onMouseEnter={() => preload(p.file)}>자세히보기</button>
+                    </div>                
                   </div>
-                </div>                     
-                <div className="project_actions">
-                  <div className="por">
-                      <h5>{p.title}</h5>
-                      <button onClick={() => openProject(p)} onMouseEnter={() => preload(p.file)}>자세히보기</button>
-                  </div>                
+                </li>
+                ))}
+              </ul>
+              {isMobile && (
+                <button className="arrow next" onClick={() => handleNext('project', projects.length)} />
+              )}
+              {isMobile && (
+                <div className="dots">
+                  {projects.map((_, i) => (
+                    <button
+                      key={i}
+                      className={i === projectIndex ? 'on' : ''}
+                      onClick={() => {
+                        setProjectIndex(i);
+                        scrollToIndex(projectSliderRef, i);
+                      }}
+                    />
+                  ))}
                 </div>
-              </li>
-              ))}
-            </ul>
+              )}
+            </div>
           </div>
-          {/* <div className="work_category">
-            <button id="all">All</button>
-            <button id="team">Team</button>
-            <button id="single">Single</button>
-          </div> */}
         </div>
         <div className="exp_cont" ref={expRef}>
           <div className="exp_ani" ref={expAniRef}>
-            <ul className="exp_list">
-              {/* <li>
-                <p className="period">2025.06 - 2025.10</p>
-                <div className="titleCont">
-                  <h4 className="title">뉴젠보드(프로그램 메뉴얼 가이드 사이트)<br />리뉴얼 프로젝트</h4>
-                  <h5 className="subTitle">프로젝트 전반 React + TypeScript 구조로 리뉴얼 안정성과 유지보수성을 향상시킴.</h5>
+            <div className="exp_slider_wrap">
+              {isMobile && (
+                <button className="arrow prev" onClick={() => handlePrev('exp')} />
+              )}
+              <ul className="exp_list slider" ref={expSliderRef}>
+                <li>
+                  <table>
+                    <tbody>
+                      <tr>
+                        <th>업무명</th>
+                        <td>뉴젠보드(프로그램 메뉴얼 가이드 사이트) 리뉴얼 프로젝트</td>
+                      </tr>
+                      <tr>
+                        <th>기간</th>
+                        <td>2025.06 ~ 2025.10 (5개월)</td>
+                      </tr>
+                      <tr>
+                        <th>성과</th>
+                        <td>프로젝트 전반 React + TypeScript 구조로 리뉴얼 안정성과 유지보수성을 향상</td>
+                      </tr>
+                      <tr>
+                        <th>역할</th>
+                        <td>
+                          <ul className="role">
+                            <li>
+                              1.  React + TypeScript 기반 프로젝트 구조 개선 및 UI 구현
+                              <div>
+                                기존 구조를 컴포넌트 단위로 분리하고 타입을 정의하여 안정적인 UI 개발 환경 구성
+                              </div>
+                            </li>
+                            <li>
+                              2. Zustand 기반 전역 상태관리 및 UI 상태 흐름 제어
+                              <div>
+                                depth 구조와 선택 상태를 관리하며 트리 구조 UI의 상태 흐름을 안정적으로 구현
+                              </div>
+                            </li>
+                            <li>
+                              3. 공통 컴포넌트 및 재사용 UI 개발
+                              <div>
+                                Dropdown, Dialog, Tab 등 공통 UI 컴포넌트를 구현하여 화면 간 일관성과 재사용성 확보
+                              </div>
+                            </li>
+                            <li>
+                              4. SCSS 기반 스타일 구조 개선
+                              <div>
+                                컴포넌트 단위 스타일링을 적용하여 유지보수와 확장성을 고려한 스타일 구조 구성
+                              </div>
+                            </li>
+                            <li>
+                              5. 협업 및 요구사항 조율
+                              <div>
+                                디자이너 및 백엔드와 협업하며 UI 구현, 기능 요구사항 반영 및 일정 조율 경험
+                              </div>
+                            </li>
+                          </ul>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>기술</th>
+                        <td>
+                          <ul className="skills">
+                            <li>React + TypeScript 기반 SPA 구조에서 컴포넌트 중심 UI 개발 경험</li>
+                            <li>Zustand를 활용한 전역 상태관리 및 depth 기반 메뉴 구조의 UI 상태 흐름 제어</li>
+                            <li>SCSS 기반 컴포넌트 단위 스타일링 및 유지보수 친화적 스타일 구조 구성</li>
+                            <li>CKEditor 5 커스터마이징 (툴바 구성, 한글 UI, 이미지 업로드 등 에디터 환경 개선)</li>
+                            <li>Zeplin 시안을 기반으로 UI 구현 및 디자이너 협업 경험</li>
+                            <li>Git 기반 버전 관리 및 협업 환경에서의 코드 통합 경험</li>
+                          </ul>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </li>
+                <li>
+                  <table>
+                    <tbody>
+                      <tr>
+                        <th>업무명</th>
+                        <td>제트리포트 (리포트 툴) 웹 페이지 화 프로젝트</td>
+                      </tr>
+                      <tr>
+                        <th>기간</th>
+                        <td>2024.09-2025.01 (5개월)</td>
+                      </tr>
+                      <tr>
+                        <th>성과</th>
+                        <td>기존 리포트 에디터를 웹 환경으로 구현하여 사용자 접근성과 UI 일관성을 개선</td>
+                      </tr>
+                      <tr>
+                        <th>역할</th>
+                        <td>
+                          <ul className="role">
+                            <li>
+                              1. 리포트 에디터 UI 퍼블리싱 및 구조 정리
+                              <div>
+                                복잡한 편집 화면을 웹 환경에 맞게 재구성하고, 화면 단위로 UI를 나누어 퍼블리싱 진행
+                              </div>
+                            </li>
+                            <li>
+                              2. 공통 UI 컴포넌트 정리 및 재사용 구조 적용
+                              <div>
+                                버튼, 패널, 입력 요소 등을 공통화하여 화면 간 UI 일관성과 작업 효율 개선
+                              </div>
+                            </li>
+                            <li>
+                              3. 협업 기반 UI 구현 및 요구사항 반영
+                              <div>
+                                Zeplin 시안을 기반으로 UI를 구현하고, Jira를 통해 이슈 관리 및 수정사항 반영
+                              </div>
+                            </li>                          
+                          </ul>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>기술</th>
+                        <td>
+                          <ul className="skills">
+                            <li>Git 기반 버전 관리 및 협업 환경에서의 코드 통합 경험</li>
+                            <li>Jira를 활용한 이슈 관리 및 협업 프로세스 경험</li>
+                            <li>Zeplin 기반 디자인 구현 및 디자이너 협업 경험</li>                          
+                          </ul>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </li>
+                <li>
+                  <table>
+                    <tbody>
+                      <tr>
+                        <th>업무명</th>
+                        <td>비욘드 재무보고서 (재무 데이터 대시보드) 프로젝트</td>
+                      </tr>
+                      <tr>
+                        <th>기간</th>
+                        <td>2024.06-2024.09 (4개월)</td>
+                      </tr>
+                      <tr>
+                        <th>성과</th>
+                        <td>파라미터 기반 재무 데이터를 시각화한 대시보드 구축하여, 정보 조회 효율을 향상</td>
+                      </tr>
+                      <tr>
+                        <th>역할</th>
+                        <td>
+                          <ul className="role">
+                            <li>
+                              1. 재무 데이터 대시보드 화면 구현
+                              <div>
+                                업체 코드 및 기준년월 파라미터에 따라 데이터를 조회하고, Chart.js를 활용해 그래프 및 차트 형태로 시각화
+                              </div>
+                              <div>
+                                다양한 해상도에서도 안정적으로 확인할 수 있도록 반응형 레이아웃 적용
+                              </div>
+                            </li>
+                            <li>
+                              2. 백엔드 API 연동 및 데이터 처리
+                              <div>
+                                API를 통해 수신한 JSON 데이터를 항목별로 가공하여 대시보드 UI에 맞게 바인딩
+                              </div>                            
+                            </li>
+                            <li>
+                              3. 파라미터 기반 동적 화면 구성
+                              <div>
+                                동일 화면에서 업체 및 기간 변경에 따라 데이터가 실시간으로 갱신되는 구조 구현
+                              </div>
+                            </li>
+                            <li>
+                              4. 재무보고서 인쇄 기능 구현
+                              <div>
+                                고객 요청에 따라 대시보드 화면을 인쇄 가능한 형태로 제공
+                              </div>
+                              <div>
+                                OZReport를 활용해 재무 데이터 기반 출력 리포트 연동
+                              </div>
+                            </li>
+                          </ul>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>기술</th>
+                        <td>
+                          <ul className="skills">
+                            <li>Git 기반 버전 관리 및 협업 환경에서의 코드 통합 경험</li>
+                            <li>백엔드 API 연동 및 JSON 데이터 가공·바인딩 경험</li>
+                            <li>파라미터 기반 동적 화면 처리 및 상태 흐름 제어</li>
+                            <li>Chart.js를 활용한 데이터 시각화 및 대시보드 UI 구현</li>
+                            <li>OZReport 연동을 통한 인쇄용 리포트 구현</li>
+                          </ul>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </li>
+                <li>
+                  <table>
+                    <tbody>
+                      <tr>
+                        <th>업무명</th>
+                        <td>비즈북스 (세무 비즈니스 플랫폼) 운영 및 고도화 프로젝트</td>
+                      </tr>
+                      <tr>
+                        <th>기간</th>
+                        <td>2021.06-2025.10 (상시 운영 및 기능 고도화)</td>
+                      </tr>
+                      <tr>
+                        <th>성과</th>
+                        <td>장기 운영 서비스의 신규기능·메뉴 추가 및 화면 리뉴얼 작업을 지속 수행하며, 컴포넌트 단위 구조화를 통해 유지보수 효율과 화면 일관성을 안정적으로 유지</td>
+                      </tr>
+                      <tr>
+                        <th>역할</th>
+                        <td className="role">
+                          <ul>
+                            <li>
+                              1. 플랫폼 신규 기능 및 화면 구현
+                              <div>
+                                기능 요구사항에 맞춰 신규 메뉴 및 화면을 구현하고, 기존 구조를 고려하여 확장 가능한 형태로 구성
+                              </div>
+                            </li>
+                            <li>
+                              2. 운영 서비스 유지보수 및 이슈 대응
+                              <div>
+                                운영 중 발생하는 UI 오류 및 기능 이슈를 분석하고 수정하여 서비스 안정성 유지
+                              </div>
+                              <div>
+                                다양한 수정 요청을 반영하며 화면 품질과 일관성 지속 관리
+                              </div>
+                            </li>
+                            <li>
+                              3. 리뉴얼 UI 반영 및 기존 화면 개선
+                              <div>
+                                디자인 변경에 맞춰 기존 화면을 재구성하고, 공통 UI를 기준으로 일관된 스타일 적용
+                              </div>
+                            </li>
+                            <li>
+                              4. 공통 UI 구조 관리 및 반복 작업 개선
+                              <div>
+                                버튼, 테이블, 모달 등 공통 요소를 분리하여 재사용성을 높이고, 반복 작업을 최소화
+                              </div>
+                            </li>
+                          </ul>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>기술</th>
+                        <td>
+                          <ul className="skills">
+                            <li>Toast Grid 기반 데이터 그리드 UI 구현</li>
+                            <li>Chart.js 기반 데이터 시각화 구현</li>
+                            <li>Git 기반 버전 관리 및 협업 경험</li>
+                          </ul>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </li>
+                <li>
+                  <table>
+                    <tbody>
+                      <tr>
+                        <th>업무명</th>
+                        <td>대표 홈페이지 및 마이크로사이트 운영·리뉴얼</td>
+                      </tr>
+                      <tr>
+                        <th>기간</th>
+                        <td>재직 기간 전반 (상시 신규 제작 및 유지보수)</td>
+                      </tr>
+                      <tr>
+                        <th>성과</th>
+                        <td>대표 홈페이지 및 다수의 마이크로사이트를 신규 제작·운영하며,
+                        UI 구현과 SEO 개선을 통해 사용자 경험과 사이트 완성도를 지속적으로 향상</td>
+                      </tr>
+                      <tr>
+                        <th>역할</th>
+                        <td className="role">
+                          <ul>
+                            <li>
+                              1. 대표 홈페이지 메인 인터랙션 구현
+                              <div>
+                                AOS, Waypoints, CountUp.js를 활용하여 스크롤 위치에 따라 애니메이션이 동작하는 인터랙션 UI 구현
+                              </div>
+                              <div>
+                                요소의 화면 진입 시점을 기준으로 이벤트 조건을 조정하여 자연스러운 사용자 흐름 구성
+                              </div>
+                            </li>
+                            <li>
+                              2. 이미지 자료실 갤러리 기능 구현 및 커스터마이징
+                              <div>
+                                Magnify.js 플러그인을 기반으로 이미지 미리보기 및 확대 기능 구현
+                              </div>
+                              <div>
+                                기본 기능의 한계를 보완하기 위해 이미지 비율 유지, 마우스 휠 확대, 태그 기능 등을 추가 구현
+                              </div>
+                            </li>
+                            <li>
+                              3. 파일 다운로드 기능 및 이슈 해결
+                              <div>
+                                Ajax를 활용한 이미지 다운로드 기능 구현
+                              </div>
+                              <div>
+                                한글 파일명 인코딩 문제를 해결하여 정상적인 파일 다운로드 환경 구축
+                              </div>
+                            </li>
+                            <li>
+                              4. SEO 및 웹 품질 개선
+                              <div>
+                                Google Lighthouse를 활용하여 성능, 접근성, SEO 항목을 점검하고 이미지 최적화 및 마크업 개선 적용
+                              </div>
+                            </li>
+                            <li>
+                              5. 프로그램 마이크로사이트 신규 제작 및 유지보수
+                            </li>
+                          </ul>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>기술</th>
+                        <td>
+                          <ul className="skills">
+                            <li>AOS, Waypoints, CountUp.js를 활용한 스크롤 기반 인터랙션 구현 및 이벤트 제어</li>
+                            <li>Magnify.js를 활용한 갤러리 구현 및 커스터마이징을 통한 기능 확장 경험</li>
+                            <li>Ajax 기반 파일 다운로드 구현 및 인코딩 이슈 처리 경험</li>
+                            <li>Google Lighthouse 기반 성능·접근성·SEO 개선 경험</li>
+                          </ul>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </li>
+              </ul>
+              {isMobile && (
+                <button className="arrow next" onClick={() => handleNext('exp', expLength)} />
+              )}
+              {isMobile && (
+                <div className="dots">
+                  {Array.from({ length: expLength }).map((_, i) => (
+                    <button
+                      key={i}
+                      className={i === expIndex ? 'on' : ''}
+                      onClick={() => {
+                        setExpIndex(i);
+                        scrollToIndex(expSliderRef, i);
+                      }}
+                    />
+                  ))}
                 </div>
-                <ul className="details">
-                  <li>기존 프로젝트 전반을 React + TypeScript 기반 프론트엔드 설계<br /> 컴포넌트 단위 구조 설계 및 타입 정의를 통해 안정적인 UI 개발</li>
-                  <li>JavaScript, React 등 핵심 기술 학습</li>
-                  <li>JavaScript, React 등 핵심 기술 학습</li>
-                </ul>
-              </li> */}
-              <li>
-                <table>
-                  <tbody>
-                    <tr>
-                      <th>업무명</th>
-                      <td>뉴젠보드(프로그램 메뉴얼 가이드 사이트) 리뉴얼 프로젝트</td>
-                    </tr>
-                    <tr>
-                      <th>기간</th>
-                      <td>2025.06 ~ 2025.10 (5개월)</td>
-                    </tr>
-                    <tr>
-                      <th>성과</th>
-                      <td>프로젝트 전반 React + TypeScript 구조로 리뉴얼 안정성과 유지보수성을 향상</td>
-                    </tr>
-                    <tr>
-                      <th>역할</th>
-                      <td>
-                        <ul className="role">
-                          <li>
-                            1.  React + TypeScript 기반 프로젝트 구조 개선 및 UI 구현
-                            <div>
-                              기존 구조를 컴포넌트 단위로 분리하고 타입을 정의하여 안정적인 UI 개발 환경 구성
-                            </div>
-                          </li>
-                          <li>
-                            2. Zustand 기반 전역 상태관리 및 UI 상태 흐름 제어
-                            <div>
-                              depth 구조와 선택 상태를 관리하며 트리 구조 UI의 상태 흐름을 안정적으로 구현
-                            </div>
-                          </li>
-                          <li>
-                            3. 공통 컴포넌트 및 재사용 UI 개발
-                            <div>
-                              Dropdown, Dialog, Tab 등 공통 UI 컴포넌트를 구현하여 화면 간 일관성과 재사용성 확보
-                            </div>
-                          </li>
-                          <li>
-                            4. SCSS 기반 스타일 구조 개선
-                            <div>
-                              컴포넌트 단위 스타일링을 적용하여 유지보수와 확장성을 고려한 스타일 구조 구성
-                            </div>
-                          </li>
-                          <li>
-                            5. 협업 및 요구사항 조율
-                            <div>
-                              디자이너 및 백엔드와 협업하며 UI 구현, 기능 요구사항 반영 및 일정 조율 경험
-                            </div>
-                          </li>
-                        </ul>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th>기술</th>
-                      <td>
-                        <ul className="skills">
-                          <li>React + TypeScript 기반 SPA 구조에서 컴포넌트 중심 UI 개발 경험</li>
-                          <li>Zustand를 활용한 전역 상태관리 및 depth 기반 메뉴 구조의 UI 상태 흐름 제어</li>
-                          <li>SCSS 기반 컴포넌트 단위 스타일링 및 유지보수 친화적 스타일 구조 구성</li>
-                          <li>CKEditor 5 커스터마이징 (툴바 구성, 한글 UI, 이미지 업로드 등 에디터 환경 개선)</li>
-                          <li>Zeplin 시안을 기반으로 UI 구현 및 디자이너 협업 경험</li>
-                          <li>Git 기반 버전 관리 및 협업 환경에서의 코드 통합 경험</li>
-                        </ul>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </li>
-              <li>
-                <table>
-                  <tbody>
-                    <tr>
-                      <th>업무명</th>
-                      <td>제트리포트 (리포트 툴) 웹 페이지 화 프로젝트</td>
-                    </tr>
-                    <tr>
-                      <th>기간</th>
-                      <td>2024.09-2025.01 (5개월)</td>
-                    </tr>
-                    <tr>
-                      <th>성과</th>
-                      <td>기존 리포트 에디터를 웹 환경으로 구현하여 사용자 접근성과 UI 일관성을 개선</td>
-                    </tr>
-                    <tr>
-                      <th>역할</th>
-                      <td>
-                        <ul className="role">
-                          <li>
-                            1. 리포트 에디터 UI 퍼블리싱 및 구조 정리
-                            <div>
-                              복잡한 편집 화면을 웹 환경에 맞게 재구성하고, 화면 단위로 UI를 나누어 퍼블리싱 진행
-                            </div>
-                          </li>
-                          <li>
-                            2. 공통 UI 컴포넌트 정리 및 재사용 구조 적용
-                            <div>
-                              버튼, 패널, 입력 요소 등을 공통화하여 화면 간 UI 일관성과 작업 효율 개선
-                            </div>
-                          </li>
-                          <li>
-                            3. 협업 기반 UI 구현 및 요구사항 반영
-                            <div>
-                              Zeplin 시안을 기반으로 UI를 구현하고, Jira를 통해 이슈 관리 및 수정사항 반영
-                            </div>
-                          </li>                          
-                        </ul>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th>기술</th>
-                      <td>
-                        <ul className="skills">
-                          <li>Git 기반 버전 관리 및 협업 환경에서의 코드 통합 경험</li>
-                          <li>Jira를 활용한 이슈 관리 및 협업 프로세스 경험</li>
-                          <li>Zeplin 기반 디자인 구현 및 디자이너 협업 경험</li>                          
-                        </ul>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </li>
-              <li>
-                <table>
-                  <tbody>
-                    <tr>
-                      <th>업무명</th>
-                      <td>비욘드 재무보고서 (재무 데이터 대시보드) 프로젝트</td>
-                    </tr>
-                    <tr>
-                      <th>기간</th>
-                      <td>2024.06-2024.09 (4개월)</td>
-                    </tr>
-                    <tr>
-                      <th>성과</th>
-                      <td>파라미터 기반 재무 데이터를 시각화한 대시보드 구축하여, 정보 조회 효율을 향상</td>
-                    </tr>
-                    <tr>
-                      <th>역할</th>
-                      <td>
-                        <ul className="role">
-                          <li>
-                            1. 재무 데이터 대시보드 화면 구현
-                            <div>
-                               업체 코드 및 기준년월 파라미터에 따라 데이터를 조회하고, Chart.js를 활용해 그래프 및 차트 형태로 시각화
-                            </div>
-                            <div>
-                              다양한 해상도에서도 안정적으로 확인할 수 있도록 반응형 레이아웃 적용
-                            </div>
-                          </li>
-                          <li>
-                            2. 백엔드 API 연동 및 데이터 처리
-                            <div>
-                              API를 통해 수신한 JSON 데이터를 항목별로 가공하여 대시보드 UI에 맞게 바인딩
-                            </div>                            
-                          </li>
-                          <li>
-                            3. 파라미터 기반 동적 화면 구성
-                            <div>
-                              동일 화면에서 업체 및 기간 변경에 따라 데이터가 실시간으로 갱신되는 구조 구현
-                            </div>
-                          </li>
-                          <li>
-                            4. 재무보고서 인쇄 기능 구현
-                            <div>
-                              고객 요청에 따라 대시보드 화면을 인쇄 가능한 형태로 제공
-                            </div>
-                            <div>
-                              OZReport를 활용해 재무 데이터 기반 출력 리포트 연동
-                            </div>
-                          </li>
-                        </ul>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th>기술</th>
-                      <td>
-                        <ul className="skills">
-                          <li>Git 기반 버전 관리 및 협업 환경에서의 코드 통합 경험</li>
-                          <li>백엔드 API 연동 및 JSON 데이터 가공·바인딩 경험</li>
-                          <li>파라미터 기반 동적 화면 처리 및 상태 흐름 제어</li>
-                          <li>Chart.js를 활용한 데이터 시각화 및 대시보드 UI 구현</li>
-                          <li>OZReport 연동을 통한 인쇄용 리포트 구현</li>
-                        </ul>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </li>
-              <li>
-                <table>
-                  <tbody>
-                    <tr>
-                      <th>업무명</th>
-                      <td>비즈북스 (세무 비즈니스 플랫폼) 운영 및 고도화 프로젝트</td>
-                    </tr>
-                    <tr>
-                      <th>기간</th>
-                      <td>2021.06-2025.10 (상시 운영 및 기능 고도화)</td>
-                    </tr>
-                    <tr>
-                      <th>성과</th>
-                      <td>장기 운영 서비스의 신규기능·메뉴 추가 및 화면 리뉴얼 작업을 지속 수행하며, 컴포넌트 단위 구조화를 통해 유지보수 효율과 화면 일관성을 안정적으로 유지</td>
-                    </tr>
-                    <tr>
-                      <th>역할</th>
-                      <td className="role">
-                        <ul>
-                          <li>
-                            1. 플랫폼 신규 기능 및 화면 구현
-                            <div>
-                              기능 요구사항에 맞춰 신규 메뉴 및 화면을 구현하고, 기존 구조를 고려하여 확장 가능한 형태로 구성
-                            </div>
-                          </li>
-                          <li>
-                            2. 운영 서비스 유지보수 및 이슈 대응
-                            <div>
-                              운영 중 발생하는 UI 오류 및 기능 이슈를 분석하고 수정하여 서비스 안정성 유지
-                            </div>
-                            <div>
-                              다양한 수정 요청을 반영하며 화면 품질과 일관성 지속 관리
-                            </div>
-                          </li>
-                          <li>
-                            3. 리뉴얼 UI 반영 및 기존 화면 개선
-                            <div>
-                              디자인 변경에 맞춰 기존 화면을 재구성하고, 공통 UI를 기준으로 일관된 스타일 적용
-                            </div>
-                          </li>
-                          <li>
-                            4. 공통 UI 구조 관리 및 반복 작업 개선
-                            <div>
-                              버튼, 테이블, 모달 등 공통 요소를 분리하여 재사용성을 높이고, 반복 작업을 최소화
-                            </div>
-                          </li>
-                        </ul>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th>기술</th>
-                      <td>
-                        <ul className="skills">
-                          <li>Toast Grid 기반 데이터 그리드 UI 구현</li>
-                          <li>Chart.js 기반 데이터 시각화 구현</li>
-                          <li>Git 기반 버전 관리 및 협업 경험</li>
-                        </ul>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </li>
-              <li>
-                <table>
-                  <tbody>
-                    <tr>
-                      <th>업무명</th>
-                      <td>대표 홈페이지 및 마이크로사이트 운영·리뉴얼</td>
-                    </tr>
-                    <tr>
-                      <th>기간</th>
-                      <td>재직 기간 전반 (상시 신규 제작 및 유지보수)</td>
-                    </tr>
-                    <tr>
-                      <th>성과</th>
-                      <td>대표 홈페이지 및 다수의 마이크로사이트를 신규 제작·운영하며,
-                      UI 구현과 SEO 개선을 통해 사용자 경험과 사이트 완성도를 지속적으로 향상</td>
-                    </tr>
-                    <tr>
-                      <th>역할</th>
-                      <td className="role">
-                        <ul>
-                          <li>
-                            1. 대표 홈페이지 메인 인터랙션 구현
-                            <div>
-                              AOS, Waypoints, CountUp.js를 활용하여 스크롤 위치에 따라 애니메이션이 동작하는 인터랙션 UI 구현
-                            </div>
-                            <div>
-                              요소의 화면 진입 시점을 기준으로 이벤트 조건을 조정하여 자연스러운 사용자 흐름 구성
-                            </div>
-                          </li>
-                          <li>
-                            2. 이미지 자료실 갤러리 기능 구현 및 커스터마이징
-                            <div>
-                              Magnify.js 플러그인을 기반으로 이미지 미리보기 및 확대 기능 구현
-                            </div>
-                            <div>
-                              기본 기능의 한계를 보완하기 위해 이미지 비율 유지, 마우스 휠 확대, 태그 기능 등을 추가 구현
-                            </div>
-                          </li>
-                          <li>
-                            3. 파일 다운로드 기능 및 이슈 해결
-                            <div>
-                              Ajax를 활용한 이미지 다운로드 기능 구현
-                            </div>
-                            <div>
-                              한글 파일명 인코딩 문제를 해결하여 정상적인 파일 다운로드 환경 구축
-                            </div>
-                          </li>
-                          <li>
-                            4. SEO 및 웹 품질 개선
-                            <div>
-                              Google Lighthouse를 활용하여 성능, 접근성, SEO 항목을 점검하고 이미지 최적화 및 마크업 개선 적용
-                            </div>
-                          </li>
-                          <li>
-                            5. 프로그램 마이크로사이트 신규 제작 및 유지보수
-                          </li>
-                        </ul>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th>기술</th>
-                      <td>
-                        <ul className="skills">
-                          <li>AOS, Waypoints, CountUp.js를 활용한 스크롤 기반 인터랙션 구현 및 이벤트 제어</li>
-                          <li>Magnify.js를 활용한 갤러리 구현 및 커스터마이징을 통한 기능 확장 경험</li>
-                          <li>Ajax 기반 파일 다운로드 구현 및 인코딩 이슈 처리 경험</li>
-                          <li>Google Lighthouse 기반 성능·접근성·SEO 개선 경험</li>
-                        </ul>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </li>
-            </ul>
+              )}
+            </div> 
           </div>
         </div>
       </div>
