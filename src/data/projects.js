@@ -38,7 +38,7 @@ const projects = [
     file: 'nzHome', 
     tag: ['반응형', 'React'], 
     period: '재직 기간 전반 (상시 신규 제작 및 유지보수)', 
-    member: '4인(프론트 1명, 백엔드 1명, 디자이너 1명, DBA 1명)' ,
+    member: '5인(프론트 2명, 백엔드 1명, 디자이너 2명)' ,
 }
   // { id: '128', label: '151', title: 'Aproject 5', file: 'nzBoard', tag: ['반응형', 'React'], period: '2025.05 - 2025.07' },
   // { id: '129', label: '152', title: 'Aproject 5', file: 'nzBoard', tag: ['반응형', 'React'], period: '2025.05 - 2025.07' },

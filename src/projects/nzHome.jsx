@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import screenShot1 from '../assets/images/nzHome_screen1.png';
-import screenShot1Thumb from '../assets/images/nzHome_screen1Thumb.png';
-import screenShot2 from '../assets/images/nzBoard_screen2.png';
-import screenShot3 from '../assets/images/nzBoard_screen3.png';
-import screenShot4 from '../assets/images/nzBoard_screen4.png';
-import screenShot5 from '../assets/images/nzBoard_screen5.png';
-import screenShot6 from '../assets/images/nzBoard_screen6.png';
-import screenShot7 from '../assets/images/nzBoard_screen7.png';
-import screenShot8 from '../assets/images/nzBoard_screen8.png';
-import screenShot9 from '../assets/images/nzBoard_screen9.png';
-import screenShot10 from '../assets/images/nzBoard_screenGif1.gif';
+import screenShot1 from '../assets/images/nzHome_screen1.gif';
+import screenShot2 from '../assets/images/nzHome_screen2.gif';
+import screenShot3 from '../assets/images/nzHome_screen3.jpg';
+import screenShot3Thumb from '../assets/images/nzHome_screen3Thumb.png';
+import screenShot4 from '../assets/images/nzHome_screen4.gif';
+import screenShot5 from '../assets/images/nzHome_screen5.png';
+import screenShot5Thumb from '../assets/images/nzHome_screen5Thumb.jpg';
+import screenShot6 from '../assets/images/nzHome_screen6.png';
+import screenShot6Thumb from '../assets/images/nzHome_screen6Thumb.jpg';
+import screenShot7 from '../assets/images/nzHome_screen7.jpg';
+import screenShot7Thumb from '../assets/images/nzHome_screen7Thumb.png';
 
 export default function NzBoard() {
     const [openIndex, setOpenIndex] = useState(() => {
@@ -159,44 +159,32 @@ export default function NzBoard() {
             </h3>
             <div className="gridBox">
                  <div className="screen_item" onClick={() => setSelectedImage(screenShot1)}>
-                    <img src={screenShot1Thumb} alt="프로젝트 작업 화면 1" />
-                    <p className="item_title">로그인</p>
+                    <img src={screenShot1} alt="프로젝트 작업 화면 1" />
+                    <p className="item_title">대표 홈페이지 메인</p>
                  </div>
                  <div className="screen_item" onClick={() => setSelectedImage(screenShot2)}>
                     <img src={screenShot2} alt="프로젝트 작업 화면 2" />
-                    <p className="item_title">메인</p>
+                    <p className="item_title">홈페이지 회사소개</p>
                  </div>
                  <div className="screen_item" onClick={() => setSelectedImage(screenShot3)}>
-                    <img src={screenShot3} alt="프로젝트 작업 화면 3" />
-                    <p className="item_title">메인 (사이드 바)</p>
+                    <img src={screenShot3Thumb} alt="프로젝트 작업 화면 3" />
+                    <p className="item_title">홈페이지 공지사항</p>
                  </div>
                  <div className="screen_item" onClick={() => setSelectedImage(screenShot4)}>
                     <img src={screenShot4} alt="프로젝트 작업 화면 4" />
-                    <p className="item_title">메인 (검색 기능)</p>
+                    <p className="item_title">홈페이지 이미지 자료실</p>
                  </div>
                  <div className="screen_item" onClick={() => setSelectedImage(screenShot5)}>
-                    <img src={screenShot5} alt="프로젝트 작업 화면 5" />
-                    <p className="item_title">검색 결과</p>
+                    <img src={screenShot5Thumb} alt="프로젝트 작업 화면 5" />
+                    <p className="item_title">비즈북스 마이크로페이지</p>
                  </div>
                  <div className="screen_item" onClick={() => setSelectedImage(screenShot6)}>
-                    <img src={screenShot6} alt="프로젝트 작업 화면 6" />
-                    <p className="item_title">글 작성</p>
+                    <img src={screenShot6Thumb} alt="프로젝트 작업 화면 6" />
+                    <p className="item_title">택스비즈북 마이크로페이지</p>
                  </div>
                  <div className="screen_item" onClick={() => setSelectedImage(screenShot7)}>
-                    <img src={screenShot7} alt="프로젝트 작업 화면 7" />
-                    <p className="item_title">글 수정</p>
-                 </div>
-                 <div className="screen_item" onClick={() => setSelectedImage(screenShot8)}>
-                    <img src={screenShot8} alt="프로젝트 작업 화면 8" />
-                    <p className="item_title">카테고리 편집</p>
-                 </div>
-                 <div className="screen_item" onClick={() => setSelectedImage(screenShot9)}>
-                    <img src={screenShot9} alt="프로젝트 작업 화면 9" />
-                    <p className="item_title">PDF 다운로드</p>
-                 </div>
-                 <div className="screen_item" onClick={() => setSelectedImage(screenShot10)}>
-                    <img src={screenShot10} alt="프로젝트 작업 화면 10" />
-                    <p className="item_title">PDF 다운로드 시연</p>
+                    <img src={screenShot7Thumb} alt="프로젝트 작업 화면 7" />
+                    <p className="item_title">케이렙365 마이크로페이지</p>
                  </div>
             </div> 
         </section>

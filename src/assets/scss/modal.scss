@@ -284,6 +284,11 @@
             }
         }
     }
+    .image_modal {        
+        .image_modal_content { 
+            max-width: 90vw;            
+        }  
+    }
 }
 
 @media screen and (max-width: 380px){
