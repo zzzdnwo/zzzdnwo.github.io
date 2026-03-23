@@ -1,4 +1,5 @@
-import React, { useState, useMemo, useRef, useEffect } from 'react';
+// import React, { useState, useMemo, useRef, useEffect } from 'react';
+import React from 'react';
 import '../assets/scss/pages/resume.scss';
 
 export default function Resume() {
