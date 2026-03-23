@@ -1,0 +1,50 @@
+@charset "utf-8";
+
+$laptop: 1440px;
+$laptop-min:1024px;
+$mobile: 768px; 
+
+.resumeCont{ width: 100%; display: flex; justify-content: center; background: #fff;
+  main{ width: 100%; max-width: $laptop-min;
+    &>div{padding: 6rem; background: #fff;
+      &.resume_header{ display: flex; justify-content: start;
+        .resume_profile{ display: flex; flex-flow: column; justify-content: center; align-items: start; gap: 1.2rem;
+          .profile_job{ font-size: 2.4rem; color: #000;}
+          .profile_name{ font-size: 4.0rem; font-weight: bold;}
+          .profile_mail{ font-size: 1.3rem; font-weight: 500; color: #666;}
+        }
+      }
+      &.resume_content{ line-height: 2.4rem; letter-spacing: -0.5px;
+        section{padding: 0 0 6rem 0; display: flex; gap: 0 6rem;
+          .section_title{font-size: 1.6rem; font-weight: bold; color: #000; width: 12rem;}
+          .section_content{width: calc(100% - 18rem);}
+          &.skill{
+            .skill_list{ display: flex; gap: 0.8rem; flex-wrap: wrap;
+              li{font-size: 1.5rem; font-weight: 500; color: #222; padding: 1rem 1.6rem; display: flex; align-items: center; justify-content: center; border: 1px solid #ddd; border-radius: 10rem; }
+            }
+          }
+          &.project{
+            .project_list{ display: flex; flex-flow: column; gap: 6rem 0;
+              .project_item{
+                .project_name{font-size: 1.8rem; font-weight: bold;}
+                .project_period{margin: 1rem 0; font-size: 1.3rem; color: #555;}
+                .project_result{margin: 2rem 0 0 0; font-size: 1.6rem; font-weight: 700;}
+                hr{display: block; height: 0.1rem; background: transparent; border-bottom: 0.1rem solid #dcdcdc; margin: 2.4rem 0;}
+                .project_role{display: flex; flex-flow: column; gap: 2.4rem 0;
+                  &>li{
+                    span{display: block; font-size: 1.6rem; font-weight: 700; margin-bottom: 0.6rem;}
+                    ul{ display: flex; flex-flow: column; gap: 0.4rem 0;
+                        li{font-size: 1.6rem; padding-left: 2.4rem; position: relative; word-break: keep-all;
+                            &::before{content: ''; display: block; position: absolute; left: 1.5rem; top: 1rem; width: 0.4rem; height: 0.4rem; background: #000; border-radius: 50%;}
+                        }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,3 +1,7 @@
+$laptop: 1440px;
+$laptop-min:1024px;
+$mobile: 768px;
+
 .modal_overlay{ width: 100%; height: 100%; position: fixed; left: 0; top: 0; 
     background: rgba(0,0,0,0.6); backdrop-filter: blur(0.4rem);
     display: flex; align-items: center; justify-content: center; z-index: 1000;
@@ -87,7 +91,7 @@
   }  
 }
 
-@media screen and (max-width: 1440px){
+@media screen and (max-width: $laptop){
     .modal_overlay{
         .modal_wrapper{ 
             .modal_content{                
@@ -97,7 +101,7 @@
     }
 }
 
-@media screen and (max-width: 1024px){
+@media screen and (max-width: $laptop-min){
     .modal_overlay{
         .modal_wrapper{ 
             .modal_content{
@@ -157,7 +161,7 @@
     }
 }
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: $mobile){
     .modal_overlay{ background: #fff;
         .modal_wrapper{ padding: 6rem 0 0;
             .modal_content{

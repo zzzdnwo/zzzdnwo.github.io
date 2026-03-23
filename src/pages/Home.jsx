@@ -535,7 +535,7 @@ export default function Home() {
                             <li>
                               2. Zustand 기반 전역 상태관리 및 UI 상태 흐름 제어
                               <div>
-                                depth 구조와 선택 상태를 관리하며 트리 구조 UI의 상태 흐름을 안정적으로 구현
+                                Depth 구조와 선택 상태를 관리하며 트리 구조 UI의 상태 흐름을 안정적으로 구현
                               </div>
                             </li>
                             <li>
