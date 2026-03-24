@@ -4,8 +4,8 @@ $laptop: 1440px;
 $laptop-min:1024px;
 $mobile: 768px; 
 
-.resumeCont{ width: 100%; display: flex; justify-content: center; background: #fff;
-  main{ width: 100%; max-width: $laptop-min;
+.resumeCont{ width: 100%; display: flex; justify-content: center; background: #f1f2f3;
+  main{ width: 100%; max-width: $laptop-min; background: #fff;
     &>div{padding: 6rem; background: #fff;
       &.resume_header{ display: flex; justify-content: start;
         .resume_profile{ display: flex; flex-flow: column; justify-content: center; align-items: start; gap: 1.2rem;
@@ -14,34 +14,153 @@ $mobile: 768px;
           .profile_mail{ font-size: 1.3rem; font-weight: 500; color: #666;}
         }
       }
-      &.resume_content{ line-height: 2.4rem; letter-spacing: -0.5px;
-        section{padding: 0 0 6rem 0; display: flex; gap: 0 6rem;
-          .section_title{font-size: 1.6rem; font-weight: bold; color: #000; width: 12rem;}
+      &.resume_content{ font-size: 1.6rem; line-height: 2.4rem; letter-spacing: -0.5px; word-break: keep-all;
+        section{padding: 0 0 7.2rem 0; display: flex; gap: 0 6rem;
+          .section_title{ font-weight: bold; color: #000; width: 12rem;}
           .section_content{width: calc(100% - 18rem);}
+          &.introduce{
+            .section_content{ display: flex; flex-flow: column; gap: 0.6rem 0;
+              h3{ font-weight: bold;}
+              p{ margin: 0.4rem 0;}
+            }            
+          }
           &.skill{
             .skill_list{ display: flex; gap: 0.8rem; flex-wrap: wrap;
-              li{font-size: 1.5rem; font-weight: 500; color: #222; padding: 1rem 1.6rem; display: flex; align-items: center; justify-content: center; border: 1px solid #ddd; border-radius: 10rem; }
+              li{font-size: 1.5rem; font-weight: 500; line-height: 1; color: #222; padding: 1rem 1.6rem; display: flex; align-items: center; justify-content: center; border: 1px solid #ddd; border-radius: 10rem; }
             }
           }
-          &.project{
+          &.project{ margin-top: 0.4rem;
             .project_list{ display: flex; flex-flow: column; gap: 6rem 0;
               .project_item{
-                .project_name{font-size: 1.8rem; font-weight: bold;}
+                .project_name{font-size: 1.8rem; font-weight: bold; position: relative;
+                  &::before{content: ''; position: absolute; left: 0; top: -1rem; display: block; width: 3.2rem; height: 0.3rem; background: #2b65f8;}
+                }
                 .project_period{margin: 1rem 0; font-size: 1.3rem; color: #555;}
-                .project_result{margin: 2rem 0 0 0; font-size: 1.6rem; font-weight: 700;}
+                .project_result{margin: 2rem 0 0 0;  font-weight: 700;}
                 hr{display: block; height: 0.1rem; background: transparent; border-bottom: 0.1rem solid #dcdcdc; margin: 2.4rem 0;}
                 .project_role{display: flex; flex-flow: column; gap: 2.4rem 0;
                   &>li{
-                    span{display: block; font-size: 1.6rem; font-weight: 700; margin-bottom: 0.6rem;}
+                    span{display: block;  font-weight: 700; margin-bottom: 0.6rem;}
                     ul{ display: flex; flex-flow: column; gap: 0.4rem 0;
-                        li{font-size: 1.6rem; padding-left: 2.4rem; position: relative; word-break: keep-all;
-                            &::before{content: ''; display: block; position: absolute; left: 1.5rem; top: 1rem; width: 0.4rem; height: 0.4rem; background: #000; border-radius: 50%;}
+                        li{ padding-left: 1.9rem; position: relative; word-break: keep-all;
+                            &::before{content: ''; display: block; position: absolute; left: 1rem; top: 1rem; width: 0.4rem; height: 0.4rem; background: #000; border-radius: 50%;}
                         }
                     }
                   }
                 }
               }
             }
+          }
+          &.cert{
+            .cert_list{ display: flex; flex-flow: column; gap: 2rem 0;
+              li{ display: flex; flex-flow: column; gap: 0.2rem 0;
+                .cert_name{font-size: 1.8rem; font-weight: bold;}
+                .cert_agency{font-size: 1.5rem;}
+                .cert_date{font-size: 1.3rem; font-weight: 500; color: #555; margin-top: 0.4rem;}
+              }
+            }
+          }
+          &.url{
+            .section_content{ display: flex; flex-flow: column; gap: 2rem 0;
+              h3{font-size: 1.8em; font-weight: bold;}
+              .urlBox{ display: flex; flex-flow: column; gap: 0.8rem 0;
+                .url_Item{width: 100%; background: #f8f9fa url('../../images/icon_link.svg') 2rem center no-repeat; border: 1px solid #eaeaea; border-radius: 0.6rem;
+                  a{display: block; font-size: 15px; text-decoration: underline; padding: 1rem 2rem 1rem 4.5rem;}
+                  &:hover{background: #f2f4f6 url('../../images/icon_link.svg') 2rem center no-repeat; border: 1px solid #555;}
+                }
+              }
+            }            
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $laptop-min){
+  .resumeCont{ 
+    main{ 
+      &>div{ padding: 6rem 6.2vw;
+        &.resume_header{ padding-bottom: 3rem;
+          .resume_profile{ display: flex; flex-flow: column; justify-content: center; align-items: start; gap: 1.2rem;}
+        }
+        &.resume_content{
+          section{ padding: 0 0 6rem 0; flex-flow: column; gap: 3.2rem 0;
+            .section_title{width: auto;}
+            .section_content{width: 100%;}
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $mobile){
+  .resumeCont{ 
+    main{ 
+      &>div{ padding: 6rem 6.2vw;
+        &.resume_header{ padding-bottom: 2.4rem; justify-content: center;
+          .resume_profile{align-items: center;
+            .profile_job{ font-size: 2.2rem;}
+            .profile_name{ font-size: 3.6rem;}
+            .profile_mail{ font-size: 1.2rem; letter-spacing: -0.03rem;}
+          }
+        }
+        &.resume_content{ font-size: 1.5rem; line-height: 2.2rem;
+          section{ padding: 0 0 5.2rem 0; gap: 2.4rem 0;
+            &.skill{
+              .skill_list{ gap: 0.6rem;
+                li{font-size: 1.4rem;}
+              }
+            }
+            &.cert{
+              .cert_list{
+                li{ gap: 0.1rem 0;
+                  .cert_name{font-size: 1.6rem;}
+                  .cert_agency{font-size: 1.4rem;}
+                  .cert_date{font-size: 1.2rem; margin-top: 0.4rem;}
+                }
+              }
+            }            
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 432px){
+  .resumeCont{ 
+    main{ 
+      &>div{
+        &.resume_header{ padding-bottom: 0;
+          .resume_profile{
+            .profile_job{ font-size: 1.8rem;}
+            .profile_name{ font-size: 3.2rem;}
+            .profile_mail{ font-size: 1.1rem; letter-spacing: -0.02rem;}
+          }
+        }
+        &.resume_content{ font-size: 1.4rem; line-height: 2.1rem;
+          section{ padding: 0 0 5.2rem 0; gap: 2.4rem 0;
+            &.introduce{
+              .section_content{ gap: 0.4rem 0;
+              p{ margin: 0.4rem 0;}
+            }
+            }
+            &.skill{
+              .skill_list{ gap: 0.6rem;
+                li{font-size: 1.3rem;}
+              }
+            }
+            &.cert{
+              .cert_list{
+                li{
+                  .cert_name{font-size: 1.5rem;}
+                  .cert_agency{font-size: 1.3rem;}
+                  .cert_date{font-size: 1.1rem; margin-top: 0.2rem;}
+                }
+              }
+            }            
           }
         }
       }
