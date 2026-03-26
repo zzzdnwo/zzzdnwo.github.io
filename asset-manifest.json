@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.b5674b61.css",
-    "main.js": "/static/js/main.bfb39cd9.js",
+    "main.css": "/static/css/main.0703b235.css",
+    "main.js": "/static/js/main.509c5a26.js",
     "static/js/800.bce9256f.chunk.js": "/static/js/800.bce9256f.chunk.js",
     "static/js/699.7a85cbb2.chunk.js": "/static/js/699.7a85cbb2.chunk.js",
     "static/js/854.08a13bf0.chunk.js": "/static/js/854.08a13bf0.chunk.js",
@@ -14,6 +14,7 @@
     "static/media/nzBoard_screenGif1.gif": "/static/media/nzBoard_screenGif1.832f940be001451e41a2.gif",
     "static/media/bizbooks_screenGif2.gif": "/static/media/bizbooks_screenGif2.4dcb7ca9c16449c37a25.gif",
     "static/media/zReport_screenGif.gif": "/static/media/zReport_screenGif.f8375d23c521c8a85c82.gif",
+    "static/media/nameImg.png": "/static/media/nameImg.0553e405fae7609d4e6a.png",
     "static/media/zReport_screen1.png": "/static/media/zReport_screen1.9e4e963825a80eba120b.png",
     "static/media/main_bg_x4.png": "/static/media/main_bg_x4.f1c7dcf765ae7eaecd8a.png",
     "static/media/beyond_screen1.jpg": "/static/media/beyond_screen1.f99bfe23e5be6cab5133.jpg",
@@ -52,8 +53,8 @@
     "static/media/nzBoard_screen6.png": "/static/media/nzBoard_screen6.bbdc15405a4a37c1ecf6.png",
     "static/media/icon_link.svg": "/static/media/icon_link.ea2aaa783ab150efe8ed.svg",
     "index.html": "/index.html",
-    "main.b5674b61.css.map": "/static/css/main.b5674b61.css.map",
-    "main.bfb39cd9.js.map": "/static/js/main.bfb39cd9.js.map",
+    "main.0703b235.css.map": "/static/css/main.0703b235.css.map",
+    "main.509c5a26.js.map": "/static/js/main.509c5a26.js.map",
     "800.bce9256f.chunk.js.map": "/static/js/800.bce9256f.chunk.js.map",
     "699.7a85cbb2.chunk.js.map": "/static/js/699.7a85cbb2.chunk.js.map",
     "854.08a13bf0.chunk.js.map": "/static/js/854.08a13bf0.chunk.js.map",
@@ -61,7 +62,7 @@
     "737.d46b39ca.chunk.js.map": "/static/js/737.d46b39ca.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b5674b61.css",
-    "static/js/main.bfb39cd9.js"
+    "static/css/main.0703b235.css",
+    "static/js/main.509c5a26.js"
   ]
 }
