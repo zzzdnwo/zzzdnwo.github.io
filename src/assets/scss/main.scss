@@ -218,9 +218,6 @@ $mobile: 768px;
     .mainCont{
       main{
         .pos{min-width: unset;}
-        .myname_wrap{
-          .myname{font-size: 11.4rem;}
-        }
       }
       section{
         &.about{
@@ -325,7 +322,7 @@ $mobile: 768px;
     .mainCont{
       main{
         .myname_wrap{
-          .myname{font-size: 9.4rem;}
+          .myname{width: 70vw;}
         }
       }
       section{
@@ -396,11 +393,6 @@ $mobile: 768px;
 
   @media screen and (max-width: $mobile){
     .mainCont{
-      main{
-        .myname_wrap{
-          .myname{font-size: 12.24vw;}
-        }
-      }
       section{
         &.about{ flex-flow: column;
           &>div{ width: 100%;
@@ -535,7 +527,7 @@ $mobile: 768px;
     .mainCont{
       main{
         .myname_wrap{
-          .myname{font-size: 12.24vw; letter-spacing: -0.4vw;}
+          .myname{width: 78vw;}
         }
       }
       section{
@@ -626,7 +618,12 @@ $mobile: 768px;
   }
 
   @media screen and (max-width: 380px){
-    .mainCont{      
+    .mainCont{
+      main{
+        .myname_wrap{
+          .myname{width: 80vw;}
+        }
+      }      
       section{        
         &.work{  
           .work_right{
