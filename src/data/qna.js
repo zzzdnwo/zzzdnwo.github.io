@@ -3,7 +3,7 @@ import React from 'react';
 const qnaList = [
   {
     id: 1,
-    question: 'Q. 웹퍼블리셔를 선택한 이유는 무엇인가요?',
+    question: 'Q. 이 직무를 선택한 이유는 무엇인가요?',
     answer: (
       <>
         디자인을 코드로 구현해 <strong>실제 서비스 환경에서 작동하는 웹을 만드는 과정</strong>에 매력을 느꼈습니다.<br />
