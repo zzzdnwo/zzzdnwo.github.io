@@ -20,12 +20,10 @@ $mobile: 768px;
         transform:translate(-50%,-50%);
 
         overflow:hidden;
-        height:120px;
 
         z-index:3;
-        .myname{
-          font-family: 'Poppins' !important; font-weight: 700; font-size: 12rem; letter-spacing: -0.54rem; color: #fff; 
-          transform:translateY(120%); line-height: 12rem; white-space: nowrap;
+        .myname{ width: 60vw; opacity: 0;
+          img{width: 100%; object-fit: cover;}
         }
       }      
       &::after{
@@ -57,7 +55,7 @@ $mobile: 768px;
           }
           transition: 2.4s ease all;
         }
-        .myname{animation:mainNameAni 1.6s forwards; transition: 1.6s ease all;
+        .myname{animation:mainNameAni 1.6s forwards; transition: 1.6s ease all; opacity: 1;
           @keyframes mainNameAni{
             0%{
               transform:translateY(120%);
