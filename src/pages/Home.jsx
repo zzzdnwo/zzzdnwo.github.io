@@ -6,6 +6,7 @@ import ErrorBoundary from '../components/ErrorBoundary';
 import projects from '../data/projects';
 import qnaList from '../data/qna';
 import experiences from '../data/experiences';
+import Button from '../components/Button';
 
 
 
@@ -289,7 +290,7 @@ export default function Home() {
 
     navigator.clipboard.writeText(email)
       .then(() => {
-        alert('메일 주소가 복사되었습니다!');
+        alert('메일 주소가 복사되었습니다.');
       });
   }
 
@@ -400,21 +401,28 @@ export default function Home() {
     </section>
     <section className="work" ref={workRef}>
       <nav className="work_nav">
-        <button id="project"
+        <Button id="project"
           className={activeNav === 'project' ? 'on' : ''}
           onClick={() => scrollTo('project')}      
-        >Project</button>
-        <button id="exp"
+        >
+          Project
+        </Button>
+        <Button id="exp"
           className={activeNav === 'exp' ? 'on' : ''}
           onClick={() => scrollTo('exp')}
-        >Experience</button>
+        >
+          Experience
+        </Button>
       </nav>
       <div className="work_right">
         <div className='project_cont' ref={projectRef}>
           <div className="project_ani" ref={projectAniRef}>
             <div className="project_slider_wrap">
               {isMobile && projectIndex > 0 && (
-                <button className="arrow prev" onClick={() => handlePrev('project')} />
+                <Button
+                 className="arrow prev" 
+                 onClick={() => handlePrev('project')} 
+                 />
               )}
               <ul ref={projectSliderRef} className="slider">
                 {projects.map((p) => (
@@ -439,19 +447,26 @@ export default function Home() {
                   <div className="project_actions">
                     <div className="por">
                         <h5>{p.title}</h5>
-                        <button onClick={() => openProject(p)} onMouseEnter={() => preload(p.file)}>자세히보기</button>
+                        <Button 
+                          onClick={() => openProject(p)} 
+                          onMouseEnter={() => preload(p.file)}>
+                            자세히보기
+                          </Button>
                     </div>                
                   </div>
                 </li>
                 ))}
               </ul>
               {isMobile && projectIndex < projects.length - 1 && (
-                <button className="arrow next" onClick={() => handleNext('project', projects.length)} />
+                <Button 
+                  className="arrow next" 
+                  onClick={() => handleNext('project', projects.length)} 
+                />
               )}
               {isMobile && (
                 <div className="dots">
                   {projects.map((_, i) => (
-                    <button
+                    <Button
                       key={i}
                       className={i === projectIndex ? 'on' : ''}
                       onClick={() => {
@@ -469,7 +484,10 @@ export default function Home() {
           <div className="exp_ani" ref={expAniRef}>
             <div className="exp_slider_wrap">
               {isMobile && expIndex > 0 && (
-                <button className="arrow prev" onClick={() => handlePrev('exp')} />
+                <Button 
+                  className="arrow prev" 
+                  onClick={() => handlePrev('exp')} 
+                />
               )}
               <ul className="exp_list slider" ref={expSliderRef}>
                 {experiences.map((exp) => (
@@ -526,12 +544,15 @@ export default function Home() {
                 ))}
               </ul>
               {isMobile && expIndex < expLength - 1 && (
-                <button className="arrow next" onClick={() => handleNext('exp', expLength)} />
+                <Button 
+                  className="arrow next" 
+                  onClick={() => handleNext('exp', expLength)} 
+                />
               )}
               {isMobile && (
                 <div className="dots">
                   {Array.from({ length: expLength }).map((_, i) => (
-                    <button
+                    <Button
                       key={i}
                       className={i === expIndex ? 'on' : ''}
                       onClick={() => {
@@ -563,8 +584,30 @@ export default function Home() {
         
     </section>
     <div className="floating">
-      <button id="copyMail" onClick={copyMail}><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 538 404" fill="none"><path d="M0.750488 0.613525V67.7139L269.152 201.915L537.553 67.7139V0.613525H0.750488ZM0.750488 134.814V403.216H537.553V134.814L269.152 269.015L0.750488 134.814Z" fill="black"></path></svg></button>
-      <button id="goTop" onClick={scrollToTop}><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 28 17" fill="none"><path d="M2 15L14 3L26 15" stroke="black" stroke-width="3" stroke-linecap="round"></path></svg></button>
+      <div className="resume">
+          <Button
+            id="goResume"
+            href={`/resume`} target="_blank"
+          >
+            <img width="20" height="20" src={require(`../assets/images/icon_resume.png`)} alt="resume"/>
+          </Button>
+      </div>
+      <div className="copyMail">
+        <Button
+          id="copyMail"
+          onClick={copyMail}
+        >
+          <img width="20" height="20" src={require(`../assets/images/icon_mail.png`)} alt="mail"/>
+        </Button>
+      </div>
+      <div className="goTop">
+        <Button
+          id="goTop"
+          onClick={scrollToTop}
+        >
+          <img width="20" height="20" src={require(`../assets/images/icon_goTop.png`)} alt="goTop"/>
+        </Button>
+      </div>                  
     </div>
     <Modal 
       isOpen={!!activeProject} 

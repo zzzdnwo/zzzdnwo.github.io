@@ -6,6 +6,7 @@ const projects = [
     tag: ['React','TypeScript','반응형','관리자'], 
     period: '2025.06 - 2025.10', 
     member: '4인(프론트 1명, 백엔드 1명, 디자이너 1명, DBA 1명)' ,
+    goUrl: 'https://board.newzensolution.co.kr/common'
 },
   { 
     id: 'zReport', 
