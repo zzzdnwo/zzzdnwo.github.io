@@ -61,7 +61,7 @@ export default function Modal({ isOpen, onClose, children, project }) {
                         >
                             ✕
                         </Button>
-                        {project?.goUrl && (
+                        {/* {project?.goUrl && (
                             <Button 
                                 className='btn_modalClose' 
                                 onClick={onClose} 
@@ -69,7 +69,7 @@ export default function Modal({ isOpen, onClose, children, project }) {
                             >
                                 ✕
                             </Button>
-                        )}
+                        )} */}
                     </>                    
                 </div>
             </div>        

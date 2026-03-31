@@ -197,7 +197,13 @@ $mobile: 768px;
   .floating{opacity: 0; position: fixed; right: 2rem; bottom: 2rem; display: flex; flex-direction: column; gap: 1rem 0;
     div{ position: relative;
       &:hover{
-        &::before{content: '';}
+        &::before{ font-size: 1.2rem; color: #fff; line-height: 1; letter-spacing: -0.04rem;
+           background: rgba(35,35,35,0.8); padding: 0.6rem 1rem; display: flex; align-items: center; justify-content: center; border-radius: 0.4rem; opacity: 1; white-space: nowrap;
+          position: absolute; top: 50%; right: 6rem; transform: translateY(-50%);
+        }
+        &.goTop::before{display: none;}
+        &.copyMail::before{content: '메일복사';}
+        &.resume::before{content: '이력서이동';}
       }
     }
     button{width: 5rem; height: 5rem; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: #fff; box-shadow: 0 0px 10px 1px rgba(0, 0, 0, 0.08);
