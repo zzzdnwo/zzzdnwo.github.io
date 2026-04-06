@@ -59,17 +59,19 @@ export default function Modal({ isOpen, onClose, children, project }) {
                             className='btn_modalClose' 
                             onClick={onClose} 
                         >
-                            ✕
+                            모달 닫기
                         </Button>
-                        {/* {project?.goUrl && (
-                            <Button 
-                                className='btn_modalClose' 
-                                onClick={onClose} 
-                                href={project?.goUrl} target="_blank"
-                            >
-                                ✕
-                            </Button>
-                        )} */}
+                        {project?.goUrl && (
+                            <div className="btnWrap">
+                                <Button 
+                                    className='btn_modalGo' 
+                                    onClick={onClose} 
+                                    href={project?.goUrl} target="_blank"
+                                >                                    
+                                </Button>
+                                <p className="btn_text">링크 이동</p>
+                            </div>                            
+                        )}
                     </>                    
                 </div>
             </div>        

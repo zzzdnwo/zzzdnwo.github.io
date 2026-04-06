@@ -24,6 +24,7 @@ const projects = [
     tag: ['반응형', 'React'], 
     period: '2024.06 - 2024.09', 
     member: '6인(프론트 1명, 백엔드 2명, 시스템 설계자 2명, 디자이너 1명)' ,
+    goUrl: 'https://beyond.bizbooks.kr/beyondReport?b=1278187131&s=202312'
 },
   { id: 'bizbooks', 
     label: '세무 비즈니스 플랫폼 프로젝트', 
@@ -32,6 +33,7 @@ const projects = [
     tag: ['반응형', 'React'], 
     period: '2021.06 - 2025.10', 
     member: '7인(프론트 1명, 백엔드 2명, 풀스택 2명, 디자이너 2명)' ,
+    goUrl: 'https://bizbooks.kr/t'    
 },
   { id: 'nzHome', 
     label: '대표 홈페이지 및 마이크로사이트 운영·리뉴얼',
@@ -40,9 +42,8 @@ const projects = [
     tag: ['반응형', 'React'], 
     period: '재직 기간 전반 (상시 신규 제작 및 유지보수)', 
     member: '5인(프론트 2명, 백엔드 1명, 디자이너 2명)' ,
-}
-  // { id: '128', label: '151', title: 'Aproject 5', file: 'nzBoard', tag: ['반응형', 'React'], period: '2025.05 - 2025.07' },
-  // { id: '129', label: '152', title: 'Aproject 5', file: 'nzBoard', tag: ['반응형', 'React'], period: '2025.05 - 2025.07' },
+    goUrl: 'https://newzensolution.co.kr/' 
+}  
 ];
 
 export default projects;
