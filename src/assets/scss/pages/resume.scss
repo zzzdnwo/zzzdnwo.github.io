@@ -11,7 +11,7 @@ $mobile: 768px;
         .resume_profile{ display: flex; flex-flow: column; justify-content: center; align-items: start; gap: 1.2rem;
           .profile_job{ font-size: 2.4rem; color: #000;}
           .profile_name{ font-size: 4.0rem; font-weight: bold; margin-left: -0.2rem;}
-          .profile_mail{ font-size: 1.3rem; font-weight: 400; color: #666;}
+          .profile_mail{ font-size: 1.3rem; font-weight: 400; letter-spacing: -0.04rem; color: #666;}
         }
       }
       &.resume_content{ font-size: 1.6rem; line-height: 2.4rem; letter-spacing: -0.5px; word-break: keep-all;

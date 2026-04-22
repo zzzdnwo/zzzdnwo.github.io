@@ -5,24 +5,94 @@ $laptop-min:1024px;
 $mobile: 768px;
   
   .mainCont{
-    main{ position: sticky; top: 0;
-      .pos{width: 100%; min-width: $laptop-min; height: 100vh; position: relative; overflow: hidden; }
-      .main_bg{width: 100%; height: 100%; position: absolute; left: 0; top: 0;
-        // background: url('../images/main_bg_light.png'), url('../images/main_bg_pattern.jpg');
-         background: url('../images/main_bg_x4.png'); background-position: center; background-repeat: no-repeat; background-size: cover;
+    .gnb {
+      position: fixed; top: 2rem; left: 50%; transform: translateX(-50%);
+      width: calc(100% - 80px); max-width: 1200px; z-index: 1000;
+      transition: all 0.3s ease;
+      .gnb_inner {
+        display: flex; justify-content: space-between; align-items: center;
+        padding: 1.4rem 2rem; border-radius: 1.6rem;
+        background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(1.2rem); -webkit-backdrop-filter: blur(1.2rem);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        box-shadow: 0 0.8rem 3.2rem rgba(0, 0, 0, 0.15), inset 0 0.1rem 0 rgba(255, 255, 255, 0.2); will-change: transform, backdrop-filter;
+        .logo{text-indent: -9999px; display: inline-block; width: 2.8rem; height: 2.8rem;
+          background: url('../images/icon_swLogo.png') no-repeat center; background-size: 2.8rem 2.8rem;
+        }
+        .menu {
+          display: flex; gap: 4.6rem;
+          button{font-family: 'Poppins' !important; font-weight: 400;
+            &:hover{font-weight: 500;}
+            &.on{font-weight: 500;}
+          }
+        }
+        .right{
+          .contactBtn{font-family: 'Poppins' !important; font-weight: 500;
+            background: linear-gradient(90deg, #e8ea86, #cacaca); border-radius: 0.2rem;
+            padding: 0.4rem 0.8rem;
+          }
+        }
       }
+      &.hide {
+        opacity: 0;
+        transform: translate(-50%, -20px);
+        pointer-events: none;
+      }
+      &.show {
+        opacity: 1;
+        transform: translate(-50%, 0);
+      }      
+      &.dark{
+        .gnb_inner {
+          .menu {
+            button{color: #999 !important;
+              &:hover{color: #fff !important;}
+              &.on{color: #fff !important;}
+            }
+          }
+        }
+      }
+      &.light{
+        .gnb_inner {
+          .menu {
+            button{color: #999 !important;
+              &:hover{color: #121212 !important;}
+              &.on{color: #121212 !important;}
+            }
+          }
+        }
+      }
+    }
+    main{ position: sticky; top: 0;
+      .pos{width: 100%; min-width: $laptop-min; height: 100vh; position: relative; overflow: hidden; 
+        .spline_fixed{
+           position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: 0;     
+          div{position: relative;
+            &::after{content: ''; display: inline-block; position: absolute; right: 0; bottom: 0; width: 26%; height: 26%;
+              background: #000; display: none;
+            }
+          }
+          // canvas{will-change: transform; transform: translateZ(0);}
+        }
+      }
+      
+      // .main_bg{width: 100%; height: 100%; position: absolute; left: 0; top: 0;
+      //   // background: url('../images/main_bg_light.png'), url('../images/main_bg_pattern.jpg');
+      //    background: url('../images/main_bg_x4.png'); background-position: center; background-repeat: no-repeat; background-size: cover;
+      // }
       .intro_mask{position:absolute; inset:0; z-index:2; background: #000;}
       .myname_wrap{
         position:absolute;
         left:50%;
-        top:50%;
+        top:45%;
 
         transform:translate(-50%,-50%);
 
         overflow:hidden;
 
         z-index:3;
-        .myname{ width: 60vw; opacity: 0;
+        .myname{
+           width: 60vw; opacity: 0; 
+           font-family: 'Poppins' !important; font-weight: 700; font-size: 6vw; color: #fff; text-align: center;
           img{width: 100%; object-fit: cover;}
         }
       }            
@@ -37,6 +107,7 @@ $mobile: 768px;
             }
             100%{
               opacity: 0;
+              display: none;
             }
           }
           transition: 2.4s ease all;
@@ -171,22 +242,22 @@ $mobile: 768px;
           }
         }
       }
-      &.contact{height: 62.6rem; background: url('../images/main_contactBg.png') center no-repeat; background-size: cover; position: relative; border-top: 0.2rem solid #fff; overflow: hidden;
+      &.contact{height: 38rem; background: url('../images/main_contactBg.png') center no-repeat; background-size: cover; position: relative; border-top: 0.2rem solid #fff; overflow: hidden;
         .contact_contents{ text-align: center;
           position: absolute; left: 50%; top: 8rem; transform: translateX(-50%); display: flex; flex-direction: column; gap: 2rem 0; align-items: center;
-          h3{font-family: 'Poppins' !important; font-size: 2.3rem; font-weight: 300; color: #fff;}
+          h3{font-family: 'Poppins' !important; font-size: 2rem; font-weight: 500; color: #999; margin-bottom: 1rem;}
           .contact_info{display: flex; flex-flow: column; gap: 0 2rem; margin-top: 0.24rem;
-            p{font-family: 'Poppins' !important; font-size: 4rem; color: #fff; line-height: 5rem; font-weight: 400; position: relative;              
-              &.mail{display: flex; gap: 0 1rem; align-items: center; cursor: pointer;
-                .copyBtn{opacity: 1; width: 2.4rem; height: 2.4rem; background: url('../images/icon_copy.png') center no-repeat; background-size: cover; text-indent: -9999px;}
-                &:hover{ color: #ddfffc;
-                  .copyBtn{background: transparent url('../images/icon_copy_on.png') center no-repeat; background-size: cover;}
-                }
+            p{font-family: 'Poppins' !important; font-size: 3rem; color: #fff; line-height: 4rem; font-weight: 400; position: relative;}
+            .mail{display: flex; gap: 0 1rem; align-items: center; cursor: pointer;
+              font-family: 'Poppins' !important; font-size: 3rem; color: #fff; line-height: 4rem; font-weight: 400; position: relative;
+              .copyBtn{opacity: 1; width: 2rem; height: 2rem; background: url('../images/icon_copy.png') center no-repeat; background-size: cover; text-indent: -9999px; margin-top: 0.2rem;}
+              &:hover{ color: #ddfffc;
+                .copyBtn{background: transparent url('../images/icon_copy_on.png') center no-repeat; background-size: cover;}
               }
             }
           }
-          .copyright{font-size: 1.8rem; color: #9b9b9b; line-height: 3.5rem; font-weight: 300; margin-top: 2.6rem;}
-          .thanksTxt{font-family: 'Racing Sans One' !important; font-size: 25rem; font-weight: 400; color: #fff; line-height: 14.4rem; margin-top: 2rem; white-space: nowrap;}
+          .copyright{font-size: 1.4rem; color: #9b9b9b; line-height: 3.5rem; font-weight: 300; margin-top: 2.6rem;}
+          //.thanksTxt{font-family: 'Racing Sans One' !important; font-size: 25rem; font-weight: 400; color: #fff; line-height: 14.4rem; margin-top: 2rem; white-space: nowrap;}
         }
         &::after{content: ''; position: absolute; left: 50%; top: 0; transform: translateX(-50%); display: inline-block; width: 3.2rem; height: 1.8rem;
           border-top: 1.8rem solid #fff; border-left: 1.6rem solid transparent; border-right: 1.6rem solid transparent; box-sizing: border-box;
@@ -333,7 +404,7 @@ $mobile: 768px;
     .mainCont{
       main{
         .myname_wrap{
-          .myname{width: 70vw;}
+          .myname{font-size: 7.2vw;}
         }
       }
       section{
@@ -404,6 +475,12 @@ $mobile: 768px;
 
   @media screen and (max-width: $mobile){
     .mainCont{
+      .gnb {display: none;}
+      main{
+        .myname_wrap{
+          .myname{font-size: 8vw;}
+        }
+      }
       section{
         &.about{ flex-flow: column;
           &>div{ width: 100%;
@@ -538,7 +615,7 @@ $mobile: 768px;
     .mainCont{
       main{
         .myname_wrap{
-          .myname{width: 78vw;}
+          .myname{font-size: 8.4vw;}
         }
       }
       section{

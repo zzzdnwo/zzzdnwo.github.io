@@ -1,4 +1,5 @@
 import React, { useState, useMemo, Suspense, useRef, useEffect } from 'react';
+import Spline from '@splinetool/react-spline';
 import '../assets/scss/main.scss';
 import '../assets/scss/detail.scss';
 import Modal from '../components/Modal';
@@ -15,15 +16,22 @@ export default function Home() {
   const [activeProject, setActiveProject] = useState(null);
   const [activeNav, setActiveNav] = useState(null);
   const [heroStart, setHeroStart] = useState(false);
-  const [imgLoaded, setImgLoaded] = useState(false);
 
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [projectIndex, setProjectIndex] = useState(0);
   const [expIndex, setExpIndex] = useState(0);
+  // gnb 보여주는 상태 여부
+  const [showGnb, setShowGnb] = useState(true);
+  // gnb 버튼 상태 관련
+  const [activeSection, setActiveSection] = useState('main');
+  //gnb 뒷배경 관련 상태
+  const [gnbTheme, setGnbTheme] = useState('dark'); 
 
   const workRef = useRef(null);
   const projectRef = useRef(null);
   const expRef = useRef(null);
+  const aboutRef = useRef(null);
+  const contactRef = useRef(null);
   
   const isScrollingRef = useRef(false);
   const projectSliderRef = useRef(null);
@@ -35,6 +43,9 @@ export default function Home() {
   const projectAniRef = useRef(null);
   const expAniRef = useRef(null);
 
+  //Home 하단
+  const lastScrollY = useRef(0);
+
   // activeFile이 바뀔 때마다 lazy 컴포넌트를 만들어 반환
   const ActiveComponent = useMemo(() => {
     if (!activeProject) return null;
@@ -45,6 +56,149 @@ export default function Home() {
 
 
   //useEffect 영역
+
+  //gnb 스크롤 이벤트
+  useEffect(() => {
+    let ticking = false;
+
+    const handleScroll = () => {
+      if (ticking) return;
+
+      ticking = true;
+
+      requestAnimationFrame(() => {
+        const currentScrollY = window.scrollY;
+
+        if (currentScrollY <= 0) {
+          setShowGnb(true);
+        } else {
+          if (currentScrollY > lastScrollY.current) {
+            setShowGnb(false);
+          } else {
+            setShowGnb(true);
+          }
+        }
+
+        lastScrollY.current = currentScrollY;
+        ticking = false;
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  //gnb 클릭 시 섹션 스크롤 이동
+  function scrollToSection(section) {
+    if (section === 'main') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    if (section === 'about') {
+      aboutRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    if (section === 'project') {
+      projectRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    if (section === 'exp') {
+      expRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    if (section === 'contact') {
+      window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: 'smooth',
+      });
+    }
+  }
+
+  useEffect(() => {
+  const handleScroll = () => {
+    const winH = window.innerHeight;
+
+    // 기준선 (뷰포트 기준 35%)
+    const trigger = winH * 0.35;
+
+    // 각 섹션 rect
+    const aboutRect = aboutRef.current?.getBoundingClientRect();
+    const projectRect = projectRef.current?.getBoundingClientRect();
+    const expRect = expRef.current?.getBoundingClientRect();
+    const contactRect = contactRef.current?.getBoundingClientRect();
+
+    // 👉 main (fixed 영역 보정)
+    if (!aboutRect || aboutRect.top > trigger) {
+      setActiveSection('main');
+      setGnbTheme('dark');
+      return;
+    }
+
+    // about
+    if (aboutRect.top <= trigger && projectRect.top > trigger) {
+      setActiveSection('about');
+      setGnbTheme('light');
+      return;
+    }
+
+    // project
+    if (projectRect.top <= trigger && expRect.top > trigger) {
+      setActiveSection('project');
+      setGnbTheme('dark');
+      return;
+    }
+
+    // exp
+    if (expRect.top <= trigger && contactRect.top > trigger) {
+      setActiveSection('exp');
+      setGnbTheme('dark');
+      return;
+    }
+
+    // contact
+    if (contactRect.top <= trigger) {
+      setActiveSection('contact');
+      setGnbTheme('dark');
+    }
+  };
+
+  window.addEventListener('scroll', handleScroll);
+  handleScroll();
+
+  return () => window.removeEventListener('scroll', handleScroll);
+}, []);
+
+  //메인 3D 인터랙션 canvas 휠 스크롤 이벤트
+  useEffect(() => {
+    const canvas = document.querySelector('.spline_fixed canvas');
+
+    if (!canvas) return;
+
+    const handleWheel = (e) => {
+      window.scrollBy({
+        top: e.deltaY,
+      });
+    };
+
+
+    return () => {
+      canvas.removeEventListener('wheel', handleWheel);
+    };
+  }, []);
+
+  const [showSpline, setShowSpline] = useState(true);
+
+  // 메인 3D 인터랙션 화면에 안보일 때 끄기
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+
+      setShowSpline(scrollY < 800);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   //모바일 체크용
 
@@ -66,15 +220,6 @@ export default function Home() {
     return () => clearTimeout(timer);
   }, []);
 
-  useEffect(() => {
-    if (!imgLoaded) return;
-
-    const timer = setTimeout(() => {
-      setHeroStart(true);
-    }, 200); // 살짝 텀 주면 더 자연스러움
-
-    return () => clearTimeout(timer);
-  }, [imgLoaded]);
 
   // work 섹션 네비게이션 인터랙션
   useEffect(() => {
@@ -216,23 +361,29 @@ export default function Home() {
     const el = projectSliderRef.current;
     if (!el) return;
 
+    let ticking = false;
+
     const handleScroll = () => {
-      if (isScrollingRef.current) return;
+      if (ticking) return;
 
-      const children = Array.from(el.children);
+      ticking = true;
+      requestAnimationFrame(() => {
+        const children = Array.from(el.children);
 
-      let closestIndex = 0;
-      let minDiff = Infinity;
+        let closestIndex = 0;
+        let minDiff = Infinity;
 
-      children.forEach((child, i) => {
-        const diff = Math.abs(el.scrollLeft - child.offsetLeft);
-        if (diff < minDiff) {
-          minDiff = diff;
-          closestIndex = i;
-        }
+        children.forEach((child, i) => {
+          const diff = Math.abs(el.scrollLeft - child.offsetLeft);
+          if (diff < minDiff) {
+            minDiff = diff;
+            closestIndex = i;
+          }
+        });
+
+        setProjectIndex(closestIndex);
+        ticking = false;
       });
-
-      setProjectIndex(closestIndex);
     };
 
     el.addEventListener('scroll', handleScroll);
@@ -243,27 +394,38 @@ export default function Home() {
     const el = expSliderRef.current;
     if (!el) return;
 
+    let ticking = false;
+
     const handleScroll = () => {
       if (isScrollingRef.current) return;
+      if (ticking) return;
 
-      const children = Array.from(el.children);
+      ticking = true;
 
-      let closestIndex = 0;
-      let minDiff = Infinity;
+      requestAnimationFrame(() => {
+        const children = Array.from(el.children);
 
-      children.forEach((child, i) => {
-        const diff = Math.abs(el.scrollLeft - child.offsetLeft);
-        if (diff < minDiff) {
-          minDiff = diff;
-          closestIndex = i;
-        }
+        let closestIndex = 0;
+        let minDiff = Infinity;
+
+        children.forEach((child, i) => {
+          const diff = Math.abs(el.scrollLeft - child.offsetLeft);
+          if (diff < minDiff) {
+            minDiff = diff;
+            closestIndex = i;
+          }
+        });
+
+        setExpIndex(closestIndex);
+        ticking = false;
       });
-
-      setExpIndex(closestIndex);
     };
 
     el.addEventListener('scroll', handleScroll);
-    return () => el.removeEventListener('scroll', handleScroll);
+
+    return () => {
+      el.removeEventListener('scroll', handleScroll);
+    };
   }, []);
   
 
@@ -354,22 +516,68 @@ export default function Home() {
 
   return (
   <div className='mainCont'>
+    <div className={`gnb ${showGnb ? 'show' : 'hide'} ${gnbTheme}`}>
+      <div className="gnb_inner">
+        <div className="logo" onClick={() => scrollToSection('main')}>
+          로고
+        </div>
+
+        <div className="menu">
+          <Button 
+            className={activeSection === 'main' ? 'on' : ''} 
+            onClick={() => scrollToSection('main')}
+          >
+            Main
+          </Button>
+
+          <Button 
+            className={activeSection === 'about' ? 'on' : ''} 
+            onClick={() => scrollToSection('about')}
+          >
+            About
+          </Button>
+
+          <Button 
+            className={activeSection === 'project' ? 'on' : ''} 
+            onClick={() => scrollToSection('project')}
+          >
+            Project
+          </Button>
+
+          <Button 
+            className={activeSection === 'exp' ? 'on' : ''} 
+            onClick={() => scrollToSection('exp')}
+          >
+            Experience
+          </Button>
+        </div>
+        <div className="right">
+          <Button 
+            className="contactBtn"
+            onClick={() => scrollToSection('contact')
+          }>
+            Contact
+          </Button>
+        </div>
+      </div>
+    </div>
     <main className={heroStart ? "hero_start" : ""}>
       <div className="pos">
+        {showSpline && (
+        <div className="spline_fixed">
+          <Spline scene={require(`../assets/images/scene-clean.splinecode`)} />
+        </div>
+        )}
         <div className="main_bg"></div>
         <div className="intro_mask"></div>
         <div className="myname_wrap">
           <h2 className="myname">
-            <img 
-              src={require(`../assets/images/nameImg.png`)} 
-              alt="SHIN WOO JAE" 
-              onLoad={() => setImgLoaded(true)} 
-            />
+            SHIN WOO JAE
           </h2>
         </div>
       </div>
     </main>
-    <section className="about">
+    <section className="about" ref={aboutRef}>
       <div className="about_left">
         <h3>About me</h3>
         <div className="about_profile">
@@ -568,18 +776,18 @@ export default function Home() {
         </div>
       </div>
     </section>
-    <section className="contact">
+    <section className="contact" ref={contactRef}>
       <div className="contact_contents">
           <h3>Contact</h3>
           <div className="contact_info">
             <p>+82 10-4027-1487</p>
-            <p className="mail" onClick={copyMail}>
+            <div className="mail" onClick={copyMail}>
               seosson@naver.com
               <div className="copyBtn">메일 복사버튼</div>
-            </p>            
+            </div>            
           </div>
           <h5 className="copyright">@Copyright 2026. shinwoojae All rights reserved.</h5>
-          <span className="thanksTxt">Thank you</span>
+          {/* <span className="thanksTxt">Thank you</span> */}
       </div>        
         
     </section>

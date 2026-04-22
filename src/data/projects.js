@@ -1,6 +1,6 @@
 const projects = [
   { id: 'nzBoard', 
-    label: '프로그램 메뉴얼 가이드 사이트 리뉴얼 프로젝트', 
+    label: '프로그램 매뉴얼 사이트 리뉴얼 프로젝트', 
     title: '뉴젠보드', 
     file: 'nzBoard', 
     tag: ['React','TypeScript','반응형','관리자'], 

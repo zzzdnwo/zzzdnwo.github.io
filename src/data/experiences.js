@@ -1,7 +1,7 @@
 const experiences = [
   {
     id: 1,
-    title: '뉴젠보드(프로그램 메뉴얼 가이드 사이트) 리뉴얼 프로젝트',
+    title: '뉴젠보드(프로그램 매뉴얼 사이트) 리뉴얼 프로젝트',
     period: '2025.06 ~ 2025.10 (5개월)',
     achievement: '프로젝트 전반 React + TypeScript 구조로 리뉴얼 안정성과 유지보수성을 향상',
     roles: [
