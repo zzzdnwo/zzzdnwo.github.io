@@ -32,14 +32,14 @@ export default function NzBoard() {
     return (
     <article className="project_detail">
         <h2>
-            뉴젠보드(프로그램 메뉴얼 가이드 사이트) 리뉴얼 프로젝트<br />
+            뉴젠보드(프로그램 매뉴얼 사이트) 리뉴얼 프로젝트<br />
             기존 레거시 Vanilla JS 기반 구조를 React + TypeScript 구조로 리뉴얼 안정성과 유지보수성을 향상.
             <hr />
         </h2>        
         <section>
            <h3>📍 프로그램 설명</h3> 
            <ul>
-                <li>뉴젠 전체 프로그램 메뉴얼을 조회/검색 및 등록/수정/삭제<br />할 수 있는 메뉴얼 통합 관리 웹사이트</li>
+                <li>뉴젠 전체 프로그램 매뉴얼을 조회/검색 및 등록/수정/삭제<br />할 수 있는 메뉴얼 통합 관리 웹사이트</li>
                 {/* <li>트리 기반 계층형 매뉴얼 관리 시스템 설계 및 구현</li>
                 <li><code>Zustand</code>를 활용한 복잡한 상태 관리 구조 설계</li>
                 <li><code>CKEditor 5</code> 커스텀 빌드 및 <code>TypeScript</code> 이슈 해결</li>

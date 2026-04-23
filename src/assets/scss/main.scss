@@ -5,6 +5,20 @@ $laptop-min:1024px;
 $mobile: 768px;
   
   .mainCont{
+    .gnbInitWrap{ display: inline-block; opacity: 0; position: absolute; z-index: 1000;
+      animation: gnbInitAni 2.4s ease forwards;
+      animation-delay:1.2s;
+
+      @keyframes gnbInitAni{
+        0%{
+          opacity: 0;
+        }
+        100%{
+          opacity: 1;
+        }
+      }
+      transition: 2.4s ease all;
+    }
     .gnb {
       position: fixed; top: 2rem; left: 50%; transform: translateX(-50%);
       width: calc(100% - 80px); max-width: 1200px; z-index: 1000;

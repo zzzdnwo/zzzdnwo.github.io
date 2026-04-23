@@ -516,51 +516,53 @@ export default function Home() {
 
   return (
   <div className='mainCont'>
-    <div className={`gnb ${showGnb ? 'show' : 'hide'} ${gnbTheme}`}>
-      <div className="gnb_inner">
-        <div className="logo" onClick={() => scrollToSection('main')}>
-          로고
-        </div>
+    <div className="gnbInitWrap">
+      <div className={`gnb ${showGnb ? 'show' : 'hide'} ${gnbTheme}`}>
+        <div className="gnb_inner">
+          <div className="logo" onClick={() => scrollToSection('main')}>
+            로고
+          </div>
 
-        <div className="menu">
-          <Button 
-            className={activeSection === 'main' ? 'on' : ''} 
-            onClick={() => scrollToSection('main')}
-          >
-            Main
-          </Button>
+          <div className="menu">
+            <Button 
+              className={activeSection === 'main' ? 'on' : ''} 
+              onClick={() => scrollToSection('main')}
+            >
+              Main
+            </Button>
 
-          <Button 
-            className={activeSection === 'about' ? 'on' : ''} 
-            onClick={() => scrollToSection('about')}
-          >
-            About
-          </Button>
+            <Button 
+              className={activeSection === 'about' ? 'on' : ''} 
+              onClick={() => scrollToSection('about')}
+            >
+              About
+            </Button>
 
-          <Button 
-            className={activeSection === 'project' ? 'on' : ''} 
-            onClick={() => scrollToSection('project')}
-          >
-            Project
-          </Button>
+            <Button 
+              className={activeSection === 'project' ? 'on' : ''} 
+              onClick={() => scrollToSection('project')}
+            >
+              Project
+            </Button>
 
-          <Button 
-            className={activeSection === 'exp' ? 'on' : ''} 
-            onClick={() => scrollToSection('exp')}
-          >
-            Experience
-          </Button>
-        </div>
-        <div className="right">
-          <Button 
-            className="contactBtn"
-            onClick={() => scrollToSection('contact')
-          }>
-            Contact
-          </Button>
+            <Button 
+              className={activeSection === 'exp' ? 'on' : ''} 
+              onClick={() => scrollToSection('exp')}
+            >
+              Experience
+            </Button>
+          </div>
+          <div className="right">
+            <Button 
+              className="contactBtn"
+              onClick={() => scrollToSection('contact')
+            }>
+              Contact
+            </Button>
+          </div>
         </div>
       </div>
-    </div>
+    </div>    
     <main className={heroStart ? "hero_start" : ""}>
       <div className="pos">
         {showSpline && (
