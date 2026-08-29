@@ -4,6 +4,7 @@ import '../assets/scss/main.scss';
 import '../assets/scss/detail.scss';
 import Modal from '../components/Modal';
 import ErrorBoundary from '../components/ErrorBoundary';
+import stacks from '../data/stacks';
 import projects from '../data/projects';
 import qnaList from '../data/qna';
 import experiences from '../data/experiences';
@@ -29,6 +30,7 @@ export default function Home() {
 
   const workRef = useRef(null);
   const projectRef = useRef(null);
+  const stackRef = useRef(null);
   const expRef = useRef(null);
   const aboutRef = useRef(null);
   const contactRef = useRef(null);
@@ -40,6 +42,7 @@ export default function Home() {
 
   //애니메이션용
   const qnaAniRef = useRef(null);
+  const stackAniRef = useRef(null);
   const projectAniRef = useRef(null);
   const expAniRef = useRef(null);
 
@@ -98,6 +101,10 @@ export default function Home() {
       aboutRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
 
+    if (section === 'stack') {
+      stackRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }
+
     if (section === 'project') {
       projectRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
@@ -123,6 +130,7 @@ export default function Home() {
 
     // 각 섹션 rect
     const aboutRect = aboutRef.current?.getBoundingClientRect();
+    const stackRect = stackRef.current?.getBoundingClientRect();
     const projectRect = projectRef.current?.getBoundingClientRect();
     const expRect = expRef.current?.getBoundingClientRect();
     const contactRect = contactRef.current?.getBoundingClientRect();
@@ -135,9 +143,16 @@ export default function Home() {
     }
 
     // about
-    if (aboutRect.top <= trigger && projectRect.top > trigger) {
+    if (aboutRect.top <= trigger && stackRect.top > trigger) {
       setActiveSection('about');
       setGnbTheme('light');
+      return;
+    }
+
+    // stack
+    if (stackRect.top <= trigger && projectRect.top > trigger) {
+      setActiveSection('stack');
+      setGnbTheme('dark');
       return;
     }
 
@@ -222,53 +237,49 @@ export default function Home() {
 
 
   // work 섹션 네비게이션 인터랙션
-  useEffect(() => {
+useEffect(() => {
+  const handleScroll = () => {
     const workEl = workRef.current;
+    const stackEl = stackRef.current;
     const projectEl = projectRef.current;
     const expEl = expRef.current;
-    if (!workEl || !projectEl || !expEl) return;
 
-    const observer = new IntersectionObserver(
-      () => {
-        const workRect = workEl.getBoundingClientRect();
+    if (!workEl || !stackEl || !projectEl || !expEl) return;
 
-        // work 영역 밖
-        if (workRect.bottom <= 0 || workRect.top >= window.innerHeight) {
-          setActiveNav(null);
-          return;
-        }
+    const workRect = workEl.getBoundingClientRect();
 
-        const projectRect = projectEl.getBoundingClientRect();
-        const expRect = expEl.getBoundingClientRect();
+    // Work 영역을 벗어나면 active 제거
+    if (
+      workRect.bottom <= 0 ||
+      workRect.top >= window.innerHeight
+    ) {
+      setActiveNav(null);
+      return;
+    }
 
-        // project_cont가 보이는 정도
-        const projectVisible =
-          projectRect.bottom > 0 &&
-          projectRect.top < window.innerHeight;
+    // viewport의 40% 지점을 기준으로 사용
+    const triggerLine = window.innerHeight * 0.4;
 
-        if (projectVisible) {
-          setActiveNav('project');
-          return;
-        }
+    const stackRect = stackEl.getBoundingClientRect();
+    const projectRect = projectEl.getBoundingClientRect();
+    const expRect = expEl.getBoundingClientRect();
 
-        // project_cont가 안보이면 exp 버튼 activeNav
-        const expTriggerLine = window.innerHeight * 0.4;
-        if (expRect.top <= expTriggerLine) {
-          setActiveNav('exp');
-          return;
-        }
-      },
-      {
-        threshold: 0,
-      }
-    );
+    if (expRect.top <= triggerLine) {
+      setActiveNav('exp');
+    } else if (projectRect.top <= triggerLine) {
+      setActiveNav('project');
+    } else {
+      setActiveNav('stack');
+    }
+  };
 
-    observer.observe(workEl);
-    observer.observe(projectEl);
-    observer.observe(expEl);
+  window.addEventListener('scroll', handleScroll);
+  handleScroll();
 
-    return () => observer.disconnect();
-  }, []);
+  return () => {
+    window.removeEventListener('scroll', handleScroll);
+  };
+}, []);
 
   // Qna 스크롤 이벤트 
   useEffect(() => {
@@ -285,6 +296,30 @@ export default function Home() {
       },
       {
         threshold: 0.12,
+        rootMargin: '25% 0px 0px 0px',
+      }
+    );
+
+    observer.observe(el);
+
+    return () => observer.disconnect();
+  }, []);
+
+  // stack 스크롤 이벤트
+  useEffect(() => {
+    const el = stackAniRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.classList.add('show');
+        } else {
+          el.classList.remove('show');
+        }
+      },
+      {
+        threshold: 0.06,
         rootMargin: '25% 0px 0px 0px',
       }
     );
@@ -344,6 +379,9 @@ export default function Home() {
 
   // work 섹션 네비게이션 스크롤 이벤트
   function scrollTo(section) {
+    if (section === 'stack') {
+      stackRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }
     if (section === 'project') {
       projectRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
@@ -539,6 +577,13 @@ export default function Home() {
             </Button>
 
             <Button 
+              className={activeSection === 'stack' ? 'on' : ''} 
+              onClick={() => scrollToSection('stack')}
+            >
+              Tech Stack
+            </Button>
+
+            <Button 
               className={activeSection === 'project' ? 'on' : ''} 
               onClick={() => scrollToSection('project')}
             >
@@ -585,7 +630,7 @@ export default function Home() {
         <div className="about_profile">
 
         </div>
-        <p className="about_period">2021.09 - 2025.10 <span></span> 4년 11개월</p>
+        <p className="about_period">2020.12 - 2025.10 <span></span> 4년 11개월</p>
         <span className="about_companyNm">뉴젠솔루션</span>
         <ul className="about_workList">
           <li>뉴젠보드</li>
@@ -611,6 +656,12 @@ export default function Home() {
     </section>
     <section className="work" ref={workRef}>
       <nav className="work_nav">
+        <Button id="stack"
+          className={activeNav === 'stack' ? 'on' : ''}
+          onClick={() => scrollTo('stack')}      
+        >
+          Tech Stack
+        </Button>
         <Button id="project"
           className={activeNav === 'project' ? 'on' : ''}
           onClick={() => scrollTo('project')}      
@@ -625,6 +676,24 @@ export default function Home() {
         </Button>
       </nav>
       <div className="work_right">
+        <div className='stack_cont' ref={stackRef}>
+          <div className="stack_ani" ref={stackAniRef}>
+            <ul className="stack_list">
+              {stacks.map((p) => (
+              <li key={p.id} className={`stack_item ${p.id}`}>
+                <div className="stack_title">{p.title}</div>                  
+                <div className="stack_skill">
+                  {p.item?.map((item, idx) => (
+                    <span key={idx} className="skill">
+                      {item}
+                    </span>
+                  ))}
+                </div>                                                         
+              </li>
+              ))}
+            </ul>
+          </div>
+        </div>
         <div className='project_cont' ref={projectRef}>
           <div className="project_ani" ref={projectAniRef}>
             <div className="project_slider_wrap">

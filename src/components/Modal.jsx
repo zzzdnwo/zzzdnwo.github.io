@@ -29,13 +29,21 @@ export default function Modal({ isOpen, onClose, children, project }) {
         <div
         ref={overlayRef}
         className="modal_overlay"
-        onMouseDown={(e) => { if (e.target === overlayRef.current) onClose(); }}
+        onMouseDown={(e) => { if (e.target === overlayRef.current) onClose(); }}        
         role="dialog"
         aria-modal="true"
         aria-label={project?.title}
         >
-            <div className="modal_wrapper">
-                <div ref={contentRef} tabIndex={-1} className="modal_content">
+            <div 
+                className="modal_wrapper"
+                onClick={onClose}                    
+            >
+                <div 
+                    className="modal_content"
+                    ref={contentRef}
+                    tabIndex={-1}
+                    onClick={(e) => e.stopPropagation()} 
+                >
                     <header className={`detail_header ${project?.file || 'default'}`}>
                         <div className="project_tag">
                             {project.tag?.map((tag, idx) => (

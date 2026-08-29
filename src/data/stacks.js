@@ -1,0 +1,32 @@
+const stacks = [
+    { id: 'frontend',  
+        title: 'Front-end',  
+        item: ['HTML5','CSS3','JavaScript','Ajax'], 
+    },
+    { id: 'library',  
+        title: 'JavaScript Library',  
+        item: ['AOS.js','Waypoints.js','Slick.js','Magnify.js','CountUp.js'], 
+    },
+    { id: 'dataVisual',  
+        title: 'Data Visualization',  
+        item: ['Chart.js','ToastGrid','CKEditor 5'], 
+    },
+    { id: 'database',  
+        title: 'Database',  
+        item: ['REST API','Microsoft SQL Server','OZ Report'], 
+    },
+    { id: 'framework',  
+        title: 'Framework',  
+        item: ['React','TypeScript','Zustand','SCSS'], 
+    },
+    { id: 'dev',  
+        title: 'Development',  
+        item: ['Git','GitHub','Jira','Redmine','Figma','Zeplin'], 
+    },
+    { id: 'analytics',  
+        title: 'Analytics',  
+        item: ['Google Lighthouse'], 
+    }
+];
+
+export default stacks;

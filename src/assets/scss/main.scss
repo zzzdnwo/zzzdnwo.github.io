@@ -180,7 +180,41 @@ $mobile: 768px;
         
         }
         .work_right{ display: flex; flex-direction: column;
-          .project_cont{ width: 100%; height: auto; padding-top: 1rem; padding-bottom: 0;
+          .stack_cont{
+            width: 100%; height: auto; padding-top: 1rem; padding-bottom: 0;
+            .stack_list{ display: flex; flex-flow: column; gap: 5rem 0;
+              .stack_item{ display: flex; flex-flow: column; gap: 2rem 0;
+                .stack_title{font-size: 2rem; font-weight: bold; letter-spacing: -0.06rem; color: #fff;}
+                .stack_skill{display: flex; gap: 0 0.8rem;
+                  .skill{display: flex; align-items: center; justify-content: center; height: 4rem; padding: 0 1.4rem;
+                     font-size: 1.7em; font-weight: 600; letter-spacing: -0.06rem;  color: #fff; border-radius: 0.6rem;
+                    }
+                }
+                &.frontend{
+                  .skill{background: rgba(255,250,152,0.3);}                  
+                }
+                &.library{
+                  .skill{background: rgba(172,255,152,0.3);}                  
+                }
+                &.dataVisual{
+                  .skill{background: rgba(152,255,222,0.3);}                  
+                }
+                &.database{
+                  .skill{background: rgba(152,217,255,0.3);}                  
+                }
+                &.framework{
+                  .skill{background: rgba(152,172,255,0.3);}                  
+                }
+                &.dev{
+                  .skill{background: rgba(198,152,255,0.3);}                  
+                }
+                &.analytics{
+                  .skill{background: rgba(238,152,255,0.3);}                  
+                }
+              }
+            }
+          }
+          .project_cont{ width: 100%; height: auto; padding-top: 14rem; padding-bottom: 10rem;
             .work_category{width: fit-content; display: flex; gap: 0 1rem; padding: 1rem 0.5rem; background: #373737; border-radius: 9999px;
               button{font-size: 1.6rem; color: #fff; height: 4rem; padding: 0 2rem; border-radius: 9999px;
                 &:hover{color: #fff; background: #4e4e4e;}
@@ -197,7 +231,7 @@ $mobile: 768px;
                   .project_title{ font-size: 2rem; font-weight: 700; color: #fff; padding-bottom: 1.4rem;}
                   .project_label{ font-size: 1.2rem; font-weight: 400; color: #fff; padding-bottom: 2rem; }
                   .project_tag{position: absolute; top: 2.4rem; left: 2rem;
-                    .tag{background: rgba(255,255,255,.2); color: #fff; font-size: 1.2rem; font-weight: 400; padding: 0.4rem 0.8rem; border-radius: 0.3rem; border-radius: 0.5rem; margin-right: 0.6rem;}
+                    .tag{background: rgba(255,255,255,.2); color: #fff; font-size: 1.2rem; font-weight: 400; letter-spacing: -0.06rem; padding: 0.4rem 0.8rem; border-radius: 0.3rem; border-radius: 0.5rem; margin-right: 0.6rem;}
                   }
                   .project_period{position: absolute; left: 2rem; bottom: 2rem; color: #a7a7a7; font-size: 1.2rem; font-weight: 500; }
                 }
