@@ -4,8 +4,12 @@ import screenShot1Thumb from '../assets/images/beyond_screen1Thumb.png';
 import screenShot2 from '../assets/images/beyond_screen2.jpg';
 import screenShot2Thumb from '../assets/images/beyond_screen2Thumb.png';
 import screenShot3 from '../assets/images/beyond_screen3.png';
+import ImageModal from '../components/ImageModal';
 
 export default function NzBoard() {
+    const images = [screenShot1, screenShot2, screenShot3];
+    const [selectedIndex, setSelectedIndex] = useState(null);
+
     const [openIndex, setOpenIndex] = useState(() => {
         const initialState = {};
         for (let i = 0; i <= 11; i++) {
@@ -13,7 +17,6 @@ export default function NzBoard() {
         }
         return initialState;
     });
-    const [selectedImage, setSelectedImage] = useState(null);
 
 
     const toggleItem = (index) => {
@@ -35,13 +38,6 @@ export default function NzBoard() {
            <h3>📍 프로그램 설명</h3> 
            <ul>
                 <li>세무 및 기업관리 프로그램에서 관리되는 업체 재무 데이터를 웹 페이지에서 조회할 수 있도록 구축한 재무 데이터 대시보드</li>
-                {/* <li>트리 기반 계층형 매뉴얼 관리 시스템 설계 및 구현</li>
-                <li><code>Zustand</code>를 활용한 복잡한 상태 관리 구조 설계</li>
-                <li><code>CKEditor 5</code> 커스텀 빌드 및 <code>TypeScript</code> 이슈 해결</li>
-                <li>SPA 환경에서 조건부 레이아웃 제어 및 화면 전환 로직 구현</li>
-                <li>카테고리 종속 구조 기반 동적 글쓰기 폼 개발</li>
-                <li>비동기 처리 안정화를 위한 GUID 로딩 제어 설계</li> */}
-                
            </ul>
         </section>
         <section className="skillCont">
@@ -164,28 +160,25 @@ export default function NzBoard() {
             <p>이미지 클릭 시 크게 볼 수 있습니다. (작업화면이 현재와 다를 수 있습니다.)<br />* 저작권 이슈가 있는 경우 첨부하지 않았습니다.</p>
             </h3>
             <div className="gridBox">
-                 <div className="screen_item" onClick={() => setSelectedImage(screenShot1)}>
+                 <div className="screen_item" onClick={() => setSelectedIndex(0)}>
                     <img src={screenShot1Thumb} alt="프로젝트 작업 화면 1" />
                     <p className="item_title">재무보고서 PC</p>
                  </div>
-                 <div className="screen_item" onClick={() => setSelectedImage(screenShot2)}>
+                 <div className="screen_item" onClick={() => setSelectedIndex(1)}>
                     <img src={screenShot2Thumb} alt="프로젝트 작업 화면 2" />
                     <p className="item_title">재무보고서 모바일</p>
                  </div>
-                 <div className="screen_item" onClick={() => setSelectedImage(screenShot3)}>
+                 <div className="screen_item" onClick={() => setSelectedIndex(2)}>
                     <img src={screenShot3} alt="프로젝트 작업 화면 3" />
                     <p className="item_title">재무보고서 OZReport</p>
                  </div>                 
             </div> 
         </section>
-        {selectedImage && (
-            <div className="image_modal">
-                <div className="image_modal_content" onClick={(e) => e.stopPropagation()}>
-                    <img src={selectedImage} alt="확대 이미지" />
-                    <button className='btn_modalClose' onClick={() => setSelectedImage(null)}>✕</button>
-                </div>
-            </div>
-        )}
+        <ImageModal
+            images={images}
+            selectedIndex={selectedIndex}
+            setSelectedIndex={setSelectedIndex}
+        />
     </article>
     );
 }

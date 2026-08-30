@@ -10,8 +10,12 @@ import screenShot6 from '../assets/images/nzHome_screen6.png';
 import screenShot6Thumb from '../assets/images/nzHome_screen6Thumb.jpg';
 import screenShot7 from '../assets/images/nzHome_screen7.jpg';
 import screenShot7Thumb from '../assets/images/nzHome_screen7Thumb.png';
+import ImageModal from '../components/ImageModal';
 
 export default function NzBoard() {
+    const images = [screenShot1, screenShot2, screenShot3, screenShot4, screenShot5, screenShot6, screenShot7];
+    const [selectedIndex, setSelectedIndex] = useState(null);
+
     const [openIndex, setOpenIndex] = useState(() => {
         const initialState = {};
         for (let i = 0; i <= 11; i++) {
@@ -19,7 +23,6 @@ export default function NzBoard() {
         }
         return initialState;
     });
-    const [selectedImage, setSelectedImage] = useState(null);
 
 
     const toggleItem = (index) => {
@@ -158,44 +161,41 @@ export default function NzBoard() {
             <p>이미지 클릭 시 크게 볼 수 있습니다. (작업화면이 현재와 다를 수 있습니다.)<br />* 저작권 이슈가 있는 경우 첨부하지 않았습니다.</p>
             </h3>
             <div className="gridBox">
-                 <div className="screen_item" onClick={() => setSelectedImage(screenShot1)}>
+                 <div className="screen_item" onClick={() => setSelectedIndex(0)}>
                     <img src={screenShot1} alt="프로젝트 작업 화면 1" />
                     <p className="item_title">대표 홈페이지 메인</p>
                  </div>
-                 <div className="screen_item" onClick={() => setSelectedImage(screenShot2)}>
+                 <div className="screen_item" onClick={() => setSelectedIndex(1)}>
                     <img src={screenShot2} alt="프로젝트 작업 화면 2" />
                     <p className="item_title">홈페이지 회사소개</p>
                  </div>
-                 <div className="screen_item" onClick={() => setSelectedImage(screenShot3)}>
+                 <div className="screen_item" onClick={() => setSelectedIndex(2)}>
                     <img src={screenShot3Thumb} alt="프로젝트 작업 화면 3" />
                     <p className="item_title">홈페이지 공지사항</p>
                  </div>
-                 <div className="screen_item" onClick={() => setSelectedImage(screenShot4)}>
+                 <div className="screen_item" onClick={() => setSelectedIndex(3)}>
                     <img src={screenShot4} alt="프로젝트 작업 화면 4" />
                     <p className="item_title">홈페이지 이미지 자료실</p>
                  </div>
-                 <div className="screen_item" onClick={() => setSelectedImage(screenShot5)}>
+                 <div className="screen_item" onClick={() => setSelectedIndex(4)}>
                     <img src={screenShot5Thumb} alt="프로젝트 작업 화면 5" />
                     <p className="item_title">비즈북스 마이크로페이지</p>
                  </div>
-                 <div className="screen_item" onClick={() => setSelectedImage(screenShot6)}>
+                 <div className="screen_item" onClick={() => setSelectedIndex(5)}>
                     <img src={screenShot6Thumb} alt="프로젝트 작업 화면 6" />
                     <p className="item_title">택스비즈북 마이크로페이지</p>
                  </div>
-                 <div className="screen_item" onClick={() => setSelectedImage(screenShot7)}>
+                 <div className="screen_item" onClick={() => setSelectedIndex(6)}>
                     <img src={screenShot7Thumb} alt="프로젝트 작업 화면 7" />
                     <p className="item_title">케이렙365 마이크로페이지</p>
                  </div>
             </div> 
         </section>
-        {selectedImage && (
-            <div className="image_modal">
-                <div className="image_modal_content" onClick={(e) => e.stopPropagation()}>
-                    <img src={selectedImage} alt="확대 이미지" />
-                    <button className='btn_modalClose' onClick={() => setSelectedImage(null)}>✕</button>
-                </div>
-            </div>
-        )}
+        <ImageModal
+            images={images}
+            selectedIndex={selectedIndex}
+            setSelectedIndex={setSelectedIndex}
+        />
     </article>
     );
 }

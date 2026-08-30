@@ -3,9 +3,12 @@ import screenShot1 from '../assets/images/zReport_screen1.png';
 import screenShot2 from '../assets/images/zReport_screen2.png';
 import screenShot3 from '../assets/images/zReport_screen3.png';
 import screenShot4 from '../assets/images/zReport_screenGif.gif';
-
+import ImageModal from '../components/ImageModal';
 
 export default function ZReport() {
+    const images = [screenShot1, screenShot2, screenShot3, screenShot4];
+    const [selectedIndex, setSelectedIndex] = useState(null);
+
     const [openIndex, setOpenIndex] = useState(() => {
         const initialState = {};
         for (let i = 0; i <= 11; i++) {
@@ -13,7 +16,6 @@ export default function ZReport() {
         }
         return initialState;
     });
-    const [selectedImage, setSelectedImage] = useState(null);
 
 
     const toggleItem = (index) => {
@@ -137,32 +139,29 @@ export default function ZReport() {
             <p>이미지 클릭 시 크게 볼 수 있습니다. (작업화면이 현재와 다를 수 있습니다.)<br />* 저작권 이슈가 있는 경우 첨부하지 않았습니다.</p>
             </h3>
             <div className="gridBox">
-                 <div className="screen_item" onClick={() => setSelectedImage(screenShot1)}>
+                 <div className="screen_item" onClick={() => setSelectedIndex(0)}>
                     <img src={screenShot1} alt="프로젝트 작업 화면 1" />
                     <p className="item_title">편집모드 1</p>
                  </div>
-                 <div className="screen_item" onClick={() => setSelectedImage(screenShot2)}>
+                 <div className="screen_item" onClick={() => setSelectedIndex(1)}>
                     <img src={screenShot2} alt="프로젝트 작업 화면 2" />
                     <p className="item_title">텍스트 편집</p>
                  </div>
-                 <div className="screen_item" onClick={() => setSelectedImage(screenShot3)}>
+                 <div className="screen_item" onClick={() => setSelectedIndex(2)}>
                     <img src={screenShot3} alt="프로젝트 작업 화면 3" />
                     <p className="item_title">스크립트 편집</p>
                  </div>
-                 <div className="screen_item" onClick={() => setSelectedImage(screenShot4)}>
+                 <div className="screen_item" onClick={() => setSelectedIndex(3)}>
                     <img src={screenShot4} alt="프로젝트 작업 화면 4" />
                     <p className="item_title">제트리포트 시연</p>
                  </div>                 
             </div> 
         </section>
-        {selectedImage && (
-            <div className="image_modal">
-                <div className="image_modal_content" onClick={(e) => e.stopPropagation()}>
-                    <img src={selectedImage} alt="확대 이미지" />
-                    <button className='btn_modalClose' onClick={() => setSelectedImage(null)}>✕</button>
-                </div>
-            </div>
-        )}
+        <ImageModal
+            images={images}
+            selectedIndex={selectedIndex}
+            setSelectedIndex={setSelectedIndex}
+        />
     </article>
     );
 }

@@ -51,7 +51,7 @@ export default function Resume() {
           <div className="section_content">
             <div className="project_list">
               <div className="project_item">
-                <h3 className="project_name">뉴젠보드(프로그램 메뉴얼 가이드 사이트) 리뉴얼 프로젝트</h3>
+                <h3 className="project_name">뉴젠보드(프로그램 매뉴얼 사이트) 리뉴얼 프로젝트</h3>
                 <p className="project_period">2025.06 ~ 2025.10 (5개월)</p>
                 <h4 className="project_result">
                   기존 레거시 구조의 게시판 시스템을 React + TypeScript 기반으로 전면 리뉴얼하여
