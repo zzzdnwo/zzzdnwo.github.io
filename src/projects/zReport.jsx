@@ -49,12 +49,12 @@ export default function ZReport() {
         <section className="skillCont">
            <h3>🛠️ 기술 스택</h3>
             <div className="flexBox">                
-                <div className="item">SCSS</div>                                
-                <div className="item">Git</div>
-                <div className="item">GitHub</div>
-                <div className="item">Jira</div>
-                <div className="item">Redmine</div>
-                <div className="item">Zeplin</div>
+                <div className="item frontend">SCSS</div>                                
+                <div className="item dev">Git</div>
+                <div className="item dev">GitHub</div>
+                <div className="item dev">Jira</div>
+                <div className="item dev">Redmine</div>
+                <div className="item dev">Zeplin</div>
             </div> 
         </section>
         <section>

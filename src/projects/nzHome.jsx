@@ -49,20 +49,20 @@ export default function NzBoard() {
         <section className="skillCont">
            <h3>🛠️ 기술 스택</h3>
             <div className="flexBox">                
-                <div className="item">HTML5</div>
-                <div className="item">CSS3</div>                                
-                <div className="item">JavaScript</div>
-                <div className="item">Ajax</div>
-                <div className="item">AOS.js</div>
-                <div className="item">Waypoints.js</div>
-                <div className="item">CountUp.js</div>
-                <div className="item">Magnify.js</div>
-                <div className="item">Slick.js</div>
-                <div className="item">Microsoft SQL Server</div>
-                <div className="item">Google Lighthouse</div>
-                <div className="item">GitHub</div>
-                <div className="item">Redmine</div>
-                <div className="item">Zeplin</div>
+                <div className="item frontend">HTML5</div>
+                <div className="item frontend">CSS3</div>                                
+                <div className="item frontend">JavaScript</div>
+                <div className="item frontend">Ajax</div>
+                <div className="item library">AOS.js</div>
+                <div className="item library">Waypoints.js</div>
+                <div className="item library">CountUp.js</div>
+                <div className="item library">Magnify.js</div>
+                <div className="item library">Slick.js</div>
+                <div className="item database">Microsoft SQL Server</div>
+                <div className="item analytics">Google Lighthouse</div>
+                <div className="item dev">GitHub</div>
+                <div className="item dev">Redmine</div>
+                <div className="item dev">Zeplin</div>
             </div> 
         </section>
         <section>

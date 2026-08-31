@@ -55,16 +55,16 @@ export default function NzBoard() {
         <section className="skillCont">
            <h3>🛠️ 기술 스택</h3>
             <div className="flexBox">
-                <div className="item">React</div>
-                <div className="item">TypeScript</div>
-                <div className="item">Zustand</div>
-                <div className="item">SCSS</div>
-                <div className="item">REST API</div>
-                <div className="item">CKEditor 5</div>                
-                <div className="item">Git</div>
-                <div className="item">GitHub</div>
-                <div className="item">Redmine</div>
-                <div className="item">Zeplin</div>
+                <div className="item frontend">React</div>
+                <div className="item frontend">TypeScript</div>
+                <div className="item frontend">Zustand</div>
+                <div className="item frontend">SCSS</div>
+                <div className="item database">REST API</div>
+                <div className="item dataVisual">CKEditor 5</div>                
+                <div className="item dev">Git</div>
+                <div className="item dev">GitHub</div>
+                <div className="item dev">Redmine</div>
+                <div className="item dev">Zeplin</div>
             </div> 
         </section>
         <section>
