@@ -260,7 +260,7 @@ useEffect(() => {
     // viewport의 40% 지점을 기준으로 사용
     const triggerLine = window.innerHeight * 0.4;
 
-    const stackRect = stackEl.getBoundingClientRect();
+    //const stackRect = stackEl.getBoundingClientRect();
     const projectRect = projectEl.getBoundingClientRect();
     const expRect = expEl.getBoundingClientRect();
 
