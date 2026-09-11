@@ -29,7 +29,7 @@ $mobile: 768px;
         background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(1.2rem); -webkit-backdrop-filter: blur(1.2rem);
         border: 1px solid rgba(255, 255, 255, 0.15);
         box-shadow: 0 0.8rem 3.2rem rgba(0, 0, 0, 0.15), inset 0 0.1rem 0 rgba(255, 255, 255, 0.2); will-change: transform, backdrop-filter;
-        .logo{text-indent: -9999px; display: inline-block; width: 2.8rem; height: 2.8rem;
+        .logo{text-indent: -9999px; display: inline-block; width: 2.8rem; height: 2.8rem; cursor: pointer;
           background: url('../images/icon_swLogo.png') no-repeat center; background-size: 2.8rem 2.8rem;
         }
         .menu {

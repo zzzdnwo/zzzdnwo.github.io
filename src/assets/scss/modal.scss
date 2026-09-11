@@ -60,7 +60,15 @@ $mobile: 768px;
                         }
                         &.skillCont{
                             .flexBox{ flex-flow: row; gap: 0.8rem; flex-wrap: wrap;
-                                .item{width: fit-content; display: inline-flex; align-items: center; justify-content: center; padding: 0.4rem 0.8rem; background: #efeff1; border-radius: 0.5rem;}
+                                .item{ width: fit-content; display: inline-flex; align-items: center; justify-content: center; padding: 0.4rem 0.8rem; background: #efeff1; border-radius: 0.5rem;
+                                    &.frontend{background: #FBF9D2;}
+                                    &.library{background: #E7F7DE;}
+                                    &.dataVisual{background: #DBF2EB;}
+                                    &.database{background: #D4EBF9;}
+                                    &.framework{background: #DAE1FB;}
+                                    &.dev{background: #EADDF9;}
+                                    &.analytics{background: #F6DFFA;}
+                                }
                             }
                         }
                     }
