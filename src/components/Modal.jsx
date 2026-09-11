@@ -4,20 +4,49 @@ import Button from '../components/Button';
 
 export default function Modal({ isOpen, onClose, children, project }) {
     const overlayRef = useRef(null);
+    const wrapperRef = useRef(null);
     const contentRef = useRef(null);
+    const previouslyFocusedRef = useRef(null);
 
     useEffect(() => {
-        function onKey(e) { if (e.key === 'Escape') onClose(); }
+        if (!isOpen) return undefined;
 
-        if (isOpen) {
-            document.addEventListener('keydown', onKey);
-            document.body.style.overflow = 'hidden';
-            if (contentRef.current) contentRef.current.focus();
+        const previousOverflow = document.body.style.overflow;
+        previouslyFocusedRef.current = document.activeElement;
+
+        function onKey(e) {
+            if (e.key === 'Escape') {
+                onClose();
+                return;
+            }
+
+            if (e.key !== 'Tab') return;
+
+            const focusable = wrapperRef.current?.querySelectorAll(
+                'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+            );
+            if (!focusable?.length) return;
+
+            const first = focusable[0];
+            const last = focusable[focusable.length - 1];
+
+            if (e.shiftKey && document.activeElement === first) {
+                e.preventDefault();
+                last.focus();
+            } else if (!e.shiftKey && document.activeElement === last) {
+                e.preventDefault();
+                first.focus();
+            }
         }
+
+        document.addEventListener('keydown', onKey);
+        document.body.style.overflow = 'hidden';
+        contentRef.current?.focus();
 
         return () => {
             document.removeEventListener('keydown', onKey);
-            document.body.style.overflow = '';
+            document.body.style.overflow = previousOverflow;
+            previouslyFocusedRef.current?.focus?.();
         };
     }, [isOpen, onClose]);
 
@@ -29,30 +58,30 @@ export default function Modal({ isOpen, onClose, children, project }) {
         <div
         ref={overlayRef}
         className="modal_overlay"
-        onMouseDown={(e) => { if (e.target === overlayRef.current) onClose(); }}        
+        onMouseDown={(e) => { if (e.target === overlayRef.current) onClose(); }}
         role="dialog"
         aria-modal="true"
-        aria-label={project?.title}
+        aria-labelledby="project-modal-title"
         >
             <div 
+                ref={wrapperRef}
                 className="modal_wrapper"
-                onClick={onClose}                    
+                onMouseDown={(e) => { if (e.target === wrapperRef.current) onClose(); }}
             >
                 <div 
                     className="modal_content"
                     ref={contentRef}
                     tabIndex={-1}
-                    onClick={(e) => e.stopPropagation()} 
                 >
                     <header className={`detail_header ${project?.file || 'default'}`}>
                         <div className="project_tag">
-                            {project.tag?.map((tag, idx) => (
+                            {project?.tag?.map((tag, idx) => (
                                 <span key={idx} className="tag_item">
                                     {tag}
                                 </span>
                             ))}                    
                         </div>                    
-                        <h1 className="project_title">{project?.title}</h1>
+                        <h1 id="project-modal-title" className="project_title">{project?.title}</h1>
                         <div className="project_info">
                             <p className="info_period">{project?.period}</p>
                             <p className="info_divide">|</p>

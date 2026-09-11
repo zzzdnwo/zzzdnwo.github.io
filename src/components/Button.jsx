@@ -3,55 +3,36 @@ import { Link } from 'react-router-dom';
 
 export default function Button({
   children,
-  onClick,
-  onMouseEnter,
-  id,
-  className,
-  to,      
-  href, 
+  to,
+  href,
   target,
+  rel,
+  type = 'button',
+  ...props
 }) {
-  // 내부 링크
   if (to) {
     return (
-      <button
-        id={id}
-        className={className}
-        onMouseEnter={onMouseEnter}
-      >
-        <Link
-            to={to}            
-        >
-            {children}
-        </Link>
-      </button>  
+      <Link to={to} target={target} {...props}>
+        {children}
+      </Link>
     );
   }
-  // 외부 링크
+
   if (href) {
     return (
-    <button
-      id={id}
-      className={className}
-      onMouseEnter={onMouseEnter}
-    >
       <a
         href={href}
         target={target}
-        rel={target === '_blank' ? 'noopener noreferrer' : undefined}        
+        rel={rel || (target === '_blank' ? 'noopener noreferrer' : undefined)}
+        {...props}
       >
         {children}
       </a>
-    </button>  
     );
   }
+
   return (
-    <button
-      onClick={onClick}
-      onMouseEnter={onMouseEnter}
-      id={id}
-      className={className}
-    >
+    <button type={type} {...props}>
       {children}
     </button>
   );

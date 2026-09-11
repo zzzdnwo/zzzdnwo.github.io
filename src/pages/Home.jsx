@@ -557,9 +557,9 @@ useEffect(() => {
     <div className="gnbInitWrap">
       <div className={`gnb ${showGnb ? 'show' : 'hide'} ${gnbTheme}`}>
         <div className="gnb_inner">
-          <div className="logo" onClick={() => scrollToSection('main')}>
+          <Button className="logo" onClick={() => scrollToSection('main')} aria-label="메인으로 이동">
             로고
-          </div>
+          </Button>
 
           <div className="menu">
             <Button 
@@ -852,10 +852,10 @@ useEffect(() => {
           <h3>Contact</h3>
           <div className="contact_info">
             <p>+82 10-4027-1487</p>
-            <div className="mail" onClick={copyMail}>
-              seosson@naver.com
-              <div className="copyBtn">메일 복사버튼</div>
-            </div>            
+          <Button className="mail" onClick={copyMail}>
+            seosson@naver.com
+            <div className="copyBtn">메일 복사버튼</div>
+          </Button>            
           </div>
           <h5 className="copyright">@Copyright 2026. shinwoojae All rights reserved.</h5>
           {/* <span className="thanksTxt">Thank you</span> */}
@@ -866,7 +866,7 @@ useEffect(() => {
       <div className="resume">
           <Button
             id="goResume"
-            href={`/resume`} target="_blank"
+            to="/resume" target="_blank"
           >
             <img width="20" height="20" src={require(`../assets/images/icon_resume.png`)} alt="resume"/>
           </Button>

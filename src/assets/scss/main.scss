@@ -260,7 +260,7 @@ $mobile: 768px;
           }
           .exp_cont{width: 100%; padding-top: 14rem; padding-bottom: 10rem;
             .exp_list{ display: flex; flex-wrap: wrap; gap: 2rem;
-              &>li{width: calc((100% - 2rem) / 2); height: auto; background: #373737; padding: 2rem; border-radius: 0.3rem;                                
+              &>li{width: calc((100% - 2rem) / 2); max-width: 56rem; height: auto; background: #373737; padding: 2rem; border-radius: 0.3rem;                                
                 table{ width: 100%; border-collapse: collapse;
                   th, td{border: 0.1rem solid #555; padding: 0.8rem; font-size: 1.4rem; color: #fff;}
                   th{ width: 12%; min-width: 6rem; font-weight: 550;}
@@ -326,7 +326,7 @@ $mobile: 768px;
         &.resume::before{content: '이력서이동';}
       }
     }
-    button{width: 5rem; height: 5rem; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: #fff; box-shadow: 0 0px 10px 1px rgba(0, 0, 0, 0.08);
+    :is(button, a){width: 5rem; height: 5rem; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: #fff; box-shadow: 0 0px 10px 1px rgba(0, 0, 0, 0.08);
       &:hover{opacity: 0.8;}
       svg{display: block;}
     }
