@@ -40,7 +40,7 @@ $mobile: 768px;
                     section{flex-flow: column;
                         .flexBox{display: flex; flex-flow: column; gap: 0.4rem;
                             .itemBox{
-                                .item_title{font-size: 1.6rem; font-weight: bold; padding: 0.8rem 1.2rem; background: #efeff1;
+                                .item_title{width: 100%; font-size: 1.6rem; font-weight: bold; text-align: left; padding: 0.8rem 1.2rem; background: #efeff1;
                                     &:hover{background: #e1e1e1; cursor: pointer;}
                                 }
                                 .item_text{display: none; padding: 0.8rem 1.2rem;}
@@ -52,9 +52,9 @@ $mobile: 768px;
                             }
                         }
                         .gridBox{display: grid; gap: 1.2rem; grid-template-columns: repeat(3,minmax(0,1fr));
-                            .screen_item{display: flex; cursor: pointer; flex-flow: column; align-items: center;
+                            .screen_item{display: flex; width: 100%; cursor: pointer; flex-flow: column; align-items: center; text-align: inherit;
                                 img{max-width: 100%; height: auto; border: 1px solid #dbdbdb;}
-                                .item_title{font-size: 1rem; color: #999;}
+                                .item_title{font-size: 1rem; color: #999; margin: 1.2rem 0 1.4rem;}
                                 &:hover{img{opacity: 0.8;}}
                             }
                         }

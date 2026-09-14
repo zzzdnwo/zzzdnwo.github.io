@@ -1,9 +1,15 @@
+export const resumeSkills = [
+  'React', 'TypeScript', 'Zustand', 'REST API', 'Ajax', 'SCSS',
+  'HTML5', 'JSP', 'CKEditor 5', 'Chart.js', 'OZReport', 'Nexacro',
+];
+
 const experiences = [
   {
     id: 1,
     title: '뉴젠보드(프로그램 매뉴얼 사이트) 리뉴얼 프로젝트',
     period: '2025.06 ~ 2025.10 (5개월)',
     achievement: '프로젝트 전반 React + TypeScript 구조로 리뉴얼 안정성과 유지보수성을 향상',
+    resumeAchievement: '기존 레거시 구조의 게시판 시스템을 React + TypeScript 기반으로 전면 리뉴얼하여 상태 흐름 안정화 및 유지보수 효율 개선, 신규 기능 개발 생산성 약 30% 향상',
     roles: [
       {
         title: '1.  React + TypeScript 기반 프로젝트 구조 개선 및 UI 구현',
@@ -40,6 +46,7 @@ const experiences = [
     title: '제트리포트 (리포트 툴) 웹 페이지 화 프로젝트',
     period: '2024.09-2025.01 (5개월)',
     achievement: '기존 리포트 에디터를 웹 환경으로 구현하여 사용자 접근성과 UI 일관성을 개선',
+    resumeAchievement: '기존 리포트 에디터를 웹 환경으로 구현하여 접근성 개선 및 UI 일관성 확보하고 사용자 작업 편의성, 데이터 가독성 향상',
     roles: [
       {
         title: '1. 리포트 에디터 UI 퍼블리싱 및 구조 정리',
@@ -65,6 +72,7 @@ const experiences = [
     title: '비욘드 재무보고서 (재무 데이터 대시보드) 프로젝트',
     period: '2024.06-2024.09 (4개월)',
     achievement: '파라미터 기반 재무 데이터를 시각화한 대시보드 구축하여, 정보 조회 효율을 향상',
+    resumeAchievement: '파라미터 기반 데이터 조회 및 Chart.js 기반 대시보드 구축으로 데이터 조회 및 확인 과정을 단순화하여 사용자 데이터 확인 시간 약 25% 단축',
     roles: [
       {
         title: '1. 재무 데이터 대시보드 화면 구현',
@@ -102,6 +110,7 @@ const experiences = [
     title: '비즈북스 (세무 비즈니스 플랫폼) 운영 및 고도화 프로젝트',
     period: '2021.06-2025.10 (상시 운영 및 기능 고도화)',
     achievement: '장기 운영 서비스의 신규기능·메뉴 추가 및 화면 리뉴얼 작업을 지속 수행하며, 컴포넌트 단위 구조화를 통해 유지보수 효율과 화면 일관성을 안정적으로 유지',
+    resumeAchievement: '장기 운영 서비스의 기능 고도화 및 UI 구조 개선을 통해 지속적인 서비스 안정성 유지 및 유지보수 효율 개선',
     roles: [
       {
         title: '1. 플랫폼 신규 기능 및 화면 구현',
@@ -134,6 +143,7 @@ const experiences = [
     title: '대표 홈페이지 및 마이크로사이트 운영·리뉴얼',
     period: '재직 기간 전반 (상시 신규 제작 및 유지보수)',
     achievement: '대표 홈페이지 및 다수의 마이크로사이트를 신규 제작·운영하며, UI 구현과 SEO 개선을 통해 사용자 경험과 사이트 완성도를 지속적으로 향상',
+    resumeAchievement: '대표 홈페이지 및 다수의 마이크로사이트를 신규 제작·운영하며, UI 구현과 SEO 개선을 통해 사용자 경험과 사이트 완성도를 지속적으로 향상',
     roles: [
       {
         title: '1. 대표 홈페이지 메인 인터랙션 구현',
