@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkswj_portfolio=self.webpackChunkswj_portfolio||[]).push([[529],{8529:(e,o,r)=>{r.r(o),r.d(o,{default:()=>a});var s=r(9675),t=r(9711),u=r(579);function a(){return(0,u.jsx)(s.A,{detail:t.A.nzBoard})}}}]);
+//# sourceMappingURL=529.54a91739.chunk.js.map

@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkswj_portfolio=self.webpackChunkswj_portfolio||[]).push([[397],{397:(e,t,o)=>{o.r(t),o.d(t,{default:()=>f});var r=o(9675),s=o(9711),u=o(579);function f(){return(0,u.jsx)(r.A,{detail:s.A.zReport})}}}]);
+//# sourceMappingURL=397.12406fc9.chunk.js.map

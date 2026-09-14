@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkswj_portfolio=self.webpackChunkswj_portfolio||[]).push([[442],{9442:(o,s,e)=>{e.r(s),e.d(s,{default:()=>f});var t=e(9675),r=e(9711),u=e(579);function f(){return(0,u.jsx)(t.A,{detail:r.A.bizbooks})}}}]);
+//# sourceMappingURL=442.9a68b977.chunk.js.map
