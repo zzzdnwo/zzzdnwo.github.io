@@ -2,6 +2,7 @@ import Button from './Button';
 
 export default function ProjectCard({ project, onOpen, onPreload }) {
   const preloadProject = () => onPreload(project.file);
+  const thumbnail = project.thumbnail || require(`../assets/images/${project.file}_thumb.png`);
 
   return (
     <li className="project-item" onMouseEnter={preloadProject}>
@@ -14,7 +15,7 @@ export default function ProjectCard({ project, onOpen, onPreload }) {
         <span className="project_wrap">
           <span className="project_thumbnail">
             <img
-              src={require(`../assets/images/${project.file}_thumb.png`)}
+              src={thumbnail}
               alt={project.title}
               loading="lazy"
               decoding="async"

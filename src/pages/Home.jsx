@@ -120,7 +120,7 @@ export default function Home() {
             <li>제트리포트</li>
             <li>비욘드 재무보고서</li>
             <li>비즈북스</li>
-            <li>홈페이지 및 마이크로사이트</li>
+            <li>홈페이지 및 마이크로사이트</li>            
           </ul>
         </div>
         <div className="about_right">

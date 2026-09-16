@@ -5,6 +5,7 @@ import ProjectGallery from './ProjectGallery';
 
 export default function ProjectDetail({ detail }) {
   const [selectedIndex, setSelectedIndex] = useState(null);
+  const hasScreens = detail.screens?.length > 0;
 
   return (
     <article className="project_detail">
@@ -35,12 +36,16 @@ export default function ProjectDetail({ detail }) {
       </section>
 
       <ProjectAccordion sections={detail.sections} />
-      <ProjectGallery screens={detail.screens} onSelect={setSelectedIndex} />
-      <ImageModal
-        images={detail.screens}
-        selectedIndex={selectedIndex}
-        setSelectedIndex={setSelectedIndex}
-      />
+      {hasScreens && (
+        <>
+          <ProjectGallery screens={detail.screens} onSelect={setSelectedIndex} />
+          <ImageModal
+            images={detail.screens}
+            selectedIndex={selectedIndex}
+            setSelectedIndex={setSelectedIndex}
+          />
+        </>
+      )}
     </article>
   );
 }

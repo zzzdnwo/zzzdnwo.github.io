@@ -193,6 +193,42 @@ const projectDetails = {
     ],
     screens: [screen(nzHome1, '대표 홈페이지 메인'), screen(nzHome2, '홈페이지 회사소개'), screen(nzHome3, '홈페이지 공지사항', nzHome3Thumb), screen(nzHome4, '홈페이지 이미지 자료실'), screen(nzHome5, '비즈북스 마이크로페이지', nzHome5Thumb), screen(nzHome6, '택스비즈북 마이크로페이지', nzHome6Thumb), screen(nzHome7, '케이렙365 마이크로페이지', nzHome7Thumb)],
   },
+  portfolio: {
+    summary: [
+      '개인 포트폴리오 웹사이트 구축',
+      '프로젝트 경험과 기술 역량을 구조적으로 보여주기 위한 React 기반 개인 포트폴리오 사이트',
+    ],
+    description: [
+      '개발 프로젝트, 업무 경험, 기술 스택을 한 곳에서 소개하고 개별 프로젝트의 구현 내용과 문제 해결 과정을 기록하는 개인 웹사이트',
+    ],
+    stacks: [
+      stack('React', 'frontend'), stack('React Router', 'frontend'), stack('SCSS', 'frontend'),
+      stack('Spline', 'library'), stack('Jest', 'dev'), stack('GitHub Pages', 'dev'),
+    ],
+    sections: [
+      {
+        id: 'features', title: '✨ 주요 구현 기능', items: [
+          feature('project-records', '프로젝트 기록 데이터 구조화', [
+            '프로젝트 카드, 상세 설명, 기술 스택, 작업 화면 정보를 데이터 중심으로 구성하여 새로운 프로젝트를 같은 형식으로 추가할 수 있도록 설계',
+            '공통 상세 화면 컴포넌트를 사용하여 프로젝트별 마크업 중복을 줄이고 콘텐츠 수정 범위를 데이터 파일로 제한',
+          ]),
+          feature('responsive-ui', '반응형 포트폴리오 UI 구현', [
+            '데스크톱과 모바일 화면에서 프로젝트 및 경력 정보를 읽기 쉽게 확인할 수 있도록 반응형 레이아웃과 슬라이드 UI를 적용',
+            '프로젝트 카드와 이미지 갤러리를 키보드로도 이용할 수 있도록 접근 가능한 인터랙션 구조를 적용',
+          ]),
+          feature('performance', '초기 로딩 성능 개선', [
+            '용량이 큰 Spline 3D 요소와 프로젝트 상세 화면을 필요 시점에 불러오도록 지연 로딩을 적용',
+            '이미지에 지연 로딩을 적용해 첫 화면에서 필요한 리소스 중심으로 로드되도록 구성',
+          ]),
+          feature('quality', '품질 검증 기반 유지보수', [
+            '라우팅, 상세 화면 인터랙션, 프로젝트 카드, 클립보드 동작을 자동 테스트로 검증할 수 있도록 구성',
+            '콘텐츠 추가 시 데이터와 공통 컴포넌트의 역할을 분리해 변경 영향을 줄이도록 관리',
+          ]),
+        ],
+      },
+    ],
+    screens: [],
+  },
 };
 
 export default projectDetails;

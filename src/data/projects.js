@@ -1,4 +1,16 @@
+import portfolioThumbnail from '../assets/images/ogThumb.png';
+
 const projects = [
+  {
+    id: 'portfolio',
+    label: '개인 포트폴리오 웹사이트 구축',
+    title: '포트폴리오 사이트',
+    file: 'portfolio',
+    thumbnail: portfolioThumbnail,
+    tag: ['React', '반응형', '접근성'],
+    period: '개인 프로젝트 (진행 중)',
+    member: '개인 프로젝트',
+  },
   { id: 'nzBoard', 
     label: '프로그램 매뉴얼 사이트 리뉴얼 프로젝트', 
     title: '뉴젠보드', 
@@ -43,7 +55,7 @@ const projects = [
     period: '재직 기간 전반 (상시 신규 제작 및 유지보수)', 
     member: '5인(프론트 2명, 백엔드 1명, 디자이너 2명)' ,
     goUrl: 'https://newzensolution.co.kr/' 
-}  
+  },  
 ];
 
 export default projects;
