@@ -7,7 +7,7 @@ const projects = [
     title: '포트폴리오 사이트',
     file: 'portfolio',
     thumbnail: portfolioThumbnail,
-    tag: ['React', 'AI','Figma'],
+    tag: ['반응형', 'React', 'AI','Figma'],
     period: '개인 프로젝트 (구축 완료 · 지속 개선)',
     member: '프론트엔드 1명 · UI/UX 디자이너 1명 협업',
   },
