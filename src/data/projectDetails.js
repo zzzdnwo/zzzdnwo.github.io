@@ -46,9 +46,9 @@ const projectDetails = {
     ],
     description: ['뉴젠 전체 프로그램 매뉴얼을 조회·검색하고 등록·수정·삭제할 수 있는 매뉴얼 통합 관리 웹사이트'],
     stacks: [
-      stack('React', 'frontend'), stack('TypeScript', 'frontend'), stack('Zustand', 'frontend'), stack('SCSS', 'frontend'),
-      stack('REST API', 'database'), stack('CKEditor 5', 'dataVisual'), stack('Git', 'dev'), stack('GitHub', 'dev'),
-      stack('Redmine', 'dev'), stack('Zeplin', 'dev'),
+      stack('React', 'frontend'), stack('TypeScript', 'frontend'), stack('Zustand', 'frontend'), stack('SCSS', 'styling'),
+      stack('REST API', 'api'), stack('CKEditor 5', 'dataUi'), stack('Git', 'collaboration'), stack('GitHub', 'collaboration'),
+      stack('Redmine', 'collaboration'), stack('Zeplin', 'collaboration'),
     ],
     sections: [
       {
@@ -113,8 +113,11 @@ const projectDetails = {
   },
   zReport: {
     summary: ['기존 사내 리포트 툴을 웹 기반 서비스로 전환하는 프로젝트', '리포트 조회 및 관리 기능을 웹 페이지 형태로 구현하여 사용자의 접근성과 활용성을 개선.'],
-    description: ['회사 내부 직원들이 사용하는 자사 리포트 관리 시스템으로, 리포트 작성·수정·조회 기능을 제공하는 웹 기반 프로그램'],
-    stacks: [stack('SCSS', 'frontend'), stack('Git', 'dev'), stack('GitHub', 'dev'), stack('Jira', 'dev'), stack('Redmine', 'dev'), stack('Zeplin', 'dev')],
+    description: ['회사 내부 직원들이 사용하는 자사 리포트 관리 시스템으로 리포트 작성·수정·조회 기능을 제공하는 웹 기반 프로그램'],
+    stacks: [
+      stack('SCSS', 'styling'), stack('Git', 'collaboration'), stack('GitHub', 'collaboration'),
+      stack('Jira', 'collaboration'), stack('Redmine', 'collaboration'), stack('Zeplin', 'collaboration'),
+    ],
     sections: [
       {
         id: 'features', title: '✨ 주요 구현 기능', items: [
@@ -137,7 +140,11 @@ const projectDetails = {
   beyond: {
     summary: ['비욘드 재무보고서 (업체 재무 데이터 대시보드) 구축 프로젝트', '재무 데이터를 웹 페이지에서 조회할 수 있도록 대시보드 형태로 구현하고 데이터 시각화를 통해 재무 정보 조회 편의성과 데이터 가시성을 향상.'],
     description: ['세무 및 기업관리 프로그램에서 관리되는 업체 재무 데이터를 웹 페이지에서 조회할 수 있도록 구축한 재무 데이터 대시보드'],
-    stacks: [stack('HTML5', 'frontend'), stack('CSS3', 'frontend'), stack('JavaScript', 'frontend'), stack('Chart.js', 'dataVisual'), stack('REST API', 'database'), stack('OZReport', 'database'), stack('Git', 'dev'), stack('Redmine', 'dev'), stack('Zeplin', 'dev')],
+    stacks: [
+      stack('JavaScript', 'frontend'), stack('HTML5', 'styling'), stack('CSS3', 'styling'),
+      stack('REST API', 'api'), stack('Chart.js', 'dataUi'), stack('OZ Report', 'dataUi'),
+      stack('Git', 'collaboration'), stack('Redmine', 'collaboration'), stack('Zeplin', 'collaboration'),
+    ],
     sections: [
       { id: 'features', title: '✨ 주요 구현 기능', items: [
         feature('dashboard-ui', '재무 데이터 대시보드 UI 구현', ['업체 코드와 기준년월 파라미터를 기준으로 재무 데이터를 조회할 수 있는 대시보드 화면 구조 구현', '재무 지표를 직관적으로 확인할 수 있도록 다양한 데이터 시각화 UI를 구성']),
@@ -158,7 +165,11 @@ const projectDetails = {
   bizbooks: {
     summary: ['비즈북스 (세무 비즈니스 플랫폼) 서비스 운영 및 UI 고도화', '신규 메뉴 및 기능 화면 퍼블리싱과 UI 리뉴얼 작업을 통해 서비스 화면 구조 확장 및 유지보수 효율 개선.'],
     description: ['세무 업무에 필요한 기능을 제공하는 세무 비즈니스 플랫폼 서비스'],
-    stacks: [stack('HTML5', 'frontend'), stack('CSS3', 'frontend'), stack('JavaScript', 'frontend'), stack('ToastGrid', 'dataVisual'), stack('Chart.js', 'dataVisual'), stack('Git', 'dev'), stack('GitHub', 'dev'), stack('Redmine', 'dev'), stack('Zeplin', 'dev')],
+    stacks: [
+      stack('JavaScript', 'frontend'), stack('HTML5', 'styling'), stack('CSS3', 'styling'),
+      stack('ToastGrid', 'dataUi'), stack('Chart.js', 'dataUi'), stack('Git', 'collaboration'),
+      stack('GitHub', 'collaboration'), stack('Redmine', 'collaboration'), stack('Zeplin', 'collaboration'),
+    ],
     sections: [
       { id: 'features', title: '✨ 주요 구현 기능', items: [
         feature('new-menu', '플랫폼 신규 메뉴 및 기능 화면 구현', ['플랫폼 신규 메뉴 기획에 맞춰 서비스 메뉴 구조에 맞는 화면 레이아웃을 구현하고 UI를 적용', '기존 서비스 화면 구조와 UI 패턴을 고려하여 신규 메뉴와 기능 화면이 자연스럽게 확장될 수 있도록 구성']),
@@ -177,7 +188,13 @@ const projectDetails = {
   nzHome: {
     summary: ['대표 홈페이지와 다수의 프로그램 마이크로사이트를 제작 및 유지보수', 'UI 인터랙션 구현과 SEO 개선 작업을 통해 사용자 경험과 웹 품질을 지속적으로 개선'],
     description: ['대표 홈페이지와 다수의 프로그램 마이크로사이트'],
-    stacks: [stack('HTML5', 'frontend'), stack('CSS3', 'frontend'), stack('JavaScript', 'frontend'), stack('Ajax', 'frontend'), stack('AOS.js', 'library'), stack('Waypoints.js', 'library'), stack('CountUp.js', 'library'), stack('Magnify.js', 'library'), stack('Slick.js', 'library'), stack('Microsoft SQL Server', 'database'), stack('Google Lighthouse', 'analytics'), stack('GitHub', 'dev'), stack('Redmine', 'dev'), stack('Zeplin', 'dev')],
+    stacks: [
+      stack('JavaScript', 'frontend'), stack('HTML5', 'styling'), stack('CSS3', 'styling'),
+      stack('AJAX', 'api'), stack('Microsoft SQL Server', 'api'), stack('Lighthouse', 'quality'),
+      stack('AOS', 'interaction'), stack('Waypoints', 'interaction'), stack('CountUp.js', 'interaction'),
+      stack('Magnify', 'interaction'), stack('Slick', 'interaction'),
+      stack('GitHub', 'collaboration'), stack('Redmine', 'collaboration'), stack('Zeplin', 'collaboration'),
+    ],
     sections: [
       { id: 'features', title: '✨ 주요 구현 기능', items: [
         feature('scroll-interaction', '대표 홈페이지 메인 스크롤 인터랙션 UI 구현', ['AOS, Waypoints, CountUp.js 등을 활용하여 스크롤 위치에 따라 애니메이션이 동작하는 인터랙션 UI 구현', '섹션별 등장 애니메이션과 카운트업 효과를 적용하여 메인 화면의 동적 사용자 경험 구성']),
@@ -202,10 +219,10 @@ const projectDetails = {
       '개발 프로젝트와 업무 경험, 기술 역량, 문제 해결 과정을 한 곳에서 소개하고 이후 작업 기록을 같은 형식으로 확장할 수 있도록 제작한 개인 웹사이트',
     ],
     stacks: [
-      stack('React', 'frontend'), stack('React Router', 'frontend'), stack('SCSS', 'frontend'),
-      stack('Spline', 'library'), stack('Figma', 'dev'), stack('Codex', 'dev'),
-      stack('Jest', 'dev'), stack('React Testing Library', 'dev'), stack('Git', 'dev'),
-      stack('GitHub', 'dev'), stack('GitHub Pages', 'dev'),
+      stack('React', 'frontend'), stack('React Router', 'frontend'), stack('SCSS', 'styling'),
+      stack('Jest', 'quality'), stack('React Testing Library', 'quality'), stack('Spline', 'interaction'),
+      stack('Figma', 'collaboration'), stack('Git', 'collaboration'), stack('GitHub', 'collaboration'),
+      stack('GitHub Pages', 'collaboration'), stack('Codex', 'aiTools'),
     ],
     sections: [
       {

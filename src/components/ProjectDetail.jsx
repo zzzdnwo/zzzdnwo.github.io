@@ -20,7 +20,7 @@ export default function ProjectDetail({ detail }) {
       </h2>
 
       <section>
-        <h3>📍 프로그램 설명</h3>
+        <h3>📍 프로젝트 설명</h3>
         <ul>
           {detail.description.map((item) => <li key={item}>{item}</li>)}
         </ul>

@@ -1,32 +1,44 @@
 const stacks = [
-    { id: 'frontend',  
-        title: 'Front-end',  
-        item: ['HTML5','CSS3','JavaScript','Ajax'], 
+    {
+        id: 'frontend',
+        title: 'Frontend Development',
+        item: ['JavaScript', 'TypeScript', 'React', 'Zustand'],
     },
-    { id: 'library',  
-        title: 'JavaScript Library',  
-        item: ['AOS.js','Waypoints.js','Slick.js','Magnify.js','CountUp.js'], 
+    {
+        id: 'styling',
+        title: 'Markup & Styling',
+        item: ['HTML5', 'CSS3', 'SCSS'],
     },
-    { id: 'dataVisual',  
-        title: 'Data Visualization',  
-        item: ['Chart.js','ToastGrid','CKEditor 5'], 
+    {
+        id: 'api',
+        title: 'API & Data',
+        item: ['REST API', 'AJAX', 'Microsoft SQL Server'],
     },
-    { id: 'database',  
-        title: 'Database',  
-        item: ['REST API','Microsoft SQL Server','OZ Report'], 
+    {
+        id: 'dataUi',
+        title: 'UI Libraries & Reporting',
+        item: ['Chart.js', 'ToastGrid', 'CKEditor 5', 'OZ Report'],
     },
-    { id: 'framework',  
-        title: 'Framework',  
-        item: ['React','TypeScript','Zustand','SCSS'], 
+    {
+        id: 'quality',
+        title: 'Quality & Performance',
+        item: ['Lighthouse'],
     },
-    { id: 'dev',  
-        title: 'Development',  
-        item: ['Git','GitHub','Jira','Redmine','Figma','Zeplin'], 
+    {
+        id: 'interaction',
+        title: 'Interaction',
+        item: ['AOS', 'Waypoints', 'Slick', 'Magnify', 'CountUp.js'],
     },
-    { id: 'analytics',  
-        title: 'Analytics',  
-        item: ['Google Lighthouse'], 
-    }
+    {
+        id: 'collaboration',
+        title: 'Tools & Collaboration',
+        item: ['Git', 'GitHub', 'Jira', 'Redmine', 'Figma', 'Zeplin'],
+    },
+    {
+        id: 'aiTools',
+        title: 'AI Coding Tools',
+        item: ['Codex'],
+    },
 ];
 
 export default stacks;

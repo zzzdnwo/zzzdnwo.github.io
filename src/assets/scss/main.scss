@@ -193,23 +193,26 @@ $mobile: 768px;
                 &.frontend{
                   .skill{background: rgba(255,250,152,0.3);}                  
                 }
-                &.library{
+                &.styling{
                   .skill{background: rgba(172,255,152,0.3);}                  
                 }
-                &.dataVisual{
+                &.api{
                   .skill{background: rgba(152,255,222,0.3);}                  
                 }
-                &.database{
+                &.dataUi{
                   .skill{background: rgba(152,217,255,0.3);}                  
                 }
-                &.framework{
+                &.quality{
                   .skill{background: rgba(152,172,255,0.3);}                  
                 }
-                &.dev{
+                &.interaction{
                   .skill{background: rgba(198,152,255,0.3);}                  
                 }
-                &.analytics{
+                &.collaboration{
                   .skill{background: rgba(238,152,255,0.3);}                  
+                }
+                &.aiTools{
+                  .skill{background: rgba(255,152,186,0.3);}
                 }
               }
             }
