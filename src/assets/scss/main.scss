@@ -651,6 +651,17 @@ $mobile: 768px;
                 }
               }
             }
+            .stack_cont{padding-top: 10rem;
+              .stack_list{ gap: 4rem 0;
+                .stack_item{
+                  .stack_skill{gap: 0.6rem;
+                    .skill{height: 3.6rem; padding: 0 1.2rem;
+                      font-size: 1.5em; font-weight: 600; letter-spacing: -0.1rem;  color: #fff; border-radius: 0.6rem;
+                      }
+                  }
+                }
+              }              
+            }
           }
         }
         &.contact{ height: 54.6rem;
