@@ -5,6 +5,7 @@ import ContactSection from '../components/ContactSection';
 import ErrorBoundary from '../components/ErrorBoundary';
 import ExperienceCarousel from '../components/ExperienceCarousel';
 import HeaderNavigation from '../components/HeaderNavigation';
+import HeroBackground from '../components/HeroBackground';
 import Modal from '../components/Modal';
 import ProjectCarousel from '../components/ProjectCarousel';
 import Button from '../components/Button';
@@ -19,7 +20,6 @@ import usePageNavigation from '../hooks/usePageNavigation';
 import useRevealOnScroll from '../hooks/useRevealOnScroll';
 import useWorkNavigation from '../hooks/useWorkNavigation';
 
-const Spline = React.lazy(() => import('@splinetool/react-spline'));
 const email = 'seosson@naver.com';
 
 export default function Home() {
@@ -97,14 +97,7 @@ export default function Home() {
       />
       <main className={heroStart ? 'hero_start' : ''}>
         <div className="pos">
-          {showSpline && (
-            <div className="spline_fixed">
-              <Suspense fallback={null}>
-                <Spline scene={require('../assets/images/scene-clean.splinecode')} />
-              </Suspense>
-            </div>
-          )}
-          <div className="main_bg" />
+          <HeroBackground visible={showSpline} />
           <div className="intro_mask" />
           <div className="myname_wrap"><h2 className="myname">SHIN WOO JAE</h2></div>
         </div>

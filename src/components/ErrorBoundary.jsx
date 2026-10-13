@@ -12,7 +12,11 @@ export default class ErrorBoundary extends React.Component {
     console.error('ErrorBoundary caught', error, info);
   }
   render() {
-    if (this.state.hasError) return <div>문제가 발생했습니다. 새로고침 해보세요.</div>;
+    if (this.state.hasError) {
+      return this.props.fallback !== undefined
+        ? this.props.fallback
+        : <div>문제가 발생했습니다. 새로고침 해보세요.</div>;
+    }
     return this.props.children;
   }
 }

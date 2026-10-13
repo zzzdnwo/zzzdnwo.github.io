@@ -1,70 +1,107 @@
-# Getting Started with Create React App
+# 신우재 | 프론트엔드 포트폴리오
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+프로젝트와 업무 경험, 기술 역량, 문제 해결 과정을 소개하는 React 기반 개인 포트폴리오입니다. UI/UX 디자이너와 Figma로 협업한 디자인을 바탕으로 프론트엔드 구현을 담당했습니다.
 
-## Available Scripts
+**[포트폴리오 보기](https://zzzdnwo.github.io/portfolio) · [이력서 보기](https://zzzdnwo.github.io/resume)**
 
-In the project directory, you can run:
+## 제작 목적
 
-### `npm start`
+프로젝트의 결과 화면뿐 아니라 담당 역할과 구현 과정, 문제 해결 경험을 함께 전달하고자 제작했습니다. 새로운 작업 기록을 같은 형식으로 추가할 수 있도록 콘텐츠 데이터와 화면 컴포넌트를 분리했습니다.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 주요 기능
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **프로젝트 탐색**: 프로젝트 카드에서 상세 모달을 열어 개요, 기술 스택, 구현 기능과 트러블슈팅을 확인합니다.
+- **작업 화면 갤러리**: 이미지를 확대하고 버튼 또는 방향키로 이전·다음 화면을 탐색합니다. Escape 키로 확대 화면을 닫을 수 있습니다.
+- **반응형 레이아웃**: 모바일에서는 프로젝트와 경력 목록을 가로 슬라이드로 탐색합니다.
+- **스크롤 내비게이션**: 현재 섹션과 스크롤 방향에 따라 메뉴의 활성 상태와 표시 여부를 갱신합니다.
+- **이력서와 연락처**: 별도 이력서 페이지와 이메일 복사 기능을 제공합니다.
+- **3D 배경과 대체 화면**: 데스크톱에서 Spline 장면을 지연 로딩합니다. 모바일(768px 이하)과 모션 감소 설정에서는 3D를 로드하지 않으며 로딩 중 또는 오류 발생 시 정적 그라데이션 배경을 표시합니다.
 
-### `npm test`
+## 기술 구성
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+| 구분 | 사용 기술 |
+| --- | --- |
+| UI | React 19, JavaScript |
+| 라우팅 | React Router 6 |
+| 스타일 | SCSS, 반응형 미디어 쿼리 |
+| 3D | Spline |
+| 빌드 | Create React App / react-scripts |
+| 테스트 | Jest, React Testing Library |
+| 배포 | GitHub Actions, GitHub Pages |
+| 협업·개발 보조 | Figma, Git, Codex |
 
-### `npm run build`
+이 저장소는 JavaScript로 작성했습니다. 포트폴리오에 소개된 업무 프로젝트의 TypeScript·Zustand 등의 기술 스택과는 구분됩니다.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 구조와 설계
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```text
+public/                  HTML 메타데이터, 공유 이미지, 정적 파일
+src/
+├── pages/               포트폴리오·이력서 페이지
+├── components/          카드, 상세 화면, 모달, 갤러리, 3D 배경
+├── hooks/               스크롤 탐색, 슬라이더, 미디어 쿼리, 클립보드
+├── data/                프로젝트, 경력, 기술 스택, 인터뷰 콘텐츠
+├── projects/            프로젝트별 상세 화면 진입 모듈
+└── assets/              SCSS, 이미지, Spline 장면
+.github/workflows/       테스트·빌드·배포 자동화
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 콘텐츠와 UI 분리
 
-### `npm run eject`
+카드 정보는 `src/data/projects.js`, 상세 설명은 `src/data/projectDetails.js`, 경력과 이력서 정보는 `src/data/experiences.js`에서 관리합니다. 프로젝트 상세 화면은 공통 `ProjectDetail`과 아코디언·갤러리를 조합하여 렌더링합니다.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+이 구조를 통해 공통 화면을 수정할 때 프로젝트마다 같은 마크업을 고치지 않아도 되도록 했습니다. 스크롤 탐색과 클립보드 등 반복되는 동작은 커스텀 훅으로 분리했습니다.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 로딩과 오류 대응
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Spline과 프로젝트 상세 모듈에는 `React.lazy`와 `Suspense`를 사용합니다. 프로젝트 카드를 마우스로 가리키거나 키보드 포커스를 주면 상세 모듈을 미리 불러옵니다. 갤러리 이미지는 지연 로딩하며 원본 이미지 용량 최적화는 추가 개선 과제로 남아 있습니다.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+3D 배경에는 독립된 오류 경계를 두어 모듈 로딩·렌더링 실패가 본문 전체로 전파되지 않도록 했습니다. 배경의 오류 경계는 스크롤에 따라 3D가 표시·숨김 전환되어도 유지됩니다. 모션 감소 설정에서는 3D와 첫 화면의 이름·마스크 애니메이션을 비활성화합니다.
 
-## Learn More
+### 인터랙션 검증
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+라우팅, 프로젝트 카드, 아코디언, 이미지 모달, 이력서 목록, 클립보드, 3D 배경의 조건부 표시와 오류 대응을 테스트합니다. Codex는 코드 리뷰와 리팩터링, 테스트 작성의 보조 도구로 활용했습니다.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 로컬 실행
 
-### Code Splitting
+Node.js와 npm이 필요합니다. CI의 Node.js 버전은 `.github/workflows/deploy.yml`에 정의되어 있습니다.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```bash
+npm ci
+npm start
+```
 
-### Analyzing the Bundle Size
+개발 서버 실행 후 [http://localhost:3000/portfolio](http://localhost:3000/portfolio)에 접속합니다. 이력서는 `/resume`에서 확인할 수 있습니다.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```bash
+# 전체 테스트를 한 번 실행
+npm test -- --watchAll=false --runInBand
 
-### Making a Progressive Web App
+# 프로덕션 빌드
+npm run build
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+빌드 결과는 `build/`에 생성됩니다.
 
-### Advanced Configuration
+## 배포
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+`main` 브랜치에 푸시하면 GitHub Actions가 의존성 설치, 테스트, 빌드를 순서대로 실행한 뒤 GitHub Pages에 배포합니다. `/portfolio`, `/resume` 직접 접근 시 SPA를 로드할 수 있도록 빌드의 `index.html`을 `404.html`로 복사합니다. 이 방식은 서버 측 정상 경로 응답이나 검색 최적화를 모두 해결하는 것은 아닙니다.
 
-### Deployment
+기존 `npm run deploy` 스크립트는 Windows의 `copy` 명령을 사용하는 수동 배포 경로입니다. 자동 배포는 별도 워크플로를 사용합니다.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+공유용 대표 이미지는 `public/ogThumb.png`에서 관리하고 설명과 Open Graph 메타데이터는 `public/index.html`에서 수정합니다. 메타데이터는 현재 모든 경로에서 공통으로 사용합니다.
 
-### `npm run build` fails to minify
+## 추가 개선 과제
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- 루트(`/`) 진입 경로와 잘못된 주소 처리, 임시 `/projects` 페이지 정리
+- 대용량 GIF를 정적 썸네일과 동영상으로 분리하여 갤러리 전송량 축소
+- 키보드 포커스 표시와 모달 포커스 이동 보완
+- 실제 모바일 기기와 브라우저에서 성능·접근성 측정
+- 페이지별 메타데이터 및 검색 노출 방식 검토
+
+성능 개선 수치는 실제 측정 결과를 확보한 뒤 기록할 예정입니다.
+
+## 연락처
+
+- 이메일: [seosson@naver.com](mailto:seosson@naver.com)
+- GitHub: [zzzdnwo](https://github.com/zzzdnwo)
